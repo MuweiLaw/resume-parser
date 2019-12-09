@@ -2,22 +2,25 @@ package com.lds.common.resume.domain;
 
 
 import com.lds.common.resume.annatations.Label;
+import lombok.ToString;
 
+@ToString
 public class CareerObjective {
 
-    @Label(keys ="期望月薪")
+    @Label(keys = "期望月薪")
     private String expectingSalary;
-    @Label(keys ="意向行业")
+    @Label(keys = "意向行业")
     private String expectingIndustry;
-    @Label(keys ="意向岗位")
+    @Label(keys = "意向岗位")
     private String expectingPosition;
-    @Label(keys ="意向地区")
+    @Label(keys = "意向地区")
     private String expectingLocation;
-    @Label(keys ="到岗时间")
-    private String hiredate;
-    @Label(keys ="住房要求")
+    @Label(keys = "到岗时间")
+    private String hireDate;
+    @Label(keys = "住房要求")
     private String requireApartment;
-
+    @Label(keys = "工作类型")
+    private String  JobType;
     public CareerObjective() {
     }
 
@@ -53,12 +56,20 @@ public class CareerObjective {
         this.expectingLocation = expectingLocation;
     }
 
-    public String getHiredate() {
-        return hiredate;
+    public String getHireDate() {
+        return hireDate;
     }
 
-    public void setHiredate(String hiredate) {
-        this.hiredate = hiredate;
+    public void setHireDate(String hireDate) {
+        this.hireDate = hireDate;
+    }
+
+    public String getJobType() {
+        return JobType;
+    }
+
+    public void setJobType(String jobType) {
+        JobType = jobType;
     }
 
     public String getRequireApartment() {
