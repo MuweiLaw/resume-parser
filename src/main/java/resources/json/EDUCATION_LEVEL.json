@@ -1,0 +1,10 @@
+[
+{"name":"中技","treeId":"INTERMEDIATE_MECHANIC","value":"INTERMEDIATE_MECHANIC","orderNo":"1"},
+{"name":"中专","treeId":"TECHNICAL_SECONDARY","value":"TECHNICAL_SECONDARY","orderNo":"2"},
+{"name":"高中","treeId":"HIGH_SCHOOL","value":"HIGH_SCHOOL","orderNo":"3"},
+{"name":"大专","treeId":"JUNIOR_COLLEGE","value":"JUNIOR_COLLEGE","orderNo":"4"},
+{"name":"本科","treeId":"UNDERGRADUATE","value":"UNDERGRADUATE","orderNo":"5"},
+{"name":"硕士","treeId":"MASTER","value":"MASTER","orderNo":"6"},
+{"name":"博士","treeId":"DOCTOR","value":"DOCTOR","orderNo":"7"},
+{"name":"MBA","treeId":"MBA","value":"MBA","orderNo":"8"}
+]
