@@ -15,8 +15,19 @@ import java.io.File;
 
 public class CareerObjectiveParserTest extends BaseTest {
     @Test
-    public void matchExpectingInsuatry() throws Exception {
-        File f = new File(basePath + "51job_庞幸珍(763358430).doc");
+    public void matchExpectingInsuatryBy51Job() throws Exception {
+        File f = new File(basePath + "51job_王维爱(492726471).doc");
+//        转换html
+        String html = converHtml(f);
+//        信息解析器
+        CareerObjectiveParser careerObjectiveParser = new CareerObjectiveParser(html);
+        CareerObjective parse = careerObjectiveParser.parse();
+
+        System.out.println("parse = " + parse.toString());
+    }
+    @Test
+    public void matchExpectingInsuatryByZhiLian() throws Exception {
+        File f = new File(basePath + "智联招聘_温超平_软件测试_中文_20191105_1572935670709.doc");
 //        转换html
         String html = converHtml(f);
 //        信息解析器
