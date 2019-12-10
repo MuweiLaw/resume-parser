@@ -126,7 +126,19 @@ public class CareerObjectiveParser extends BaseParser {
      * @date 2019/12/6 13:59
      */
     private String matchExpectingPosition() {
-        return Job.getJobTitles(content);
+        String expectingPosition = Job.getJobTitles(content);
+        if (!"".equals(expectingPosition)) {
+            return expectingPosition;
+        }
+        Elements expectingPositionElementsBy51Job = root.getElementsMatchingOwnText("职能/职位：");
+        if (expectingPositionElementsBy51Job.size() > 0) {
+            return expectingPositionElementsBy51Job.get(0).nextElementSibling().text();
+        }
+        Elements expectingPositionElementsByZhiLian = root.getElementsMatchingOwnText("期望从事职业：");
+        if (expectingPositionElementsByZhiLian.size() > 0) {
+            return expectingPositionElementsByZhiLian.get(0).parent().parent().nextElementSibling().text();
+        }
+        return expectingPosition;
     }
 
     /**
@@ -137,10 +149,10 @@ public class CareerObjectiveParser extends BaseParser {
      * @date 2019/12/6 15:07
      */
     private String matchExpectingLocation() {
-//        String location = Location.getOneLocation(content);
-//        if (StringUtils.isNotBlank(location)) {
-//            return location;
-//        }
+        String location = Location.getOneLocation(content);
+        if (StringUtils.isNotBlank(location)) {
+            return location;
+        }
         Elements expectingLocationElementBy51Job = root.getElementsMatchingOwnText("地点：");
         if (expectingLocationElementBy51Job.size() > 0) {
             Elements expectingLocationElementByZhiLian = root.getElementsMatchingOwnText("期望工作地区：");
