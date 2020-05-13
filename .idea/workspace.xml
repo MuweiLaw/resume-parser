@@ -2,42 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bae4c7f4-2911-4dd6-b3c5-e17c7909b353" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lds/common/resume/domain/Skills.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lds/common/resume/parser/SkillsParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lds/common/resume/parser/CareerObjectiveParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/lds/common/resume/parser/SkillsParserTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_王维爱(492726471).doc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lds/common/resume/parser/CareerObjectiveParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lds/common/resume/parser/CareerObjectiveParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lds/common/resume/ResumeparseUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lds/common/resume/ResumeparseUtilsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/lds/common/resume/parser/BasicInfoParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/lds/common/resume/parser/BasicInfoParserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_全业萍(767697783).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_凌志伟(735658519).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_凌志伟(896269454).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_刘亚婕(425087044).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_刘顿(84436252).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_卢文鑫(84442220).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_卢春丽(897020390).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_卢舒南(746561421).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_吕路-2年软件测试(421502583).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_吕路-2年软件测试(783769191).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_宁娜(491628343).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_宁娜(763184821).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_宁娜(829418649).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_宋喜德(11196322).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/51job_庞幸珍(763358430).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_吉洪昌_Java开发工程师_中文_20191031_1572509772686.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_胡程_软件测试工程师_中文_20191031_1572509741654.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_郭原汇_自动化测试工程师_中文_20191031_1572509741690.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_黄双勤_软件测试工程师_中文_20191031_1572509741588.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_黄翔_UI设计师_中文_20191031_1572509741677.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser$Hiredate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser$Hiredate.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser$Position.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/ResumeparseUtilsTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/ResumeparseUtilsTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/BasicInfoParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/BasicInfoParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/ResumeParseException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/ResumeParseUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/annatations/Label.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/BasicInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/CareerObjective.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/Education.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/ProjectExperience.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/Resume.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/WorkExperience.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/io/InputStreamCacher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/BaseParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/BasicInfoParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/EducationParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Industry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Job.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Location.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Major.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/ProjectExperienceParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/WorkExperienceParser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/poi/HTMLConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/poi/HTMLMapper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/AbstractConvertProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/ConvertProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/EmlConvertProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/OfficeOpenXMLConvertProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/StandardConvertProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/Base64Utils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/EncodingDetectUtils$BytesEncodingDetect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/EncodingDetectUtils$Encoding.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/EncodingDetectUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/Word2HtmlUtils$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/Word2HtmlUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/BaseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/ResumeparseUtilsTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/BasicInfoParserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/EducationParserTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/WorkExperienceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/processor/HtmlConverterTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/51job_凌梦之(23234904).doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/51job_王维爱(492726471).doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/boss直聘何正宇3年.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/人才热线高级.NET工程师王洪亮(J2808381).doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/前程简历模板.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/智联卓聘_中文20191101.doc" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -65,37 +78,57 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>expectingPosition</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="C:\Users\Administrator\.m2\repository" />
-        <option name="userSettingsFile" value="C:\Users\Administrator\.m2\settings.xml" />
+        <option name="mavenHome" value="C:/Applications/apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="C:\Users\25627\.m2\settings.xml" />
       </MavenGeneralSettings>
     </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="downloadSourcesAutomatically" value="true" />
         <option name="importAutomatically" value="true" />
-        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="24" />
+    <option name="y" value="54" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
   <component name="ProjectId" id="1UUvowFHfIbGi6Bb66KZYSR102S" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="add_unversioned_files" value="true" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575960664819" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/lds/common/resume/domain" />
+    <property name="ignore_missing_gitignore" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.23837902" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -110,27 +143,15 @@
       <recent name="com.lds.common.resume" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Java\Project-Git\resume-parser\src\main\java\com\lds\common\resume\parser" />
+      <recent name="E:\Java\Project-Git\resume-parser\src\test\resources\resume" />
       <recent name="D:\workspace\resume-parser\src\main\java\com\lds\common\resume\domain" />
       <recent name="D:\workspace\resume-parser\src\main\java\com\lds\common\resume\parser" />
       <recent name="D:\workspace\resume-parser\src\test\java\com\lds\common\resume\parser" />
-      <recent name="D:\workspace\resume-parser\src\test\resources\resume" />
-      <recent name="D:\workspace\resume-parser\src\main\java\resources\json" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="JUnit.ResumeparseUtilsTest.oneParseOn51Job2">
-    <configuration name="BasicInfoParserTest.oneBaseInfoOn51job3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.CareerObjectiveParserTest">
+    <configuration name="CareerObjectiveParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="resume-parser" />
       <extension name="coverage">
         <pattern>
@@ -139,72 +160,70 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.lds.common.resume.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.BasicInfoParserTest" />
-      <option name="METHOD_NAME" value="oneBaseInfoOn51job3" />
+      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.CareerObjectiveParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="resume-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lds.common.resume.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lds.common.resume.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.CareerObjectiveParserTest" />
+      <option name="METHOD_NAME" value="matchExpectingInsuatryBy51Job" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResumeparseUtilsTest.oneParseOn51Job" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SkillsParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="resume-parser" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lds.common.resume.*" />
+          <option name="PATTERN" value="com.lds.common.resume.parser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lds.common.resume" />
-      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.ResumeparseUtilsTest" />
-      <option name="METHOD_NAME" value="oneParseOn51Job" />
+      <option name="PACKAGE_NAME" value="com.lds.common.resume.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.SkillsParserTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SkillsParserTest.oneEducationParse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="resume-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.lds.common.resume.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.lds.common.resume.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.SkillsParserTest" />
+      <option name="METHOD_NAME" value="oneEducationParse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ResumeparseUtilsTest.oneParseOn51Job1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SkillsParserTest.oneEducationParseZhiLian" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="resume-parser" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.lds.common.resume.*" />
+          <option name="PATTERN" value="com.lds.common.resume.parser.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.lds.common.resume" />
-      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.ResumeparseUtilsTest" />
-      <option name="METHOD_NAME" value="oneParseOn51Job1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ResumeparseUtilsTest.oneParseOn51Job2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="resume-parser" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lds.common.resume.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.lds.common.resume" />
-      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.ResumeparseUtilsTest" />
-      <option name="METHOD_NAME" value="oneParseOn51Job2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ResumeparseUtilsTest.oneParseOnzhaopin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="resume-parser" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lds.common.resume.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.lds.common.resume" />
-      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.ResumeparseUtilsTest" />
-      <option name="METHOD_NAME" value="oneParseOnzhaopin" />
+      <option name="PACKAGE_NAME" value="com.lds.common.resume.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.SkillsParserTest" />
+      <option name="METHOD_NAME" value="oneEducationParseZhiLian" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -212,11 +231,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ResumeparseUtilsTest.oneParseOn51Job2" />
-        <item itemvalue="JUnit.BasicInfoParserTest.oneBaseInfoOn51job3" />
-        <item itemvalue="JUnit.ResumeparseUtilsTest.oneParseOnzhaopin" />
-        <item itemvalue="JUnit.ResumeparseUtilsTest.oneParseOn51Job" />
-        <item itemvalue="JUnit.ResumeparseUtilsTest.oneParseOn51Job1" />
+        <item itemvalue="JUnit.CareerObjectiveParserTest" />
+        <item itemvalue="JUnit.CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" />
+        <item itemvalue="JUnit.SkillsParserTest" />
+        <item itemvalue="JUnit.SkillsParserTest.oneEducationParseZhiLian" />
+        <item itemvalue="JUnit.SkillsParserTest.oneEducationParse" />
       </list>
     </recent_temporary>
   </component>
@@ -233,11 +252,99 @@
       <workItem from="1575424169797" duration="24374000" />
       <workItem from="1575695494302" duration="34415000" />
       <workItem from="1575854383147" duration="2292000" />
+      <workItem from="1575887664905" duration="7511000" />
+      <workItem from="1575940058405" duration="10696000" />
+      <workItem from="1589371688048" duration="246000" />
     </task>
+    <task id="LOCAL-00001" summary="新增了对智联招聘简历的技能特长解析功能">
+      <created>1575892219026</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575892219026</updated>
+    </task>
+    <task id="LOCAL-00002" summary="新增了对智联简历的求职意向解析功能">
+      <created>1575896648602</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1575896648602</updated>
+    </task>
+    <task id="LOCAL-00003" summary="新增了期望工作类型意向变量">
+      <created>1575896941278</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1575896941278</updated>
+    </task>
+    <task id="LOCAL-00004" summary="新增对智联求职意向解析测试">
+      <created>1575897009950</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575897009950</updated>
+    </task>
+    <task id="LOCAL-00005" summary="test">
+      <created>1575958401804</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575958401804</updated>
+    </task>
+    <task id="LOCAL-00006" summary="test">
+      <created>1575958606611</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575958606611</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 41m 40s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 42m 56s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 49m 03s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 51m 47s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 58m 13s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 21h 03m 12s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 21h 05m 30s.xml">
+      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest - 2019.12.09 at 21h 06m 46s.xml">
+      <configuration name="CareerObjectiveParserTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest - 2019.12.10 at 09h 11m 33s.xml">
+      <configuration name="CareerObjectiveParserTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CareerObjectiveParserTest - 2019.12.10 at 09h 22m 12s.xml">
+      <configuration name="CareerObjectiveParserTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -251,6 +358,29 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="新增了对智联招聘简历的技能特长解析功能" />
+    <MESSAGE value="新增了对智联简历的求职意向解析功能" />
+    <MESSAGE value="新增了求职意向类的工作类型变量" />
+    <MESSAGE value="新增了期望工作类型意向变量" />
+    <MESSAGE value="新增对智联求职意向解析测试" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
