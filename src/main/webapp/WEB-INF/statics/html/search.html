@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>admin-搜索页面</title>
+</head>
+<link rel="stylesheet" href="../../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../plugin/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../../plugin/font/iconfont.css">
+<link rel="stylesheet" href="../../css/all.css">
+<body>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.longdeshui.com.cn/dic.js"></script>
+<script src="https://cdn.longdeshui.com.cn/resumedic.js"></script>
+<script type="text/javascript" src="../../plugin/layui/layui.all.js"></script>
+<script type="text/javascript">
+    function queryIndustry() {
+        // var date = "";
+        var industryId = $("#industryId").val();
+        var industry = $("#industry").val();
+        var industryParentId = $("#industryParentId").val();
+        $.ajax({
+            type: "post",
+            contentType: "application/json;charset=UTF-8",
+            url: "/industry/findByUserIndustry",
+            data: JSON.stringify({
+                industryId: industryId,
+                industry: industry,
+                industryParentId: industryParentId
+            }),
+            success: function (result) {
+                var html = "";
+                //覆盖之前的表
+                document.getElementById("query").innerHTML = "<h4>" + "总共搜索到" + result.length + "条行业词典信息" + "</h4>";
+                html += "<hr><table border=1>";
+                html += "<tr><td>行业编号</td><td>行业名称</td><td>父级行业</td><td>操作</td></tr>";
+                var j = result.length;
+                for (var i = 0; i < j; i++) {
+                    var obj = result[i];
+                    html += "<tr><td>" + obj.industryId + "</td><td>"
+                        + obj.industry + "</td><td>"
+                        + obj.industryParentId + "</td>"
+                        + '<td><input id="up" type="button" value="编辑" onclick=updateIndustry("'
+                        + obj.industryId
+                        + '")>'
+                        + '<input type="button" value="删除"  onclick=delIndustry("'
+                        + obj.industryId + '")></td>'
+                        + "</tr>";
+                }
+                html += "</table>";
+                $("#query").append(html);
+            }, error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    }
+
+    function delIndustry(industryId) {
+        if (confirm("确定要删除编号为" + industryId + "的行业词典信息吗？(存在下级请将下级全部删除)")) {
+            $.ajax({
+                type: "post",
+                contentType: "application/json;charset=UTF-8",
+                url: "/industry/deleteUserIndustry",
+                data: JSON.stringify({
+                    industryId: industryId,
+                    industry: null
+                }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result);
+                    location.reload(true);
+                }, error: function (e) {
+                    alert("下级存在子行业");
+                    console.log(e.status);
+                }
+            });
+        } else {
+            alert("您取消了删除操作!🍉");
+        }
+
+    }
+
+    function updateIndustry(industryId) {
+        var industry = prompt('修改编号为"' + industryId + '"的行业名称为:');
+        if (industry) {
+            var industryParentId = prompt('修改"' + industry + '"的父级行业为:');
+            if (industryParentId) {
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    url: "/industry/updateUserIndustry",
+                    data: JSON.stringify({
+                        industryId: industryId,
+                        industry: industry,
+                        industryParentId: industryParentId
+                    }), success: function (result) {
+                        debugger;
+                        console.log(result);
+                        alert(result);
+                        location.reload(true);
+                    }, error: function (e) {
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            } else {
+                alert("您取消了更新操作!🍉");
+            }
+        } else {
+            alert("您取消了更新操作!🍉");
+        }
+    }
+
+    function queryLocation() {
+        // var date = "";
+        var locationId = $("#locationId").val();
+        var location = $("#location").val();
+        var locationParentId = $("#locationParentId").val();
+        $.ajax({
+            type: "post",
+            contentType: "application/json;charset=UTF-8",
+            url: "/location/findByUserLocation",
+            data: JSON.stringify({
+                locationId: locationId,
+                location: location,
+                locationParentId: locationParentId
+            }),
+            success: function (result) {
+                var html = "";
+                //覆盖之前的表
+                document.getElementById("query").innerHTML = "<h4>" + "总共搜索到" + result.length + "条地址词典信息" + "</h4>";
+                html += "<hr><table border=1>";
+                html += "<tr><td>地址编号</td><td>地址名称</td><td>父级地址</td><td>操作</td></tr>";
+                var j = result.length;
+                for (var i = 0; i < j; i++) {
+                    var obj = result[i];
+                    html += "<tr><td>" + obj.locationId + "</td><td>"
+                        + obj.location + "</td><td>"
+                        + obj.locationParentId + "</td>"
+                        + '<td><input id="up" type="button" value="编辑" onclick=updateLocation("'
+                        + obj.locationId
+                        + '")>'
+                        + '<input type="button" value="删除"  onclick=delLocation("'
+                        + obj.locationId + '")></td>'
+                        + "</tr>";
+                }
+                html += "</table>";
+                $("#query").append(html);
+            }, error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    }
+
+    function delLocation(locationId) {
+        if (confirm("确定要删除编号为" + locationId + "的行业词典信息吗？(存在下级请将下级全部删除)")) {
+            $.ajax({
+                type: "post",
+                contentType: "application/json;charset=UTF-8",
+                url: "/location/deleteUserLocation",
+                data: JSON.stringify({
+                    locationId: locationId,
+                    location: null
+
+                }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result);
+                    location.reload(true);
+                }, error: function (e) {
+                    alert("下级存在子行业");
+                    console.log(e.status);
+                }
+            });
+        } else {
+            alert("您取消了删除操作!🍉");
+        }
+
+    }
+
+    function updateLocation(locationId) {
+        var location0 = prompt('修改编号为"' + locationId + '"的行业名称为:');
+        if (location0) {
+            var locationParentId = prompt('修改"' + locationId + '"的父级行业为:');
+            if (locationParentId) {
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    url: "/location/updateUserLocation",
+                    data: JSON.stringify({
+                        locationId: locationId,
+                        location: location0,
+                        locationParentId: locationParentId
+                    }), success: function (result) {
+                        console.log(result);
+                        alert(result);
+                        location.reload(true);
+                    }, error: function (e) {
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            } else {
+                alert("您取消了更新操作!🍉");
+            }
+        } else {
+            alert("您取消了更新操作!🍉");
+        }
+    }
+
+    function queryJob() {
+        var jobId = $("#jobId").val();
+        var job = $("#job").val();
+        var jobContain = $("#jobContain").val();
+        $.ajax({
+            type: "post",
+            contentType: "application/json;charset=UTF-8",
+            url: "/job/findByUserJob",
+            data: JSON.stringify({
+                jobId: jobId,
+                job: job,
+                jobContain: jobContain
+            }),
+            async: false,
+            success: function (result) {
+                var html = "";
+                //覆盖之前的表
+                document.getElementById("query").innerHTML = "<h4>" + "总共搜索到" + result.length + "条职位词典信息" + "</h4>";
+                html += "<table border=1>";
+                html += "<tr><td>职位编号</td><td>职位名称</td><td>包含的文字</td><td>操作</td></tr>";
+                var j = result.length;
+                for (var i = 0; i < j; i++) {
+                    var obj = result[i];
+                    html += "<tr><td>" + obj.jobId + "</td><td>"
+                        + obj.job + "</td><td>"
+                        + obj.jobContain + "</td>"
+                        + '<td><input id="up" type="button" value="编辑" onclick=updateJob("'
+                        + obj.jobId
+                        + '")>'
+                        + '<input type="button" value="删除"  onclick=delJob("'
+                        + obj.jobId + '")></td>'
+                        + "</tr>";
+                }
+                html += "</table>";
+                $("#query").append(html);
+            }, error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+    }
+
+    function delJob(jobId) {
+        if (jobId == undefined) {
+            jobId = $("#update_id").val();
+            if (jobId == "") {
+                alert("输入不能为空!");
+                return;
+            }
+        }
+
+        if (confirm("确定要删除编号为" + jobId + "的职位词典信息吗？")) {
+            $.ajax({
+                type: "post",
+                contentType: "application/json;charset=UTF-8",
+                url: "/job/deleteUserJob",
+                data: JSON.stringify({
+                    jobId: jobId,
+                    job: null
+                }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result);
+                    location.reload(true);
+                }, error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        } else {
+            alert("您取消了删除操作!🍉");
+        }
+
+    }
+
+    function updateJob(jobId) {
+        if (jobId == undefined) {
+            jobId = $("#update_id").val();
+            if (jobId == "") {
+                alert("编号不能为空");
+                return;
+            }
+        }
+        var job = prompt('修改编号为"' + jobId + '"的职位名称为:');
+        if (job) {
+            var jobContain = prompt('修改"' + job + '"的包含的字符为:');
+            if (jobContain) {
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    url: "/job/updateUserJob",
+                    data: JSON.stringify({
+                        jobId: jobId,
+                        job: job,
+                        jobContain: jobContain
+                    }), success: function (result) {
+                        debugger;
+                        console.log(result);
+                        alert(result);
+                        location.reload(true);
+                    }, error: function (e) {
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            } else {
+                alert("您取消了更新操作!🍉");
+            }
+        } else {
+            alert("您取消了更新操作!🍉");
+        }
+    }
+
+    function queryMajor() {
+        var majorId = $("#majorId").val();
+        var major = $("#major").val();
+        var majorContain = $("#majorContain").val();
+        $.ajax({
+            type: "post",
+            contentType: "application/json;charset=UTF-8",
+            url: "/major/findByUserMajor",
+            data: JSON.stringify({
+                majorId: majorId,
+                major: major,
+                majorContain: majorContain
+            }),
+            async: false,
+            success: function (result) {
+                var html = "";
+                //覆盖之前的表
+                document.getElementById("query").innerHTML = "<h4>" + "总共搜索到" + result.length + "条专业词典信息" + "</h4>";
+                html += "<table border=1>";
+                html += "<tr><td>编号</td><td>专业名称</td><td>包含的文字</td><td>操作</td></tr>";
+                var j = result.length;
+                for (var i = 0; i < j; i++) {
+                    var obj = result[i];
+                    html += "<tr><td>" + obj.majorId + "</td><td>"
+                        + obj.major + "</td><td>"
+                        + obj.majorContain + "</td>"
+                        + '<td><input id="up" type="button" value="编辑" onclick=updateMajor("'
+                        + obj.majorId
+                        + '")>'
+                        + '<input type="button" value="删除"  onclick=delMajor("'
+                        + obj.majorId + '")></td>'
+                        + "</tr>";
+                }
+                html += "</table>";
+                $("#query").append(html);
+            }, error: function (e) {
+                console.log(e.status);
+                console.log(e.responseText);
+            }
+        });
+        // return date;
+    }
+
+    function delMajor(majorId) {
+        if (majorId == undefined) {
+            majorId = $("#update_id").val();
+            if (majorId == "") {
+                alert("输入不能为空!");
+                return;
+            }
+        }
+
+        if (confirm("确定要删除编号为" + majorId + "的专业词典信息吗？")) {
+            $.ajax({
+                type: "post",
+                contentType: "application/json;charset=UTF-8",
+                url: "/major/deleteUserMajor",
+                data: JSON.stringify({
+                    majorId: majorId,
+                    major: null
+                }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result);
+                    location.reload(true);
+                }, error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        } else {
+            alert("您取消了删除操作!🍉");
+        }
+
+    }
+
+    function updateMajor(majorId) {
+        var major = prompt('修改编号为"' + majorId + '"的专业名称为:');
+        if (major) {
+            var majorContain = prompt('修改"' + major + '"的包含的字符为:');
+            if (majorContain) {
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    url: "/major/updateUserMajor",
+                    data: JSON.stringify({
+                        majorId: majorId,
+                        major: major,
+                        majorContain: majorContain
+                    }), success: function (result) {
+                        debugger;
+                        console.log(result);
+                        alert(result);
+                        location.reload(true);
+                    }, error: function (e) {
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            } else {
+                alert("您取消了更新操作!🍉");
+            }
+        } else {
+            alert("您取消了更新操作!🍉");
+        }
+    }
+</script>
+<div>
+    <h4>模糊查询</h4>
+    <br/>
+    <input type="text" id="industryId" placeholder="输入行业编号" minlength="2">
+    <input type="text" id="industry" placeholder="输入行业名称" minlength="2">
+    <input type="text" id="industryParentId" placeholder="输入行业父级编号" minlength="2">
+    <button style="width: 100px;
+            height: 25px;
+            background-color: #68b86c;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="queryIndustry()">搜索行业词典
+    </button>
+    <br/>
+    <hr>
+    <input type="text" id="locationId" placeholder="输入地址编号" minlength="2">
+    <input type="text" id="location" placeholder="输入地址名称" minlength="2">
+    <input type="text" id="locationParentId" placeholder="输入地址父级编号" minlength="2">
+    <button style="width: 100px;
+            height: 25px;
+            background-color: #68b86c;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="queryLocation()">搜索地址词典
+    </button>
+    <br/>
+    <hr>
+    <input type="text" id="jobId" placeholder="输入职位编号" minlength="2">
+    <input type="text" id="job" placeholder="输入职位名称" minlength="2">
+    <input type="text" id="jobContain" placeholder="输入该职位包含的字符" minlength="2">
+    <button style="width: 100px;
+            height: 25px;
+            background-color: #68b86c;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="queryJob()">搜索职位词典
+    </button>
+    <br/>
+    <hr>
+    <input type="text" id="majorId" placeholder="输入专业编号" minlength="2">
+    <input type="text" id="major" placeholder="输入专业名称" minlength="2">
+    <input type="text" id="majorContain" placeholder="输入该专业包含的字符" minlength="2">
+    <button style="width: 100px;
+            height: 25px;
+            background-color: #68b86c;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="queryMajor()">搜索专业词典
+    </button>
+</div>
+<div id="query"></div>
+<hr>
+</body>
+</html>

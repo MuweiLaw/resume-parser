@@ -1,0 +1,25 @@
+/*重置样式--开始*/
+body {
+	width: 100%;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	background-color: #f2f4f5;
+}
+body,ul,li,p,h1,h2,h3,h4,dl,dd,form,input,textarea,select,::before,::after{
+	padding: 0;
+	margin: 0;
+}
+*{
+	box-sizing: border-box;
+}
+ul,li {list-style: none;}
+img{border:0}
+a:link,a:visited{text-decoration:none;color:#333;}
+a:hover,a:active{text-decoration:underline;color:#333;}
+.fl{float: left;}
+.fr{float: right;}
+.clearfix:after{content:".";display:block;height:0;visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+.ellipsis{ overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+
+/*重置样式--结束*/

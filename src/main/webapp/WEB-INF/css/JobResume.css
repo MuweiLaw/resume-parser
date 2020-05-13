@@ -1,0 +1,136 @@
+.banner{ width: 100%}
+.banner img{ width: 100%}
+/*招聘信息页面*/
+.zpxx_sxtj{ background: #eee; height: 230px; margin: 25px 0;  padding: 0}
+.nr{ margin: 0 25px }
+.address_r{ margin-top: -4px; margin-left: 15%}
+.address_l{ padding: 0; float: left}
+.address_r{ padding: 0; font-size: 14px;float: left}
+.address_r input{ outline: none;border: none; height: 30px}
+.address_r button{ border: none; background: #00A2E8; padding: 5px 25px; color: #fff}
+.address{padding: 30px 0}
+.com_one{float: left; padding:0 27px;}
+.com_one_a{ float: left; }
+.bx{ color: #3b80de}
+.address select{ border: none; padding: 5px 15px; margin: 0 20px; outline: none}
+.show{ width: 1200px;box-sizing: border-box;padding: 30px}
+.hidden{display: none}
+.c-a{ float: left}
+.full{ margin: 25px; }
+.full_l{ float: left;}
+.full_l button{ outline: none; border: none; background:#3D7FDF; color: #fff; padding: 5px 25px}
+.full_r{ float: left; margin-left: 3%}
+.full_r button{ outline: none; border: 1px solid #e5e5e5;  color: #000; padding:4px 25px; background: #fff}
+
+.sell{ text-align: center; margin-top: 350px}
+.sell_top{ padding: 20px }
+.sell_top span{ color: #3b80de; }
+.sell_one{width:1170px }
+.box2{ color: #000}
+.box1{ color: #122b40; border-bottom: 1px solid #eee; padding: 15px 0 }
+.sell_one{ margin: 55px 0}
+.box2{ margin: 10px 0; }
+.box2 button{ background: #00A0E3; color: #fff; border-radius: 3px}
+
+
+
+
+
+
+.sell{ border-bottom: 1px solid #e5e5e5; }
+
+.sell_top span{ color: #3b80de; }
+
+.sell_one{width:1170px }
+.box2 {
+
+    width: 1170px;
+
+}
+
+.box2 ul {
+    overflow: hidden;
+
+    text-align: center;
+}
+.box2 ul li {
+    width: 16.5%;
+
+    float: left;
+
+    box-sizing: border-box;
+
+}
+.box2 ul li .com {
+
+}
+
+
+
+
+.box2 {
+
+
+
+}
+.box_a{
+
+    color: #2aabd2;
+
+}
+.box2 ul {
+
+
+}
+.box2 ul li {
+    width: 11%;
+
+    float: left;
+
+
+}
+.box2 ul li .com {
+    height: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

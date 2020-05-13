@@ -1,0 +1,1047 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.generator.mapper.UserProjectExperienceIMapper">
+  <resultMap id="BaseResultMap" type="com.dc.common.domain.UserProjectExperience">
+    <id column="id_key" jdbcType="BIGINT" property="idKey" />
+    <result column="project_exp_id" jdbcType="CHAR" property="projectExpId" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="resume_id" jdbcType="CHAR" property="resumeId" />
+    <result column="company_name" jdbcType="CHAR" property="companyName" />
+    <result column="begin_date" jdbcType="DATE" property="beginDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="CHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="project_link" jdbcType="VARCHAR" property="projectLink" />
+    <result column="project_role" jdbcType="VARCHAR" property="projectRole" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dc.common.domain.UserProjectExperienceWithBLOBs">
+    <result column="project_description" jdbcType="LONGVARCHAR" property="projectDescription" />
+    <result column="duty_description" jdbcType="LONGVARCHAR" property="dutyDescription" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_key, project_exp_id, user_id, resume_id, company_name, begin_date, end_date, project_name, 
+    created_by, updated_by, created_date, updated_date, project_link, project_role
+  </sql>
+  <sql id="Blob_Column_List">
+    project_description, duty_description
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.dc.common.domain.UserProjectExperienceCriteria" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lds_user_project_experience
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.dc.common.domain.UserProjectExperienceCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lds_user_project_experience
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lds_user_project_experience
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lds_user_project_experience
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dc.common.domain.UserProjectExperienceWithBLOBs">
+    insert into lds_user_project_experience (id_key, project_exp_id, user_id, 
+      resume_id, company_name, begin_date, 
+      end_date, project_name, created_by, 
+      updated_by, created_date, updated_date, 
+      project_link, project_role, project_description, 
+      duty_description)
+    values (#{idKey,jdbcType=BIGINT}, #{projectExpId,jdbcType=CHAR}, #{userId,jdbcType=CHAR}, 
+      #{resumeId,jdbcType=CHAR}, #{companyName,jdbcType=CHAR}, #{beginDate,jdbcType=DATE}, 
+      #{endDate,jdbcType=DATE}, #{projectName,jdbcType=VARCHAR}, #{createdBy,jdbcType=CHAR}, 
+      #{updatedBy,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, 
+      #{projectLink,jdbcType=VARCHAR}, #{projectRole,jdbcType=VARCHAR}, #{projectDescription,jdbcType=LONGVARCHAR}, 
+      #{dutyDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dc.common.domain.UserProjectExperienceWithBLOBs">
+    insert into lds_user_project_experience
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        id_key,
+      </if>
+      <if test="projectExpId != null">
+        project_exp_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="beginDate != null">
+        begin_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="projectLink != null">
+        project_link,
+      </if>
+      <if test="projectRole != null">
+        project_role,
+      </if>
+      <if test="projectDescription != null">
+        project_description,
+      </if>
+      <if test="dutyDescription != null">
+        duty_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        #{idKey,jdbcType=BIGINT},
+      </if>
+      <if test="projectExpId != null">
+        #{projectExpId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="beginDate != null">
+        #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectLink != null">
+        #{projectLink,jdbcType=VARCHAR},
+      </if>
+      <if test="projectRole != null">
+        #{projectRole,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDescription != null">
+        #{projectDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dutyDescription != null">
+        #{dutyDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into lds_user_project_experience (id_key, project_exp_id, user_id, 
+      resume_id, company_name, begin_date, 
+      end_date, project_name, created_by, 
+      updated_by, created_date, updated_date, 
+      project_link, project_role, project_description, 
+      duty_description)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idKey,jdbcType=BIGINT}, #{item.projectExpId,jdbcType=CHAR}, #{item.userId,jdbcType=CHAR}, 
+        #{item.resumeId,jdbcType=CHAR}, #{item.companyName,jdbcType=CHAR}, #{item.beginDate,jdbcType=DATE}, 
+        #{item.endDate,jdbcType=DATE}, #{item.projectName,jdbcType=VARCHAR}, #{item.createdBy,jdbcType=CHAR}, 
+        #{item.updatedBy,jdbcType=CHAR}, #{item.createdDate,jdbcType=TIMESTAMP}, #{item.updatedDate,jdbcType=TIMESTAMP}, 
+        #{item.projectLink,jdbcType=VARCHAR}, #{item.projectRole,jdbcType=VARCHAR}, #{item.projectDescription,jdbcType=LONGVARCHAR}, 
+        #{item.dutyDescription,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    insert into lds_user_project_experience
+    (id_key, project_exp_id, user_id, resume_id, company_name, begin_date, end_date, 
+      project_name, created_by, updated_by, created_date, updated_date, project_link, 
+      project_role, project_description, duty_description)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.idKey != null">
+          #{item.idKey,jdbcType=BIGINT},
+        </if>
+        <if test="item.idKey == null">
+          NULL,
+        </if>
+        <if test="item.projectExpId != null">
+          #{item.projectExpId,jdbcType=CHAR},
+        </if>
+        <if test="item.projectExpId == null">
+          NULL,
+        </if>
+        <if test="item.userId != null">
+          #{item.userId,jdbcType=CHAR},
+        </if>
+        <if test="item.userId == null">
+          NULL,
+        </if>
+        <if test="item.resumeId != null">
+          #{item.resumeId,jdbcType=CHAR},
+        </if>
+        <if test="item.resumeId == null">
+          NULL,
+        </if>
+        <if test="item.companyName != null">
+          #{item.companyName,jdbcType=CHAR},
+        </if>
+        <if test="item.companyName == null">
+          NULL,
+        </if>
+        <if test="item.beginDate != null">
+          #{item.beginDate,jdbcType=DATE},
+        </if>
+        <if test="item.beginDate == null">
+          NULL,
+        </if>
+        <if test="item.endDate != null">
+          #{item.endDate,jdbcType=DATE},
+        </if>
+        <if test="item.endDate == null">
+          NULL,
+        </if>
+        <if test="item.projectName != null">
+          #{item.projectName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.projectName == null">
+          NULL,
+        </if>
+        <if test="item.createdBy != null">
+          #{item.createdBy,jdbcType=CHAR},
+        </if>
+        <if test="item.createdBy == null">
+          NULL,
+        </if>
+        <if test="item.updatedBy != null">
+          #{item.updatedBy,jdbcType=CHAR},
+        </if>
+        <if test="item.updatedBy == null">
+          NULL,
+        </if>
+        <if test="item.createdDate != null">
+          #{item.createdDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.createdDate == null">
+          NULL,
+        </if>
+        <if test="item.updatedDate != null">
+          #{item.updatedDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updatedDate == null">
+          NULL,
+        </if>
+        <if test="item.projectLink != null">
+          #{item.projectLink,jdbcType=VARCHAR},
+        </if>
+        <if test="item.projectLink == null">
+          NULL,
+        </if>
+        <if test="item.projectRole != null">
+          #{item.projectRole,jdbcType=VARCHAR},
+        </if>
+        <if test="item.projectRole == null">
+          NULL,
+        </if>
+        <if test="item.projectDescription != null">
+          #{item.projectDescription,jdbcType=LONGVARCHAR},
+        </if>
+        <if test="item.projectDescription == null">
+          NULL,
+        </if>
+        <if test="item.dutyDescription != null">
+          #{item.dutyDescription,jdbcType=LONGVARCHAR},
+        </if>
+        <if test="item.dutyDescription == null">
+          NULL,
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <select id="countByExample" parameterType="com.dc.common.domain.UserProjectExperienceCriteria" resultType="java.lang.Long">
+    select count(*) from lds_user_project_experience
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lds_user_project_experience
+    <set>
+      <if test="record.idKey != null">
+        id_key = #{record.idKey,jdbcType=BIGINT},
+      </if>
+      <if test="record.projectExpId != null">
+        project_exp_id = #{record.projectExpId,jdbcType=CHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeId != null">
+        resume_id = #{record.resumeId,jdbcType=CHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=CHAR},
+      </if>
+      <if test="record.beginDate != null">
+        begin_date = #{record.beginDate,jdbcType=DATE},
+      </if>
+      <if test="record.endDate != null">
+        end_date = #{record.endDate,jdbcType=DATE},
+      </if>
+      <if test="record.projectName != null">
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdDate != null">
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null">
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.projectLink != null">
+        project_link = #{record.projectLink,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectRole != null">
+        project_role = #{record.projectRole,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectDescription != null">
+        project_description = #{record.projectDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.dutyDescription != null">
+        duty_description = #{record.dutyDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update lds_user_project_experience
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      project_exp_id = #{record.projectExpId,jdbcType=CHAR},
+      user_id = #{record.userId,jdbcType=CHAR},
+      resume_id = #{record.resumeId,jdbcType=CHAR},
+      company_name = #{record.companyName,jdbcType=CHAR},
+      begin_date = #{record.beginDate,jdbcType=DATE},
+      end_date = #{record.endDate,jdbcType=DATE},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      project_link = #{record.projectLink,jdbcType=VARCHAR},
+      project_role = #{record.projectRole,jdbcType=VARCHAR},
+      project_description = #{record.projectDescription,jdbcType=LONGVARCHAR},
+      duty_description = #{record.dutyDescription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lds_user_project_experience
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      project_exp_id = #{record.projectExpId,jdbcType=CHAR},
+      user_id = #{record.userId,jdbcType=CHAR},
+      resume_id = #{record.resumeId,jdbcType=CHAR},
+      company_name = #{record.companyName,jdbcType=CHAR},
+      begin_date = #{record.beginDate,jdbcType=DATE},
+      end_date = #{record.endDate,jdbcType=DATE},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      project_link = #{record.projectLink,jdbcType=VARCHAR},
+      project_role = #{record.projectRole,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dc.common.domain.UserProjectExperienceWithBLOBs">
+    update lds_user_project_experience
+    <set>
+      <if test="projectExpId != null">
+        project_exp_id = #{projectExpId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=CHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=CHAR},
+      </if>
+      <if test="beginDate != null">
+        begin_date = #{beginDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectLink != null">
+        project_link = #{projectLink,jdbcType=VARCHAR},
+      </if>
+      <if test="projectRole != null">
+        project_role = #{projectRole,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDescription != null">
+        project_description = #{projectDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dutyDescription != null">
+        duty_description = #{dutyDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dc.common.domain.UserProjectExperienceWithBLOBs">
+    update lds_user_project_experience
+    set project_exp_id = #{projectExpId,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=CHAR},
+      resume_id = #{resumeId,jdbcType=CHAR},
+      company_name = #{companyName,jdbcType=CHAR},
+      begin_date = #{beginDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      project_link = #{projectLink,jdbcType=VARCHAR},
+      project_role = #{projectRole,jdbcType=VARCHAR},
+      project_description = #{projectDescription,jdbcType=LONGVARCHAR},
+      duty_description = #{dutyDescription,jdbcType=LONGVARCHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dc.common.domain.UserProjectExperience">
+    update lds_user_project_experience
+    set project_exp_id = #{projectExpId,jdbcType=CHAR},
+      user_id = #{userId,jdbcType=CHAR},
+      resume_id = #{resumeId,jdbcType=CHAR},
+      company_name = #{companyName,jdbcType=CHAR},
+      begin_date = #{beginDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      project_link = #{projectLink,jdbcType=VARCHAR},
+      project_role = #{projectRole,jdbcType=VARCHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+    update lds_user_project_experience
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="project_exp_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectExpId}
+        </foreach>
+      </trim>
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyName}
+        </foreach>
+      </trim>
+      <trim prefix="begin_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.beginDate}
+        </foreach>
+      </trim>
+      <trim prefix="end_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.endDate}
+        </foreach>
+      </trim>
+      <trim prefix="project_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectName}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="project_link =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectLink}
+        </foreach>
+      </trim>
+      <trim prefix="project_role =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectRole}
+        </foreach>
+      </trim>
+      <trim prefix="project_description =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectDescription}
+        </foreach>
+      </trim>
+      <trim prefix="duty_description =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.dutyDescription}
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    update lds_user_project_experience
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="project_exp_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.projectExpId != null ">
+            when  #{item.idKey} then #{item.projectExpId}
+          </if>
+          <if test="item.projectExpId == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_exp_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_project_experience.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_project_experience.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.companyName != null ">
+            when  #{item.idKey} then #{item.companyName}
+          </if>
+          <if test="item.companyName == null ">
+            when  #{item.idKey} then lds_user_project_experience.company_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="begin_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.beginDate != null ">
+            when  #{item.idKey} then #{item.beginDate}
+          </if>
+          <if test="item.beginDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.begin_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="end_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.endDate != null ">
+            when  #{item.idKey} then #{item.endDate}
+          </if>
+          <if test="item.endDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.end_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.projectName != null ">
+            when  #{item.idKey} then #{item.projectName}
+          </if>
+          <if test="item.projectName == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_project_experience.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_project_experience.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_link =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.projectLink != null ">
+            when  #{item.idKey} then #{item.projectLink}
+          </if>
+          <if test="item.projectLink == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_link
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_role =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.projectRole != null ">
+            when  #{item.idKey} then #{item.projectRole}
+          </if>
+          <if test="item.projectRole == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_role
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_description =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.projectDescription != null ">
+            when  #{item.idKey} then #{item.projectDescription}
+          </if>
+          <if test="item.projectDescription == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_description
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="duty_description =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.dutyDescription != null ">
+            when  #{item.idKey} then #{item.dutyDescription}
+          </if>
+          <if test="item.dutyDescription == null ">
+            when  #{item.idKey} then lds_user_project_experience.duty_description
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByExample" parameterType="map">
+    update lds_user_project_experience
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="project_exp_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectExpId}
+        </foreach>
+      </trim>
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyName}
+        </foreach>
+      </trim>
+      <trim prefix="begin_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.beginDate}
+        </foreach>
+      </trim>
+      <trim prefix="end_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.endDate}
+        </foreach>
+      </trim>
+      <trim prefix="project_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectName}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="project_link =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectLink}
+        </foreach>
+      </trim>
+      <trim prefix="project_role =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectRole}
+        </foreach>
+      </trim>
+      <trim prefix="project_description =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.projectDescription}
+        </foreach>
+      </trim>
+      <trim prefix="duty_description =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.dutyDescription}
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateBatchByExampleSelective" parameterType="map">
+    update lds_user_project_experience
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="project_exp_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.projectExpId != null ">
+            when  #{item.idKey} then #{item.projectExpId}
+          </if>
+          <if test="item.projectExpId == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_exp_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_project_experience.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_project_experience.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.companyName != null ">
+            when  #{item.idKey} then #{item.companyName}
+          </if>
+          <if test="item.companyName == null ">
+            when  #{item.idKey} then lds_user_project_experience.company_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="begin_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.beginDate != null ">
+            when  #{item.idKey} then #{item.beginDate}
+          </if>
+          <if test="item.beginDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.begin_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="end_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.endDate != null ">
+            when  #{item.idKey} then #{item.endDate}
+          </if>
+          <if test="item.endDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.end_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.projectName != null ">
+            when  #{item.idKey} then #{item.projectName}
+          </if>
+          <if test="item.projectName == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_project_experience.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_project_experience.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_project_experience.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_link =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.projectLink != null ">
+            when  #{item.idKey} then #{item.projectLink}
+          </if>
+          <if test="item.projectLink == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_link
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_role =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.projectRole != null ">
+            when  #{item.idKey} then #{item.projectRole}
+          </if>
+          <if test="item.projectRole == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_role
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="project_description =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.projectDescription != null ">
+            when  #{item.idKey} then #{item.projectDescription}
+          </if>
+          <if test="item.projectDescription == null ">
+            when  #{item.idKey} then lds_user_project_experience.project_description
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="duty_description =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.dutyDescription != null ">
+            when  #{item.idKey} then #{item.dutyDescription}
+          </if>
+          <if test="item.dutyDescription == null ">
+            when  #{item.idKey} then lds_user_project_experience.duty_description
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

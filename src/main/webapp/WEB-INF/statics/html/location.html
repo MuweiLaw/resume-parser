@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>admin-管理地址页面</title>
+
+</head>
+<link rel="stylesheet" href="../../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../plugin/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../../plugin/font/iconfont.css">
+<link rel="stylesheet" href="../../css/all.css">
+<body>
+<!--<button class="layui-btn layui-btn-sm" id="search-btn">查询</button>-->
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdn.longdeshui.com.cn/dic.js"></script>
+<script src="https://cdn.longdeshui.com.cn/resumedic.js"></script>
+<script type="text/javascript" src="../../plugin/layui/layui.all.js"></script>
+<script type="text/javascript">
+    layui.use(['element', 'layer', 'jquery', 'table'], function () {
+        $(function all() {
+            getTableList();
+        });
+        $('body').on('click', '#search-btn', function () {
+            getTableList();
+        });
+        //获取查询的数据
+        function getWhereData() {
+            var data = {
+                "location": $("#location").val(),/* 地址名称 */
+                "locationContain": $("#locationContain").val()//地址包含
+            };
+            return data;
+        }
+
+        // 导出excel表点击事件
+        $("#export").click(function () {
+            var options = getWhereData();
+            options.page = $('.layui-laypage-skip .layui-input').val()
+            options.limit = $('.layui-laypage-limits>select').val()
+            var url = '${base}/es/export?';
+            url = url + excelUrl(options);
+            window.open(url);
+        });
+
+
+        //初始化表格
+        function getTableList() {
+            // var d = query();
+            // alert(d);
+            layui.table.render({
+                elem: '#companyListTable',
+                id: 'idTest',
+                url: '/location/findPageByUserLocation',
+                toolbar: '#toolbarDemo',
+                cols: [[
+                    /* {checkbox: true, fixed: true}, */
+                    {field: 'locationId', title: '地址编号', fixed: 'left', width: 300},
+                    {field: 'location', title: '地址', fixed: 'left', width: 200},
+                    {field: 'locationParentId', title: '地址的父级地理名称', fixed: 'left', width: 200},
+                    {field: 'updatedDate', title: '词典更新时间', width: 300},
+                    {
+                        fixed: 'right', title: '操作', width: 110,
+                        templet: function (d) {
+                            return '<a class="layui-btn layui-btn-xs layui-btn-xs" lay-event="edit">编辑</a>' +
+                                '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>'
+                        }
+                    }
+                ]],
+                limits: [10, 50, 100, 200, 300, 500],
+                limit: 10,
+                page: true,
+                where: getWhereData(),
+
+                method: 'post'
+
+            });
+        }
+
+    });
+    //  监听行工具事件
+    layui.table.on('tool(companyListTableDemo)', function (obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data, //获得当前行数据
+            layEvent = obj.event; //获得 lay-event 对应的值
+        switch (layEvent) {
+            case 'edit':
+                update(data.locationId);
+                break;
+            case 'del':
+                del(data.locationId);
+                break;
+        }
+    });
+
+
+    function insert() {
+        var location0 = $("#location").val();
+        var locationContain = $("#locationContain").val();
+        if (location0 == "" && locationContain == "") {
+            alert("地址名称或者父级名称不能为空");
+            return;
+        }
+        if (confirm("确定要添加地址词典信息吗？")) {
+            $.ajax({
+                type: "post",
+                contentType: "application/json;charset=UTF-8",
+                url: "/location/insertUserLocation",
+                data: JSON.stringify({
+                    location: location0,
+                    locationParentId: locationContain
+                }),
+                success: function (result) {
+                    alert(result);
+                    location.reload(true);
+                }, error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        } else {
+            alert("您取消了添加操作!🍉");
+        }
+
+    }
+
+    function del(locationId) {
+        if (locationId == undefined) {
+            locationId = $("#update_id").val();
+            if (locationId == "") {
+                alert("输入不能为空!");
+                return;
+            }
+        }
+
+        if (confirm("确定要删除编号为" + locationId + "的地址词典信息吗？")) {
+            $.ajax({
+                type: "post",
+                contentType: "application/json;charset=UTF-8",
+                url: "/location/deleteUserLocation",
+                data: JSON.stringify({
+                    locationId: locationId,
+                    location: null
+                }),
+                success: function (result) {
+                    console.log(result);
+                    alert(result);
+                    location.reload(true);
+                }, error: function (e) {
+                    console.log(e.status);
+                    console.log(e.responseText);
+                }
+            });
+        } else {
+            alert("您取消了删除操作!🍉");
+        }
+
+    }
+
+    function update(locationId) {
+        if (locationId == undefined) {
+            locationId = $("#update_id").val();
+            if (locationId == "") {
+                alert("编号不能为空");
+                return;
+            }
+        }
+        var location0 = prompt('修改编号为"' + locationId + '"的地址名称为:');
+        if (location0) {
+            var locationContain = prompt('修改"' + location + '"的上级地址为:');
+            if (locationContain) {
+                $.ajax({
+                    type: "post",
+                    contentType: "application/json;charset=UTF-8",
+                    url: "/location/updateUserLocation",
+                    data: JSON.stringify({
+                        locationId: locationId,
+                        location: location0,
+                        locationParentId: locationContain
+                    }), success: function (result) {
+                        debugger;
+                        console.log(result);
+                        alert(result);
+                        location.reload(true);
+                    }, error: function (e) {
+                        console.log(e.status);
+                        console.log(e.responseText);
+                    }
+                });
+            } else {
+                alert("您取消了更新操作!🍉");
+            }
+        } else {
+            alert("您取消了更新操作!🍉");
+        }
+    }
+</script>
+<br/>
+<div>
+    <input type="text" id="update_id" placeholder="输入词典编号" minlength="2">
+    <input type="text" id="location" placeholder="输入地址词典名称" minlength="2">
+    <input type="text" id="locationContain" placeholder="输入该地址的父级名称" minlength="2">
+    <button style="width: 100px;
+            height: 25px;
+            background-color: #68b86c;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="insert()">添加地址词典
+    </button>
+    <button style="width: 100px;
+            height: 25px;
+            background-color: #68b86c;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="update()">修改地址词典
+    </button>
+    <button style="width: 100px;
+            height: 25px;
+            background-color: sandybrown;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            margin-left: 1cm;
+            text-align: center" onclick="del()">删除
+    </button>
+</div>
+<table class="layui-table" id="companyListTable" lay-filter="companyListTableDemo" lay-data="{id: 'idTest'}"></table>
+</body>
+</html>

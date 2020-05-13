@@ -1,0 +1,148 @@
+/*重置样式--开始*/
+body {
+    width: 100%;
+    font-size: 14px;
+    font-family: "微软雅黑";
+    background-color: #f2f4f5;
+}
+body,ul,li,p,h1,h2,h3,h4,dl,dd,form,input,textarea,select,::before,::after{
+    padding: 0;
+    margin: 0;
+}
+*{
+    box-sizing: border-box;
+}
+ul,li {list-style: none;}
+img{border:0}
+a:link,a:visited{text-decoration:none;color:#333;}
+a:hover,a:active{text-decoration:underline;color:#f60;}
+.fl{float: left;}
+.fr{float: right;}
+.clearfix:after{content:".";display:block;height:0;visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+.ellipsis{ overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+/*重置样式--结束*/
+
+
+/*简历库*/
+.search-condition{
+    width: 100%;
+    padding: 20px 0px;
+}
+.search-condition .condition-one{
+    width: 300px;
+    height: 38px;
+    line-height: 40px;
+    margin-bottom: 10px;
+
+}
+.search-condition .condition-two{
+    width: 600px;
+    height: 38px;
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+.condition-one label,
+.condition-two label{
+    width: 80px;
+    height: 38px;
+    line-height: 38px;
+    text-align: right;
+    font-weight: 400;
+    padding-right: 5px;
+}
+.condition-one .input-one,
+.condition-two .input-one{
+    width: 200px;
+    height: 38px;
+    line-height: 38px;
+    border: none;
+    border: 1px solid #D2D2D2;
+    border-radius: 2px;
+    padding-left: 10px;
+}
+
+.condition-one .select-one,
+.condition-one .select-two,
+.condition-two .select-one{
+    margin-left: 4px;
+    position: relative;
+}
+
+.select-one .select-val,
+.select-two .select-val{
+    width: 200px;
+    height: 38px;
+    line-height: 38px;
+    border: none;
+    border: 1px solid #D2D2D2;
+    border-radius: 2px;
+    padding-left: 10px;
+    background: #fff;
+}
+
+.select-one .select-list{
+    position: absolute;
+    top: 38px;
+    left: 0px;
+    width: 200px;
+    background: #fff;
+    z-index: 1000;
+    max-height: 300px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    display: none;
+}
+.select-two .select-list{
+    position: absolute;
+    top: 38px;
+    left: 0px;
+    width: 400px;
+    background: #fff;
+    z-index: 1000;
+    height: 300px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    display: none;
+}
+.select-one .select-one-val,
+.select-two .select-one-val{
+    padding: 0px 10px;
+    height: 34px;
+    line-height: 34px;
+}
+.select-one .select-one-val:hover,
+.select-two .select-one-val:hover{
+    cursor: pointer;
+    background: #ededed;
+}
+.select-two .select-left{
+    width: 200px;
+    height: 300px;
+    overflow-y: auto;
+}
+
+.select-two .select-left .select-left-one{
+    width: 100%;
+    padding-left: 10px;
+}
+.select-two .select-left .select-left-one:hover{
+    cursor: pointer;
+    background: #ededed;
+}
+.select-two .select-left .select-left-one.active{
+    background: #ededed;
+}
+.select-two .select-right{
+    width: 200px;
+    height: 300px;
+    overflow-y: auto;
+}
+.select-two .select-right .select-right-one{
+    display: none;
+}
+.select-two .select-right .select-right-one:first-child{
+    display: block;
+}
+.resume .about-btn{
+    text-align: center;
+}

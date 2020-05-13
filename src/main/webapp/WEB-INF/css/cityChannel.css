@@ -1,0 +1,251 @@
+body{
+	padding: 0;
+	margin: 0;
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color:#333;
+}
+/*头部*/
+.head{
+	display: flex;
+	justify-content: space-between;
+	width: 1200px;
+	margin: auto;
+	margin-top: 20px;
+}
+/*头-右*/
+.h-right{
+	display: flex;
+}
+.zl{
+	margin-right: 60px;
+	cursor: pointer;
+}
+/*log*/
+.log{
+	width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	margin-top:15px;
+	align-items: center;
+	
+}
+.log-img{
+	width: 114px;
+	height: 111px;
+}
+/*搜索*/
+.ss{
+	display: flex;
+}
+.ss-input{
+	width: 410px;
+	height: 50px;
+	box-sizing: border-box;
+	padding-left: 20px;
+}
+.dj{
+	display: block;
+	width:112px ;
+	height: 50px;
+	background-color:#3b80de;
+	text-align: center;
+	line-height: 50px;
+	color: #fff;
+	font-size: 18px;
+}
+/*navbar*/
+.navbar{
+	width: 1200px;
+	margin: auto;
+	margin-top: 25px;
+	height: 40px;
+	line-height: 40px;
+	
+}
+.nav-list{
+	float: left;
+	width:114px!important;
+	height: 100%;
+	/*padding: 20px 0;*/
+	margin: 0 33px;
+	text-align: center;
+	border-radius:4px;
+}
+.nav-list:hover{
+	background-color:#3B7FE0;
+	color:#fff;
+}
+.nav-list>a:hover{
+	color:#FFFFFF;
+}
+.nav-list:first-child{
+	width:114px!important;
+	
+	margin:0 34px 0 0;
+}
+.nav-list:last-child{
+	width:114px!important;
+	margin: 0 0 0 34px;
+}
+.nav-bgc{
+	background-color: #3B7FE0;
+	
+}
+/*banner*/
+.banner{
+	width: 100%;
+	height: 450px;
+	margin-top: 50px;
+}
+/*热门城市推荐*/
+.hotCity,.ss-ss{
+	width: 1200px;
+	display: flex;
+	flex-flow: column;
+	padding-top:30px ;
+	margin: auto;
+}
+.hotCity-title{
+	font-size:20px;
+	box-sizing: border-box;
+	padding-left:20px;
+}
+.hotCity-img-box{
+	width: 100%;
+	display: flex;
+}
+.hotCity-img-box-l{
+	width: 432px;
+	height: 472px;
+}
+.hotCity-img-box-r{
+	width: 740px;
+	height: 472px; 
+	margin-left: 28px;
+}
+.h-img-for{
+	width: 357px;
+	height: 225px;
+	float: left;
+	
+}
+.h-img-for:nth-child(2n){
+	margin-left:26px
+}
+.h-img-for:first-child{
+	margin-bottom:23px
+}
+.h-img-for:nth-child(2){
+	margin-bottom:23px
+}
+/*搜索*/
+.ss-ss{
+	padding-bottom: 100px;
+}
+.ss-box{
+	width: 100%;
+	padding-left: 20px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+}
+.ss-box-input{
+	width: 320px;
+	height: 40px;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+.city-list{
+	width: 100%;
+	padding: 20px 20px;
+	box-sizing: border-box;
+	display: flex;
+	border-bottom:1px solid #999;
+}
+.city-letter{
+	font-size: 16px;
+	color: #111111;
+	font-weight: 500;
+	padding: 0 12px;
+	cursor:pointer;
+}
+.city-letter:first-child{
+	padding-left:0;
+	padding-right: 12px;
+}
+.city-letter:hover{
+	
+	/*color: ;*/
+}
+.city-mer{
+	width: 100%;
+	
+}
+.city-mer-box{
+	width: 100%;
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column;
+	
+}
+.city-mer-box-title{
+	padding:20px 0 20px 20px;
+	font-size: 18px;
+}
+.city-mer-box-in{
+	width: 100%;
+	box-sizing: border-box;
+	padding:0 20px 20px 20px;
+	border:1px solid #CCCCCC;
+}
+.c-m-b-i-list{
+	width: 100px;
+	height: 30px;
+	box-sizing: border-box;
+	padding: 0 7px;
+	margin-right: 32px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #EEEEEE;
+	float: left;
+	margin-top: 20px;
+	cursor:pointer;
+}
+.c-m-b-i-list:nth-child(9n){
+	margin-right: 0px;
+}
+/*foot*/
+.foot{
+	width: 100%;
+	padding:40px 0 50px ;
+	background-color:#D2D2D2;
+	
+}
+.foot-box{
+	width: 1200px;
+	margin: auto;
+	display: flex;
+}
+.foot-l{
+	width: 920px;
+	height: 160px;
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	align-items:center;	
+	box-sizing: border-box;
+	padding-right: 40px;
+}
+.lxwm{
+	width: 100%;
+	height: 30px;
+	padding-bottom:20px ;
+	border-bottom:1px solid #333;
+	text-align: center;
+}
+.foot-r{
+	width: 160px;
+	height: 160px;
+}

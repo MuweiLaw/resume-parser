@@ -1,0 +1,2230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.generator.mapper.UserResumeDetailIMapper">
+  <resultMap id="BaseResultMap" type="com.dc.common.domain.UserResumeDetail">
+    <id column="id_key" jdbcType="BIGINT" property="idKey" />
+    <id column="annual_income" jdbcType="DOUBLE" property="annualIncome" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="real_name" jdbcType="CHAR" property="realName" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="phone_no" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="begin_work_date" jdbcType="DATE" property="beginWorkDate" />
+    <result column="current_position" jdbcType="CHAR" property="currentPosition" />
+    <result column="working_years" jdbcType="TINYINT" property="workingYears" />
+    <result column="current_company" jdbcType="CHAR" property="currentCompany" />
+    <result column="job_status" jdbcType="CHAR" property="jobStatus" />
+    <result column="home_address" jdbcType="CHAR" property="homeAddress" />
+    <result column="residential_address" jdbcType="CHAR" property="residentialAddress" />
+    <result column="registered" jdbcType="CHAR" property="registered" />
+    <result column="zipcode" jdbcType="CHAR" property="zipcode" />
+    <result column="marital_status" jdbcType="CHAR" property="maritalStatus" />
+    <result column="id_type" jdbcType="CHAR" property="idType" />
+    <result column="id_number" jdbcType="CHAR" property="idNumber" />
+    <result column="political_status" jdbcType="CHAR" property="politicalStatus" />
+    <result column="other_contact_type" jdbcType="CHAR" property="otherContactType" />
+    <result column="other_number" jdbcType="CHAR" property="otherNumber" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="personal_homepage" jdbcType="VARCHAR" property="personalHomepage" />
+    <result column="head_portrait_url" jdbcType="CHAR" property="headPortraitUrl" />
+    <result column="base_pay" jdbcType="DOUBLE" property="basePay" />
+    <result column="allowance" jdbcType="DOUBLE" property="allowance" />
+    <result column="commission" jdbcType="DOUBLE" property="commission" />
+    <result column="equity_income" jdbcType="DOUBLE" property="equityIncome" />
+    <result column="resume_id" jdbcType="VARCHAR" property="resumeId" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="CHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="city" jdbcType="CHAR" property="city" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dc.common.domain.UserResumeDetail">
+    <result column="self_description" jdbcType="LONGVARCHAR" property="selfDescription" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_key, annual_income, user_id, real_name, birthday, phone_no, email, sex, begin_work_date, 
+    current_position, working_years, current_company, job_status, home_address, residential_address, 
+    registered, zipcode, marital_status, id_type, id_number, political_status, other_contact_type, 
+    other_number, height, personal_homepage, head_portrait_url, base_pay, allowance, 
+    commission, equity_income, resume_id, created_by, updated_by, created_date, updated_date, 
+    weight, city
+  </sql>
+  <sql id="Blob_Column_List">
+    self_description
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.dc.common.domain.UserResumeDetailCriteria" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lds_user_resume_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.dc.common.domain.UserResumeDetailCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lds_user_resume_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="com.dc.common.domain.UserResumeDetailKey" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lds_user_resume_detail
+    where id_key = #{idKey,jdbcType=BIGINT}
+      and annual_income = #{annualIncome,jdbcType=DOUBLE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.dc.common.domain.UserResumeDetailKey">
+    delete from lds_user_resume_detail
+    where id_key = #{idKey,jdbcType=BIGINT}
+      and annual_income = #{annualIncome,jdbcType=DOUBLE}
+  </delete>
+  <insert id="insert" parameterType="com.dc.common.domain.UserResumeDetail">
+    insert into lds_user_resume_detail (id_key, annual_income, user_id, 
+      real_name, birthday, phone_no, 
+      email, sex, begin_work_date, 
+      current_position, working_years, current_company, 
+      job_status, home_address, residential_address, 
+      registered, zipcode, marital_status, 
+      id_type, id_number, political_status, 
+      other_contact_type, other_number, height, 
+      personal_homepage, head_portrait_url, base_pay, 
+      allowance, commission, equity_income, 
+      resume_id, created_by, updated_by, 
+      created_date, updated_date, weight, 
+      city, self_description)
+    values (#{idKey,jdbcType=BIGINT}, #{annualIncome,jdbcType=DOUBLE}, #{userId,jdbcType=CHAR}, 
+      #{realName,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{phoneNo,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{beginWorkDate,jdbcType=DATE}, 
+      #{currentPosition,jdbcType=CHAR}, #{workingYears,jdbcType=TINYINT}, #{currentCompany,jdbcType=CHAR}, 
+      #{jobStatus,jdbcType=CHAR}, #{homeAddress,jdbcType=CHAR}, #{residentialAddress,jdbcType=CHAR}, 
+      #{registered,jdbcType=CHAR}, #{zipcode,jdbcType=CHAR}, #{maritalStatus,jdbcType=CHAR}, 
+      #{idType,jdbcType=CHAR}, #{idNumber,jdbcType=CHAR}, #{politicalStatus,jdbcType=CHAR}, 
+      #{otherContactType,jdbcType=CHAR}, #{otherNumber,jdbcType=CHAR}, #{height,jdbcType=INTEGER}, 
+      #{personalHomepage,jdbcType=VARCHAR}, #{headPortraitUrl,jdbcType=CHAR}, #{basePay,jdbcType=DOUBLE}, 
+      #{allowance,jdbcType=DOUBLE}, #{commission,jdbcType=DOUBLE}, #{equityIncome,jdbcType=DOUBLE}, 
+      #{resumeId,jdbcType=VARCHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, #{weight,jdbcType=INTEGER}, 
+      #{city,jdbcType=CHAR}, #{selfDescription,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dc.common.domain.UserResumeDetail">
+    insert into lds_user_resume_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        id_key,
+      </if>
+      <if test="annualIncome != null">
+        annual_income,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="realName != null">
+        real_name,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phoneNo != null">
+        phone_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="beginWorkDate != null">
+        begin_work_date,
+      </if>
+      <if test="currentPosition != null">
+        current_position,
+      </if>
+      <if test="workingYears != null">
+        working_years,
+      </if>
+      <if test="currentCompany != null">
+        current_company,
+      </if>
+      <if test="jobStatus != null">
+        job_status,
+      </if>
+      <if test="homeAddress != null">
+        home_address,
+      </if>
+      <if test="residentialAddress != null">
+        residential_address,
+      </if>
+      <if test="registered != null">
+        registered,
+      </if>
+      <if test="zipcode != null">
+        zipcode,
+      </if>
+      <if test="maritalStatus != null">
+        marital_status,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="politicalStatus != null">
+        political_status,
+      </if>
+      <if test="otherContactType != null">
+        other_contact_type,
+      </if>
+      <if test="otherNumber != null">
+        other_number,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="personalHomepage != null">
+        personal_homepage,
+      </if>
+      <if test="headPortraitUrl != null">
+        head_portrait_url,
+      </if>
+      <if test="basePay != null">
+        base_pay,
+      </if>
+      <if test="allowance != null">
+        allowance,
+      </if>
+      <if test="commission != null">
+        commission,
+      </if>
+      <if test="equityIncome != null">
+        equity_income,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="selfDescription != null">
+        self_description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        #{idKey,jdbcType=BIGINT},
+      </if>
+      <if test="annualIncome != null">
+        #{annualIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="realName != null">
+        #{realName,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="beginWorkDate != null">
+        #{beginWorkDate,jdbcType=DATE},
+      </if>
+      <if test="currentPosition != null">
+        #{currentPosition,jdbcType=CHAR},
+      </if>
+      <if test="workingYears != null">
+        #{workingYears,jdbcType=TINYINT},
+      </if>
+      <if test="currentCompany != null">
+        #{currentCompany,jdbcType=CHAR},
+      </if>
+      <if test="jobStatus != null">
+        #{jobStatus,jdbcType=CHAR},
+      </if>
+      <if test="homeAddress != null">
+        #{homeAddress,jdbcType=CHAR},
+      </if>
+      <if test="residentialAddress != null">
+        #{residentialAddress,jdbcType=CHAR},
+      </if>
+      <if test="registered != null">
+        #{registered,jdbcType=CHAR},
+      </if>
+      <if test="zipcode != null">
+        #{zipcode,jdbcType=CHAR},
+      </if>
+      <if test="maritalStatus != null">
+        #{maritalStatus,jdbcType=CHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=CHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=CHAR},
+      </if>
+      <if test="politicalStatus != null">
+        #{politicalStatus,jdbcType=CHAR},
+      </if>
+      <if test="otherContactType != null">
+        #{otherContactType,jdbcType=CHAR},
+      </if>
+      <if test="otherNumber != null">
+        #{otherNumber,jdbcType=CHAR},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="personalHomepage != null">
+        #{personalHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortraitUrl != null">
+        #{headPortraitUrl,jdbcType=CHAR},
+      </if>
+      <if test="basePay != null">
+        #{basePay,jdbcType=DOUBLE},
+      </if>
+      <if test="allowance != null">
+        #{allowance,jdbcType=DOUBLE},
+      </if>
+      <if test="commission != null">
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="equityIncome != null">
+        #{equityIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="selfDescription != null">
+        #{selfDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into lds_user_resume_detail (id_key, annual_income, user_id, 
+      real_name, birthday, phone_no, 
+      email, sex, begin_work_date, 
+      current_position, working_years, current_company, 
+      job_status, home_address, residential_address, 
+      registered, zipcode, marital_status, 
+      id_type, id_number, political_status, 
+      other_contact_type, other_number, height, 
+      personal_homepage, head_portrait_url, 
+      base_pay, allowance, commission, 
+      equity_income, resume_id, created_by, 
+      updated_by, created_date, updated_date, 
+      weight, city, self_description
+      )
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idKey,jdbcType=BIGINT}, #{item.annualIncome,jdbcType=DOUBLE}, #{item.userId,jdbcType=CHAR}, 
+        #{item.realName,jdbcType=CHAR}, #{item.birthday,jdbcType=DATE}, #{item.phoneNo,jdbcType=VARCHAR}, 
+        #{item.email,jdbcType=VARCHAR}, #{item.sex,jdbcType=CHAR}, #{item.beginWorkDate,jdbcType=DATE}, 
+        #{item.currentPosition,jdbcType=CHAR}, #{item.workingYears,jdbcType=TINYINT}, #{item.currentCompany,jdbcType=CHAR}, 
+        #{item.jobStatus,jdbcType=CHAR}, #{item.homeAddress,jdbcType=CHAR}, #{item.residentialAddress,jdbcType=CHAR}, 
+        #{item.registered,jdbcType=CHAR}, #{item.zipcode,jdbcType=CHAR}, #{item.maritalStatus,jdbcType=CHAR}, 
+        #{item.idType,jdbcType=CHAR}, #{item.idNumber,jdbcType=CHAR}, #{item.politicalStatus,jdbcType=CHAR}, 
+        #{item.otherContactType,jdbcType=CHAR}, #{item.otherNumber,jdbcType=CHAR}, #{item.height,jdbcType=INTEGER}, 
+        #{item.personalHomepage,jdbcType=VARCHAR}, #{item.headPortraitUrl,jdbcType=CHAR}, 
+        #{item.basePay,jdbcType=DOUBLE}, #{item.allowance,jdbcType=DOUBLE}, #{item.commission,jdbcType=DOUBLE}, 
+        #{item.equityIncome,jdbcType=DOUBLE}, #{item.resumeId,jdbcType=VARCHAR}, #{item.createdBy,jdbcType=CHAR}, 
+        #{item.updatedBy,jdbcType=CHAR}, #{item.createdDate,jdbcType=TIMESTAMP}, #{item.updatedDate,jdbcType=TIMESTAMP}, 
+        #{item.weight,jdbcType=INTEGER}, #{item.city,jdbcType=CHAR}, #{item.selfDescription,jdbcType=LONGVARCHAR}
+        )
+    </foreach>
+  </insert>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    insert into lds_user_resume_detail
+    (id_key, annual_income, user_id, real_name, birthday, phone_no, email, sex, begin_work_date, 
+      current_position, working_years, current_company, job_status, home_address, residential_address, 
+      registered, zipcode, marital_status, id_type, id_number, political_status, other_contact_type, 
+      other_number, height, personal_homepage, head_portrait_url, base_pay, allowance, 
+      commission, equity_income, resume_id, created_by, updated_by, created_date, updated_date, 
+      weight, city, self_description)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.idKey != null">
+          #{item.idKey,jdbcType=BIGINT},
+        </if>
+        <if test="item.idKey == null">
+          NULL,
+        </if>
+        <if test="item.annualIncome != null">
+          #{item.annualIncome,jdbcType=DOUBLE},
+        </if>
+        <if test="item.annualIncome == null">
+          NULL,
+        </if>
+        <if test="item.userId != null">
+          #{item.userId,jdbcType=CHAR},
+        </if>
+        <if test="item.userId == null">
+          NULL,
+        </if>
+        <if test="item.realName != null">
+          #{item.realName,jdbcType=CHAR},
+        </if>
+        <if test="item.realName == null">
+          NULL,
+        </if>
+        <if test="item.birthday != null">
+          #{item.birthday,jdbcType=DATE},
+        </if>
+        <if test="item.birthday == null">
+          NULL,
+        </if>
+        <if test="item.phoneNo != null">
+          #{item.phoneNo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.phoneNo == null">
+          NULL,
+        </if>
+        <if test="item.email != null">
+          #{item.email,jdbcType=VARCHAR},
+        </if>
+        <if test="item.email == null">
+          NULL,
+        </if>
+        <if test="item.sex != null">
+          #{item.sex,jdbcType=CHAR},
+        </if>
+        <if test="item.sex == null">
+          NULL,
+        </if>
+        <if test="item.beginWorkDate != null">
+          #{item.beginWorkDate,jdbcType=DATE},
+        </if>
+        <if test="item.beginWorkDate == null">
+          NULL,
+        </if>
+        <if test="item.currentPosition != null">
+          #{item.currentPosition,jdbcType=CHAR},
+        </if>
+        <if test="item.currentPosition == null">
+          NULL,
+        </if>
+        <if test="item.workingYears != null">
+          #{item.workingYears,jdbcType=TINYINT},
+        </if>
+        <if test="item.workingYears == null">
+          NULL,
+        </if>
+        <if test="item.currentCompany != null">
+          #{item.currentCompany,jdbcType=CHAR},
+        </if>
+        <if test="item.currentCompany == null">
+          NULL,
+        </if>
+        <if test="item.jobStatus != null">
+          #{item.jobStatus,jdbcType=CHAR},
+        </if>
+        <if test="item.jobStatus == null">
+          NULL,
+        </if>
+        <if test="item.homeAddress != null">
+          #{item.homeAddress,jdbcType=CHAR},
+        </if>
+        <if test="item.homeAddress == null">
+          NULL,
+        </if>
+        <if test="item.residentialAddress != null">
+          #{item.residentialAddress,jdbcType=CHAR},
+        </if>
+        <if test="item.residentialAddress == null">
+          NULL,
+        </if>
+        <if test="item.registered != null">
+          #{item.registered,jdbcType=CHAR},
+        </if>
+        <if test="item.registered == null">
+          NULL,
+        </if>
+        <if test="item.zipcode != null">
+          #{item.zipcode,jdbcType=CHAR},
+        </if>
+        <if test="item.zipcode == null">
+          NULL,
+        </if>
+        <if test="item.maritalStatus != null">
+          #{item.maritalStatus,jdbcType=CHAR},
+        </if>
+        <if test="item.maritalStatus == null">
+          NULL,
+        </if>
+        <if test="item.idType != null">
+          #{item.idType,jdbcType=CHAR},
+        </if>
+        <if test="item.idType == null">
+          NULL,
+        </if>
+        <if test="item.idNumber != null">
+          #{item.idNumber,jdbcType=CHAR},
+        </if>
+        <if test="item.idNumber == null">
+          NULL,
+        </if>
+        <if test="item.politicalStatus != null">
+          #{item.politicalStatus,jdbcType=CHAR},
+        </if>
+        <if test="item.politicalStatus == null">
+          NULL,
+        </if>
+        <if test="item.otherContactType != null">
+          #{item.otherContactType,jdbcType=CHAR},
+        </if>
+        <if test="item.otherContactType == null">
+          NULL,
+        </if>
+        <if test="item.otherNumber != null">
+          #{item.otherNumber,jdbcType=CHAR},
+        </if>
+        <if test="item.otherNumber == null">
+          NULL,
+        </if>
+        <if test="item.height != null">
+          #{item.height,jdbcType=INTEGER},
+        </if>
+        <if test="item.height == null">
+          NULL,
+        </if>
+        <if test="item.personalHomepage != null">
+          #{item.personalHomepage,jdbcType=VARCHAR},
+        </if>
+        <if test="item.personalHomepage == null">
+          NULL,
+        </if>
+        <if test="item.headPortraitUrl != null">
+          #{item.headPortraitUrl,jdbcType=CHAR},
+        </if>
+        <if test="item.headPortraitUrl == null">
+          NULL,
+        </if>
+        <if test="item.basePay != null">
+          #{item.basePay,jdbcType=DOUBLE},
+        </if>
+        <if test="item.basePay == null">
+          NULL,
+        </if>
+        <if test="item.allowance != null">
+          #{item.allowance,jdbcType=DOUBLE},
+        </if>
+        <if test="item.allowance == null">
+          NULL,
+        </if>
+        <if test="item.commission != null">
+          #{item.commission,jdbcType=DOUBLE},
+        </if>
+        <if test="item.commission == null">
+          NULL,
+        </if>
+        <if test="item.equityIncome != null">
+          #{item.equityIncome,jdbcType=DOUBLE},
+        </if>
+        <if test="item.equityIncome == null">
+          NULL,
+        </if>
+        <if test="item.resumeId != null">
+          #{item.resumeId,jdbcType=VARCHAR},
+        </if>
+        <if test="item.resumeId == null">
+          NULL,
+        </if>
+        <if test="item.createdBy != null">
+          #{item.createdBy,jdbcType=CHAR},
+        </if>
+        <if test="item.createdBy == null">
+          NULL,
+        </if>
+        <if test="item.updatedBy != null">
+          #{item.updatedBy,jdbcType=CHAR},
+        </if>
+        <if test="item.updatedBy == null">
+          NULL,
+        </if>
+        <if test="item.createdDate != null">
+          #{item.createdDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.createdDate == null">
+          NULL,
+        </if>
+        <if test="item.updatedDate != null">
+          #{item.updatedDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updatedDate == null">
+          NULL,
+        </if>
+        <if test="item.weight != null">
+          #{item.weight,jdbcType=INTEGER},
+        </if>
+        <if test="item.weight == null">
+          NULL,
+        </if>
+        <if test="item.city != null">
+          #{item.city,jdbcType=CHAR},
+        </if>
+        <if test="item.city == null">
+          NULL,
+        </if>
+        <if test="item.selfDescription != null">
+          #{item.selfDescription,jdbcType=LONGVARCHAR},
+        </if>
+        <if test="item.selfDescription == null">
+          NULL,
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <select id="countByExample" parameterType="com.dc.common.domain.UserResumeDetailCriteria" resultType="java.lang.Long">
+    select count(*) from lds_user_resume_detail
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lds_user_resume_detail
+    <set>
+      <if test="record.idKey != null">
+        id_key = #{record.idKey,jdbcType=BIGINT},
+      </if>
+      <if test="record.annualIncome != null">
+        annual_income = #{record.annualIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.realName != null">
+        real_name = #{record.realName,jdbcType=CHAR},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.phoneNo != null">
+        phone_no = #{record.phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=CHAR},
+      </if>
+      <if test="record.beginWorkDate != null">
+        begin_work_date = #{record.beginWorkDate,jdbcType=DATE},
+      </if>
+      <if test="record.currentPosition != null">
+        current_position = #{record.currentPosition,jdbcType=CHAR},
+      </if>
+      <if test="record.workingYears != null">
+        working_years = #{record.workingYears,jdbcType=TINYINT},
+      </if>
+      <if test="record.currentCompany != null">
+        current_company = #{record.currentCompany,jdbcType=CHAR},
+      </if>
+      <if test="record.jobStatus != null">
+        job_status = #{record.jobStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.homeAddress != null">
+        home_address = #{record.homeAddress,jdbcType=CHAR},
+      </if>
+      <if test="record.residentialAddress != null">
+        residential_address = #{record.residentialAddress,jdbcType=CHAR},
+      </if>
+      <if test="record.registered != null">
+        registered = #{record.registered,jdbcType=CHAR},
+      </if>
+      <if test="record.zipcode != null">
+        zipcode = #{record.zipcode,jdbcType=CHAR},
+      </if>
+      <if test="record.maritalStatus != null">
+        marital_status = #{record.maritalStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.idType != null">
+        id_type = #{record.idType,jdbcType=CHAR},
+      </if>
+      <if test="record.idNumber != null">
+        id_number = #{record.idNumber,jdbcType=CHAR},
+      </if>
+      <if test="record.politicalStatus != null">
+        political_status = #{record.politicalStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.otherContactType != null">
+        other_contact_type = #{record.otherContactType,jdbcType=CHAR},
+      </if>
+      <if test="record.otherNumber != null">
+        other_number = #{record.otherNumber,jdbcType=CHAR},
+      </if>
+      <if test="record.height != null">
+        height = #{record.height,jdbcType=INTEGER},
+      </if>
+      <if test="record.personalHomepage != null">
+        personal_homepage = #{record.personalHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headPortraitUrl != null">
+        head_portrait_url = #{record.headPortraitUrl,jdbcType=CHAR},
+      </if>
+      <if test="record.basePay != null">
+        base_pay = #{record.basePay,jdbcType=DOUBLE},
+      </if>
+      <if test="record.allowance != null">
+        allowance = #{record.allowance,jdbcType=DOUBLE},
+      </if>
+      <if test="record.commission != null">
+        commission = #{record.commission,jdbcType=DOUBLE},
+      </if>
+      <if test="record.equityIncome != null">
+        equity_income = #{record.equityIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="record.resumeId != null">
+        resume_id = #{record.resumeId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdDate != null">
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null">
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.weight != null">
+        weight = #{record.weight,jdbcType=INTEGER},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=CHAR},
+      </if>
+      <if test="record.selfDescription != null">
+        self_description = #{record.selfDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update lds_user_resume_detail
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      annual_income = #{record.annualIncome,jdbcType=DOUBLE},
+      user_id = #{record.userId,jdbcType=CHAR},
+      real_name = #{record.realName,jdbcType=CHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      phone_no = #{record.phoneNo,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
+      begin_work_date = #{record.beginWorkDate,jdbcType=DATE},
+      current_position = #{record.currentPosition,jdbcType=CHAR},
+      working_years = #{record.workingYears,jdbcType=TINYINT},
+      current_company = #{record.currentCompany,jdbcType=CHAR},
+      job_status = #{record.jobStatus,jdbcType=CHAR},
+      home_address = #{record.homeAddress,jdbcType=CHAR},
+      residential_address = #{record.residentialAddress,jdbcType=CHAR},
+      registered = #{record.registered,jdbcType=CHAR},
+      zipcode = #{record.zipcode,jdbcType=CHAR},
+      marital_status = #{record.maritalStatus,jdbcType=CHAR},
+      id_type = #{record.idType,jdbcType=CHAR},
+      id_number = #{record.idNumber,jdbcType=CHAR},
+      political_status = #{record.politicalStatus,jdbcType=CHAR},
+      other_contact_type = #{record.otherContactType,jdbcType=CHAR},
+      other_number = #{record.otherNumber,jdbcType=CHAR},
+      height = #{record.height,jdbcType=INTEGER},
+      personal_homepage = #{record.personalHomepage,jdbcType=VARCHAR},
+      head_portrait_url = #{record.headPortraitUrl,jdbcType=CHAR},
+      base_pay = #{record.basePay,jdbcType=DOUBLE},
+      allowance = #{record.allowance,jdbcType=DOUBLE},
+      commission = #{record.commission,jdbcType=DOUBLE},
+      equity_income = #{record.equityIncome,jdbcType=DOUBLE},
+      resume_id = #{record.resumeId,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      weight = #{record.weight,jdbcType=INTEGER},
+      city = #{record.city,jdbcType=CHAR},
+      self_description = #{record.selfDescription,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lds_user_resume_detail
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      annual_income = #{record.annualIncome,jdbcType=DOUBLE},
+      user_id = #{record.userId,jdbcType=CHAR},
+      real_name = #{record.realName,jdbcType=CHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      phone_no = #{record.phoneNo,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=CHAR},
+      begin_work_date = #{record.beginWorkDate,jdbcType=DATE},
+      current_position = #{record.currentPosition,jdbcType=CHAR},
+      working_years = #{record.workingYears,jdbcType=TINYINT},
+      current_company = #{record.currentCompany,jdbcType=CHAR},
+      job_status = #{record.jobStatus,jdbcType=CHAR},
+      home_address = #{record.homeAddress,jdbcType=CHAR},
+      residential_address = #{record.residentialAddress,jdbcType=CHAR},
+      registered = #{record.registered,jdbcType=CHAR},
+      zipcode = #{record.zipcode,jdbcType=CHAR},
+      marital_status = #{record.maritalStatus,jdbcType=CHAR},
+      id_type = #{record.idType,jdbcType=CHAR},
+      id_number = #{record.idNumber,jdbcType=CHAR},
+      political_status = #{record.politicalStatus,jdbcType=CHAR},
+      other_contact_type = #{record.otherContactType,jdbcType=CHAR},
+      other_number = #{record.otherNumber,jdbcType=CHAR},
+      height = #{record.height,jdbcType=INTEGER},
+      personal_homepage = #{record.personalHomepage,jdbcType=VARCHAR},
+      head_portrait_url = #{record.headPortraitUrl,jdbcType=CHAR},
+      base_pay = #{record.basePay,jdbcType=DOUBLE},
+      allowance = #{record.allowance,jdbcType=DOUBLE},
+      commission = #{record.commission,jdbcType=DOUBLE},
+      equity_income = #{record.equityIncome,jdbcType=DOUBLE},
+      resume_id = #{record.resumeId,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      weight = #{record.weight,jdbcType=INTEGER},
+      city = #{record.city,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dc.common.domain.UserResumeDetail">
+    update lds_user_resume_detail
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="realName != null">
+        real_name = #{realName,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="phoneNo != null">
+        phone_no = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="beginWorkDate != null">
+        begin_work_date = #{beginWorkDate,jdbcType=DATE},
+      </if>
+      <if test="currentPosition != null">
+        current_position = #{currentPosition,jdbcType=CHAR},
+      </if>
+      <if test="workingYears != null">
+        working_years = #{workingYears,jdbcType=TINYINT},
+      </if>
+      <if test="currentCompany != null">
+        current_company = #{currentCompany,jdbcType=CHAR},
+      </if>
+      <if test="jobStatus != null">
+        job_status = #{jobStatus,jdbcType=CHAR},
+      </if>
+      <if test="homeAddress != null">
+        home_address = #{homeAddress,jdbcType=CHAR},
+      </if>
+      <if test="residentialAddress != null">
+        residential_address = #{residentialAddress,jdbcType=CHAR},
+      </if>
+      <if test="registered != null">
+        registered = #{registered,jdbcType=CHAR},
+      </if>
+      <if test="zipcode != null">
+        zipcode = #{zipcode,jdbcType=CHAR},
+      </if>
+      <if test="maritalStatus != null">
+        marital_status = #{maritalStatus,jdbcType=CHAR},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=CHAR},
+      </if>
+      <if test="idNumber != null">
+        id_number = #{idNumber,jdbcType=CHAR},
+      </if>
+      <if test="politicalStatus != null">
+        political_status = #{politicalStatus,jdbcType=CHAR},
+      </if>
+      <if test="otherContactType != null">
+        other_contact_type = #{otherContactType,jdbcType=CHAR},
+      </if>
+      <if test="otherNumber != null">
+        other_number = #{otherNumber,jdbcType=CHAR},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="personalHomepage != null">
+        personal_homepage = #{personalHomepage,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortraitUrl != null">
+        head_portrait_url = #{headPortraitUrl,jdbcType=CHAR},
+      </if>
+      <if test="basePay != null">
+        base_pay = #{basePay,jdbcType=DOUBLE},
+      </if>
+      <if test="allowance != null">
+        allowance = #{allowance,jdbcType=DOUBLE},
+      </if>
+      <if test="commission != null">
+        commission = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="equityIncome != null">
+        equity_income = #{equityIncome,jdbcType=DOUBLE},
+      </if>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=INTEGER},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=CHAR},
+      </if>
+      <if test="selfDescription != null">
+        self_description = #{selfDescription,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id_key = #{idKey,jdbcType=BIGINT}
+      and annual_income = #{annualIncome,jdbcType=DOUBLE}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dc.common.domain.UserResumeDetail">
+    update lds_user_resume_detail
+    set user_id = #{userId,jdbcType=CHAR},
+      real_name = #{realName,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_no = #{phoneNo,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      begin_work_date = #{beginWorkDate,jdbcType=DATE},
+      current_position = #{currentPosition,jdbcType=CHAR},
+      working_years = #{workingYears,jdbcType=TINYINT},
+      current_company = #{currentCompany,jdbcType=CHAR},
+      job_status = #{jobStatus,jdbcType=CHAR},
+      home_address = #{homeAddress,jdbcType=CHAR},
+      residential_address = #{residentialAddress,jdbcType=CHAR},
+      registered = #{registered,jdbcType=CHAR},
+      zipcode = #{zipcode,jdbcType=CHAR},
+      marital_status = #{maritalStatus,jdbcType=CHAR},
+      id_type = #{idType,jdbcType=CHAR},
+      id_number = #{idNumber,jdbcType=CHAR},
+      political_status = #{politicalStatus,jdbcType=CHAR},
+      other_contact_type = #{otherContactType,jdbcType=CHAR},
+      other_number = #{otherNumber,jdbcType=CHAR},
+      height = #{height,jdbcType=INTEGER},
+      personal_homepage = #{personalHomepage,jdbcType=VARCHAR},
+      head_portrait_url = #{headPortraitUrl,jdbcType=CHAR},
+      base_pay = #{basePay,jdbcType=DOUBLE},
+      allowance = #{allowance,jdbcType=DOUBLE},
+      commission = #{commission,jdbcType=DOUBLE},
+      equity_income = #{equityIncome,jdbcType=DOUBLE},
+      resume_id = #{resumeId,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      weight = #{weight,jdbcType=INTEGER},
+      city = #{city,jdbcType=CHAR},
+      self_description = #{selfDescription,jdbcType=LONGVARCHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+      and annual_income = #{annualIncome,jdbcType=DOUBLE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dc.common.domain.UserResumeDetail">
+    update lds_user_resume_detail
+    set user_id = #{userId,jdbcType=CHAR},
+      real_name = #{realName,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      phone_no = #{phoneNo,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      begin_work_date = #{beginWorkDate,jdbcType=DATE},
+      current_position = #{currentPosition,jdbcType=CHAR},
+      working_years = #{workingYears,jdbcType=TINYINT},
+      current_company = #{currentCompany,jdbcType=CHAR},
+      job_status = #{jobStatus,jdbcType=CHAR},
+      home_address = #{homeAddress,jdbcType=CHAR},
+      residential_address = #{residentialAddress,jdbcType=CHAR},
+      registered = #{registered,jdbcType=CHAR},
+      zipcode = #{zipcode,jdbcType=CHAR},
+      marital_status = #{maritalStatus,jdbcType=CHAR},
+      id_type = #{idType,jdbcType=CHAR},
+      id_number = #{idNumber,jdbcType=CHAR},
+      political_status = #{politicalStatus,jdbcType=CHAR},
+      other_contact_type = #{otherContactType,jdbcType=CHAR},
+      other_number = #{otherNumber,jdbcType=CHAR},
+      height = #{height,jdbcType=INTEGER},
+      personal_homepage = #{personalHomepage,jdbcType=VARCHAR},
+      head_portrait_url = #{headPortraitUrl,jdbcType=CHAR},
+      base_pay = #{basePay,jdbcType=DOUBLE},
+      allowance = #{allowance,jdbcType=DOUBLE},
+      commission = #{commission,jdbcType=DOUBLE},
+      equity_income = #{equityIncome,jdbcType=DOUBLE},
+      resume_id = #{resumeId,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      weight = #{weight,jdbcType=INTEGER},
+      city = #{city,jdbcType=CHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+      and annual_income = #{annualIncome,jdbcType=DOUBLE}
+  </update>
+  <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+    update lds_user_resume_detail
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="real_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.realName}
+        </foreach>
+      </trim>
+      <trim prefix="birthday =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.birthday}
+        </foreach>
+      </trim>
+      <trim prefix="phone_no =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.phoneNo}
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.email}
+        </foreach>
+      </trim>
+      <trim prefix="sex =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.sex}
+        </foreach>
+      </trim>
+      <trim prefix="begin_work_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.beginWorkDate}
+        </foreach>
+      </trim>
+      <trim prefix="current_position =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.currentPosition}
+        </foreach>
+      </trim>
+      <trim prefix="working_years =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workingYears}
+        </foreach>
+      </trim>
+      <trim prefix="current_company =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.currentCompany}
+        </foreach>
+      </trim>
+      <trim prefix="job_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.jobStatus}
+        </foreach>
+      </trim>
+      <trim prefix="home_address =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.homeAddress}
+        </foreach>
+      </trim>
+      <trim prefix="residential_address =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.residentialAddress}
+        </foreach>
+      </trim>
+      <trim prefix="registered =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.registered}
+        </foreach>
+      </trim>
+      <trim prefix="zipcode =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.zipcode}
+        </foreach>
+      </trim>
+      <trim prefix="marital_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.maritalStatus}
+        </foreach>
+      </trim>
+      <trim prefix="id_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.idType}
+        </foreach>
+      </trim>
+      <trim prefix="id_number =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.idNumber}
+        </foreach>
+      </trim>
+      <trim prefix="political_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.politicalStatus}
+        </foreach>
+      </trim>
+      <trim prefix="other_contact_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.otherContactType}
+        </foreach>
+      </trim>
+      <trim prefix="other_number =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.otherNumber}
+        </foreach>
+      </trim>
+      <trim prefix="height =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.height}
+        </foreach>
+      </trim>
+      <trim prefix="personal_homepage =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.personalHomepage}
+        </foreach>
+      </trim>
+      <trim prefix="head_portrait_url =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.headPortraitUrl}
+        </foreach>
+      </trim>
+      <trim prefix="base_pay =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.basePay}
+        </foreach>
+      </trim>
+      <trim prefix="allowance =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.allowance}
+        </foreach>
+      </trim>
+      <trim prefix="commission =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.commission}
+        </foreach>
+      </trim>
+      <trim prefix="equity_income =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.equityIncome}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="weight =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.weight}
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.city}
+        </foreach>
+      </trim>
+      <trim prefix="self_description =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.selfDescription}
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+      and where annual_income in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.annualIncome} 
+    </foreach>
+  </update>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    update lds_user_resume_detail
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_resume_detail.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="real_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.realName != null ">
+            when  #{item.idKey} then #{item.realName}
+          </if>
+          <if test="item.realName == null ">
+            when  #{item.idKey} then lds_user_resume_detail.real_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="birthday =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.birthday != null ">
+            when  #{item.idKey} then #{item.birthday}
+          </if>
+          <if test="item.birthday == null ">
+            when  #{item.idKey} then lds_user_resume_detail.birthday
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="phone_no =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.phoneNo != null ">
+            when  #{item.idKey} then #{item.phoneNo}
+          </if>
+          <if test="item.phoneNo == null ">
+            when  #{item.idKey} then lds_user_resume_detail.phone_no
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.email != null ">
+            when  #{item.idKey} then #{item.email}
+          </if>
+          <if test="item.email == null ">
+            when  #{item.idKey} then lds_user_resume_detail.email
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sex =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.sex != null ">
+            when  #{item.idKey} then #{item.sex}
+          </if>
+          <if test="item.sex == null ">
+            when  #{item.idKey} then lds_user_resume_detail.sex
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="begin_work_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.beginWorkDate != null ">
+            when  #{item.idKey} then #{item.beginWorkDate}
+          </if>
+          <if test="item.beginWorkDate == null ">
+            when  #{item.idKey} then lds_user_resume_detail.begin_work_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="current_position =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.currentPosition != null ">
+            when  #{item.idKey} then #{item.currentPosition}
+          </if>
+          <if test="item.currentPosition == null ">
+            when  #{item.idKey} then lds_user_resume_detail.current_position
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="working_years =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.workingYears != null ">
+            when  #{item.idKey} then #{item.workingYears}
+          </if>
+          <if test="item.workingYears == null ">
+            when  #{item.idKey} then lds_user_resume_detail.working_years
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="current_company =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.currentCompany != null ">
+            when  #{item.idKey} then #{item.currentCompany}
+          </if>
+          <if test="item.currentCompany == null ">
+            when  #{item.idKey} then lds_user_resume_detail.current_company
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="job_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.jobStatus != null ">
+            when  #{item.idKey} then #{item.jobStatus}
+          </if>
+          <if test="item.jobStatus == null ">
+            when  #{item.idKey} then lds_user_resume_detail.job_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="home_address =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.homeAddress != null ">
+            when  #{item.idKey} then #{item.homeAddress}
+          </if>
+          <if test="item.homeAddress == null ">
+            when  #{item.idKey} then lds_user_resume_detail.home_address
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="residential_address =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.residentialAddress != null ">
+            when  #{item.idKey} then #{item.residentialAddress}
+          </if>
+          <if test="item.residentialAddress == null ">
+            when  #{item.idKey} then lds_user_resume_detail.residential_address
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="registered =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.registered != null ">
+            when  #{item.idKey} then #{item.registered}
+          </if>
+          <if test="item.registered == null ">
+            when  #{item.idKey} then lds_user_resume_detail.registered
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="zipcode =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.zipcode != null ">
+            when  #{item.idKey} then #{item.zipcode}
+          </if>
+          <if test="item.zipcode == null ">
+            when  #{item.idKey} then lds_user_resume_detail.zipcode
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="marital_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.maritalStatus != null ">
+            when  #{item.idKey} then #{item.maritalStatus}
+          </if>
+          <if test="item.maritalStatus == null ">
+            when  #{item.idKey} then lds_user_resume_detail.marital_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="id_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.idType != null ">
+            when  #{item.idKey} then #{item.idType}
+          </if>
+          <if test="item.idType == null ">
+            when  #{item.idKey} then lds_user_resume_detail.id_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="id_number =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.idNumber != null ">
+            when  #{item.idKey} then #{item.idNumber}
+          </if>
+          <if test="item.idNumber == null ">
+            when  #{item.idKey} then lds_user_resume_detail.id_number
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="political_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.politicalStatus != null ">
+            when  #{item.idKey} then #{item.politicalStatus}
+          </if>
+          <if test="item.politicalStatus == null ">
+            when  #{item.idKey} then lds_user_resume_detail.political_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="other_contact_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.otherContactType != null ">
+            when  #{item.idKey} then #{item.otherContactType}
+          </if>
+          <if test="item.otherContactType == null ">
+            when  #{item.idKey} then lds_user_resume_detail.other_contact_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="other_number =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.otherNumber != null ">
+            when  #{item.idKey} then #{item.otherNumber}
+          </if>
+          <if test="item.otherNumber == null ">
+            when  #{item.idKey} then lds_user_resume_detail.other_number
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="height =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.height != null ">
+            when  #{item.idKey} then #{item.height}
+          </if>
+          <if test="item.height == null ">
+            when  #{item.idKey} then lds_user_resume_detail.height
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="personal_homepage =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.personalHomepage != null ">
+            when  #{item.idKey} then #{item.personalHomepage}
+          </if>
+          <if test="item.personalHomepage == null ">
+            when  #{item.idKey} then lds_user_resume_detail.personal_homepage
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="head_portrait_url =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.headPortraitUrl != null ">
+            when  #{item.idKey} then #{item.headPortraitUrl}
+          </if>
+          <if test="item.headPortraitUrl == null ">
+            when  #{item.idKey} then lds_user_resume_detail.head_portrait_url
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="base_pay =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.basePay != null ">
+            when  #{item.idKey} then #{item.basePay}
+          </if>
+          <if test="item.basePay == null ">
+            when  #{item.idKey} then lds_user_resume_detail.base_pay
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="allowance =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.allowance != null ">
+            when  #{item.idKey} then #{item.allowance}
+          </if>
+          <if test="item.allowance == null ">
+            when  #{item.idKey} then lds_user_resume_detail.allowance
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="commission =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.commission != null ">
+            when  #{item.idKey} then #{item.commission}
+          </if>
+          <if test="item.commission == null ">
+            when  #{item.idKey} then lds_user_resume_detail.commission
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="equity_income =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.equityIncome != null ">
+            when  #{item.idKey} then #{item.equityIncome}
+          </if>
+          <if test="item.equityIncome == null ">
+            when  #{item.idKey} then lds_user_resume_detail.equity_income
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_resume_detail.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_resume_detail.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_resume_detail.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_resume_detail.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_resume_detail.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="weight =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.weight != null ">
+            when  #{item.idKey} then #{item.weight}
+          </if>
+          <if test="item.weight == null ">
+            when  #{item.idKey} then lds_user_resume_detail.weight
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.city != null ">
+            when  #{item.idKey} then #{item.city}
+          </if>
+          <if test="item.city == null ">
+            when  #{item.idKey} then lds_user_resume_detail.city
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="self_description =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.selfDescription != null ">
+            when  #{item.idKey} then #{item.selfDescription}
+          </if>
+          <if test="item.selfDescription == null ">
+            when  #{item.idKey} then lds_user_resume_detail.self_description
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+      and where annual_income in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.annualIncome} 
+    </foreach>
+  </update>
+  <update id="updateBatchByExample" parameterType="map">
+    update lds_user_resume_detail
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="real_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.realName}
+        </foreach>
+      </trim>
+      <trim prefix="birthday =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.birthday}
+        </foreach>
+      </trim>
+      <trim prefix="phone_no =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.phoneNo}
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.email}
+        </foreach>
+      </trim>
+      <trim prefix="sex =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.sex}
+        </foreach>
+      </trim>
+      <trim prefix="begin_work_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.beginWorkDate}
+        </foreach>
+      </trim>
+      <trim prefix="current_position =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.currentPosition}
+        </foreach>
+      </trim>
+      <trim prefix="working_years =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workingYears}
+        </foreach>
+      </trim>
+      <trim prefix="current_company =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.currentCompany}
+        </foreach>
+      </trim>
+      <trim prefix="job_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.jobStatus}
+        </foreach>
+      </trim>
+      <trim prefix="home_address =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.homeAddress}
+        </foreach>
+      </trim>
+      <trim prefix="residential_address =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.residentialAddress}
+        </foreach>
+      </trim>
+      <trim prefix="registered =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.registered}
+        </foreach>
+      </trim>
+      <trim prefix="zipcode =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.zipcode}
+        </foreach>
+      </trim>
+      <trim prefix="marital_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.maritalStatus}
+        </foreach>
+      </trim>
+      <trim prefix="id_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.idType}
+        </foreach>
+      </trim>
+      <trim prefix="id_number =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.idNumber}
+        </foreach>
+      </trim>
+      <trim prefix="political_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.politicalStatus}
+        </foreach>
+      </trim>
+      <trim prefix="other_contact_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.otherContactType}
+        </foreach>
+      </trim>
+      <trim prefix="other_number =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.otherNumber}
+        </foreach>
+      </trim>
+      <trim prefix="height =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.height}
+        </foreach>
+      </trim>
+      <trim prefix="personal_homepage =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.personalHomepage}
+        </foreach>
+      </trim>
+      <trim prefix="head_portrait_url =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.headPortraitUrl}
+        </foreach>
+      </trim>
+      <trim prefix="base_pay =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.basePay}
+        </foreach>
+      </trim>
+      <trim prefix="allowance =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.allowance}
+        </foreach>
+      </trim>
+      <trim prefix="commission =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.commission}
+        </foreach>
+      </trim>
+      <trim prefix="equity_income =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.equityIncome}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="weight =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.weight}
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.city}
+        </foreach>
+      </trim>
+      <trim prefix="self_description =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.selfDescription}
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateBatchByExampleSelective" parameterType="map">
+    update lds_user_resume_detail
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_resume_detail.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="real_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.realName != null ">
+            when  #{item.idKey} then #{item.realName}
+          </if>
+          <if test="item.realName == null ">
+            when  #{item.idKey} then lds_user_resume_detail.real_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="birthday =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.birthday != null ">
+            when  #{item.idKey} then #{item.birthday}
+          </if>
+          <if test="item.birthday == null ">
+            when  #{item.idKey} then lds_user_resume_detail.birthday
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="phone_no =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.phoneNo != null ">
+            when  #{item.idKey} then #{item.phoneNo}
+          </if>
+          <if test="item.phoneNo == null ">
+            when  #{item.idKey} then lds_user_resume_detail.phone_no
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.email != null ">
+            when  #{item.idKey} then #{item.email}
+          </if>
+          <if test="item.email == null ">
+            when  #{item.idKey} then lds_user_resume_detail.email
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="sex =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.sex != null ">
+            when  #{item.idKey} then #{item.sex}
+          </if>
+          <if test="item.sex == null ">
+            when  #{item.idKey} then lds_user_resume_detail.sex
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="begin_work_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.beginWorkDate != null ">
+            when  #{item.idKey} then #{item.beginWorkDate}
+          </if>
+          <if test="item.beginWorkDate == null ">
+            when  #{item.idKey} then lds_user_resume_detail.begin_work_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="current_position =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.currentPosition != null ">
+            when  #{item.idKey} then #{item.currentPosition}
+          </if>
+          <if test="item.currentPosition == null ">
+            when  #{item.idKey} then lds_user_resume_detail.current_position
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="working_years =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.workingYears != null ">
+            when  #{item.idKey} then #{item.workingYears}
+          </if>
+          <if test="item.workingYears == null ">
+            when  #{item.idKey} then lds_user_resume_detail.working_years
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="current_company =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.currentCompany != null ">
+            when  #{item.idKey} then #{item.currentCompany}
+          </if>
+          <if test="item.currentCompany == null ">
+            when  #{item.idKey} then lds_user_resume_detail.current_company
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="job_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.jobStatus != null ">
+            when  #{item.idKey} then #{item.jobStatus}
+          </if>
+          <if test="item.jobStatus == null ">
+            when  #{item.idKey} then lds_user_resume_detail.job_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="home_address =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.homeAddress != null ">
+            when  #{item.idKey} then #{item.homeAddress}
+          </if>
+          <if test="item.homeAddress == null ">
+            when  #{item.idKey} then lds_user_resume_detail.home_address
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="residential_address =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.residentialAddress != null ">
+            when  #{item.idKey} then #{item.residentialAddress}
+          </if>
+          <if test="item.residentialAddress == null ">
+            when  #{item.idKey} then lds_user_resume_detail.residential_address
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="registered =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.registered != null ">
+            when  #{item.idKey} then #{item.registered}
+          </if>
+          <if test="item.registered == null ">
+            when  #{item.idKey} then lds_user_resume_detail.registered
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="zipcode =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.zipcode != null ">
+            when  #{item.idKey} then #{item.zipcode}
+          </if>
+          <if test="item.zipcode == null ">
+            when  #{item.idKey} then lds_user_resume_detail.zipcode
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="marital_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.maritalStatus != null ">
+            when  #{item.idKey} then #{item.maritalStatus}
+          </if>
+          <if test="item.maritalStatus == null ">
+            when  #{item.idKey} then lds_user_resume_detail.marital_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="id_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.idType != null ">
+            when  #{item.idKey} then #{item.idType}
+          </if>
+          <if test="item.idType == null ">
+            when  #{item.idKey} then lds_user_resume_detail.id_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="id_number =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.idNumber != null ">
+            when  #{item.idKey} then #{item.idNumber}
+          </if>
+          <if test="item.idNumber == null ">
+            when  #{item.idKey} then lds_user_resume_detail.id_number
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="political_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.politicalStatus != null ">
+            when  #{item.idKey} then #{item.politicalStatus}
+          </if>
+          <if test="item.politicalStatus == null ">
+            when  #{item.idKey} then lds_user_resume_detail.political_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="other_contact_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.otherContactType != null ">
+            when  #{item.idKey} then #{item.otherContactType}
+          </if>
+          <if test="item.otherContactType == null ">
+            when  #{item.idKey} then lds_user_resume_detail.other_contact_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="other_number =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.otherNumber != null ">
+            when  #{item.idKey} then #{item.otherNumber}
+          </if>
+          <if test="item.otherNumber == null ">
+            when  #{item.idKey} then lds_user_resume_detail.other_number
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="height =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.height != null ">
+            when  #{item.idKey} then #{item.height}
+          </if>
+          <if test="item.height == null ">
+            when  #{item.idKey} then lds_user_resume_detail.height
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="personal_homepage =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.personalHomepage != null ">
+            when  #{item.idKey} then #{item.personalHomepage}
+          </if>
+          <if test="item.personalHomepage == null ">
+            when  #{item.idKey} then lds_user_resume_detail.personal_homepage
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="head_portrait_url =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.headPortraitUrl != null ">
+            when  #{item.idKey} then #{item.headPortraitUrl}
+          </if>
+          <if test="item.headPortraitUrl == null ">
+            when  #{item.idKey} then lds_user_resume_detail.head_portrait_url
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="base_pay =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.basePay != null ">
+            when  #{item.idKey} then #{item.basePay}
+          </if>
+          <if test="item.basePay == null ">
+            when  #{item.idKey} then lds_user_resume_detail.base_pay
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="allowance =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.allowance != null ">
+            when  #{item.idKey} then #{item.allowance}
+          </if>
+          <if test="item.allowance == null ">
+            when  #{item.idKey} then lds_user_resume_detail.allowance
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="commission =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.commission != null ">
+            when  #{item.idKey} then #{item.commission}
+          </if>
+          <if test="item.commission == null ">
+            when  #{item.idKey} then lds_user_resume_detail.commission
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="equity_income =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.equityIncome != null ">
+            when  #{item.idKey} then #{item.equityIncome}
+          </if>
+          <if test="item.equityIncome == null ">
+            when  #{item.idKey} then lds_user_resume_detail.equity_income
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_resume_detail.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_resume_detail.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_resume_detail.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_resume_detail.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_resume_detail.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="weight =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.weight != null ">
+            when  #{item.idKey} then #{item.weight}
+          </if>
+          <if test="item.weight == null ">
+            when  #{item.idKey} then lds_user_resume_detail.weight
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.city != null ">
+            when  #{item.idKey} then #{item.city}
+          </if>
+          <if test="item.city == null ">
+            when  #{item.idKey} then lds_user_resume_detail.city
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="self_description =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.selfDescription != null ">
+            when  #{item.idKey} then #{item.selfDescription}
+          </if>
+          <if test="item.selfDescription == null ">
+            when  #{item.idKey} then lds_user_resume_detail.self_description
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

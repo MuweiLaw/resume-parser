@@ -1,0 +1,361 @@
+html {
+	width: 100%;
+	height: 100%;
+}
+ul,ol,h1,h2,h3,h4,h5,h6,body,header,footer,a{
+	padding: 0;
+	margin: 0;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: STHeitiSC-Medium;
+	font-size: 14px;
+	color: #666;
+}
+
+ul,ol {
+	list-style: none;
+}
+
+form {
+	margin: 0;
+	padding: 0;
+}
+
+p,ul,li {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: #333;
+}
+
+button {
+	border: none;
+	outline: none;
+}
+
+.b {
+	border: 1px solid #111;
+}
+
+.br {
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.fl{float: left;}
+.fr{float: right;}
+.clearfix:after {content:" "; display:block; height:0; visibility:hidden; clear:both; }
+.clearfix { zoom:1; }
+.ellipsis{ overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+
+.ma {
+	margin: auto
+}
+.mgt-5{
+	margin-top: 5px;
+}
+.mgt-10 {
+	margin-top: 10px;
+}
+
+.mgt-12 {
+	margin-top: 12px;
+}
+.mgt-15{
+	margin-top:15px;
+}
+.mgt-20 {
+	margin-top: 20px;
+}
+
+.mgt-30 {
+	margin-top: 30px;
+}
+.mgt-40{
+	margin-top: 40px;
+}
+.mgt-45{
+	margin-top: 45px;
+}
+.mgt-50 {
+	margin-top: 50px;
+}
+
+.mgl-40 {
+	margin-left: 40px;
+}
+
+.mgl-10 {
+	margin-left: 10px;
+}
+
+.mgl-20 {
+	margin-left: 20px;
+}
+.mgl-30 {
+	margin-left: 30px;
+}
+.mgl-50 {
+	margin-left: 50px;
+}
+
+.mgl-200 {
+	margin-left: 200px;
+}
+.mgr-10{
+	margin-right: 10px;
+}
+.mgr-20{
+	margin-right: 20px;
+}
+.mgr-30{
+	margin-right: 30px;
+}
+.mgb-20 {
+	margin-bottom: 20px;
+}
+
+.pda {
+	padding: 5px 20px;
+}
+
+.tl-c {
+	text-align: center;
+}
+.fz-40 {
+	font-size: 40px!important
+}
+.fz-36 {
+	font-size: 36px!important
+}
+
+.fz-34 {
+	font-size: 34px!important
+}
+
+.fz-30 {
+	font-size: 30px!important
+}
+
+.fz-28 {
+	font-size: 28px!important
+}
+.fz-24 {
+	font-size: 24px!important
+}
+.fz-22 {
+	font-size: 22px!important
+}
+
+.fz-20 {
+	font-size: 20px!important
+}
+
+.fz-18 {
+	font-size: 18px!important
+}
+
+.fz-16 {
+	font-size: 16px!important
+}
+.fz-14{
+	font-size: 14px!important;
+}
+.db {
+	display: block;
+}
+
+.bgc-1 {
+	background-color: #FFFFFF
+}
+
+.bgc-2 {
+	background-color: #F8C1BE
+}
+
+.bgc-3 {
+	background-color: #3FBE6F;
+}
+
+.tc {
+	text-align: center;
+}
+
+.bgc-w {
+	background-color: #fff;
+}
+
+.c-w {
+	color: #fff;
+}
+.c-r{
+	color:#B11C39;
+}
+.c-6{
+	color: #666666;
+}
+
+.ti {
+	text-indent: 2em;
+	text-align: left;
+}
+.c-g{
+	color:#087F3F;
+}
+.fc-f {
+	color: #fff
+}
+
+.img-100 {
+	width: 100%;
+	height: 100%;
+}
+.ti{
+	text-indent: 2em;
+}
+.lh-30{
+	line-height: 25px;
+}
+.lb-img{
+	width: 60px;
+	height: 60px;
+}
+.cb{
+	clear: both;
+}
+/*闁告娲濋、鎴犳惥閸涱厼姣夐梻鍛姌濡拷*/
+
+.dh {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+
+
+
+
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1539169613380'); /* IE9*/
+  src: url('iconfont.eot?t=1539169613380#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff;charset=utf-8;base64,d09GRgABAAAAAAWYAAsAAAAACIgAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADMAAABCsP6z7U9TLzIAAAE8AAAARAAAAFY8gk4QY21hcAAAAYAAAAB0AAAByIwZpNVnbHlmAAAB9AAAAYMAAAHoN7OiJ2hlYWQAAAN4AAAALwAAADYS50CXaGhlYQAAA6gAAAAcAAAAJAfeA4dobXR4AAADxAAAAA4AAAAYGAAAAGxvY2EAAAPUAAAADgAAAA4CCgFUbWF4cAAAA+QAAAAfAAAAIAETAE1uYW1lAAAEBAAAAUUAAAJtPlT+fXBvc3QAAAVMAAAATAAAAGkvRGINeJxjYGRgYOBikGPQYWB0cfMJYeBgYGGAAJAMY05meiJQDMoDyrGAaQ4gZoOIAgCKIwNPAHicY2BkYWCcwMDKwMHUyXSGgYGhH0IzvmYwYuRgYGBiYGVmwAoC0lxTGBye8byRY27438AQw9zA0AAUZgTJAQDg0wwTeJztkcEJgDAMRV+1ikhncAInEecRD96cwCVz0R00aVRwB395hf8JCSRABZRKr0QICwHTpGnIeUmb88igPtFQECXJLOu+Hd15wte9Clr9PHK/QufZlJpfKf/j7SrbomP3kNmxG8jq6PbYN8fqj84hXrBwIAZ4nDVRLU/DUBS95z3atZStdLR9JIw2WWBFLWQZHYGE4RAk/AMSxFAIUIhljARTh0UiWDKBBIMZUwgsgpDwoTBgcLgHr4U9ce6575x77/sgRmrxVTagaVonQs7xV1FrLNVjFXzhuWnmRBVtvoqcVkCAJpwAajdWJhWUJa2Ilxzh1+IK3t9g7JgIxb4IYW4beNCxIZ/tyqR8MTDhGAKB2Em1/dS1LcI5vZgHO72WV6Z5JsJQnJkmtq60p+8J5D/1os30Kfn4L2QGLASaXSQQ/dyxD75CRXVy3Ybu+rUG4nqESll3BbuY7t9afslC13XliVXyLRyL/sAqeePoesseuuNeySKevcEmuyGLBM0QqbtGa2gEEAXwAnKKqLSKKZGLcN/ucd5rt3tjY712K+E8ae0mjCXnnbmjw0z4k5k9UnZbiZztzB+lY5ACO8CXmkXIukbZBEaLTaC5mCEmR0wh/f1RnV2SllaZaJiIeIbsW74GWJfDwBgR7KEcyGHKyiNGv58fYW4AeJxjYGRgYADiLRucnsfz23xl4GZhAIHrj//5Iuj/x1gYmK2AXA4GJpAoAGkNDFgAeJxjYGRgYG7438AQw8IAAkCSkQEVsAEARwwCb3icY2FgYGDBggEBaAAZAAAAAAAAAF4AggC4ANIA9AAAeJxjYGRgYGBjcGRgZgABJiDmAkIGhv9gPgMAD4oBYQB4nGWPTU7DMBCFX/oHpBKqqGCH5AViASj9EatuWFRq911036ZOmyqJI8et1ANwHo7ACTgC3IA78EgnmzaWx9+8eWNPANzgBx6O3y33kT1cMjtyDRe4F65TfxBukF+Em2jjVbhF/U3YxzOmwm10YXmD17hi9oR3YQ8dfAjXcI1P4Tr1L+EG+Vu4iTv8CrfQ8erCPuZeV7iNRy/2x1YvnF6p5UHFockikzm/gple75KFrdLqnGtbxCZTg6BfSVOdaVvdU+zXQ+ciFVmTqgmrOkmMyq3Z6tAFG+fyUa8XiR6EJuVYY/62xgKOcQWFJQ6MMUIYZIjK6Og7VWb0r7FDwl57Vj3N53RbFNT/c4UBAvTPXFO6stJ5Ok+BPV8bUnV0K27LnpQ0kV7NSRKyQl7WtlRC6gE2ZVeOEXpc0Yk/KGdI/wAJWm7IAAAAeJxjYGKAAC4G7ICNkYmRmZGFkZWRjZGdgTMtMS+9KtPIyIijIhPIrMwvZc1Mzs/TZUkBciWzgERJfmk8TC4HRCdnxuczMAAAYvIU1A==') format('woff'),
+  url('iconfont.ttf?t=1539169613380') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1539169613380#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fangzi222:before { content: "\e678"; }
+
+.icon-xiangyou:before { content: "\e683"; }
+
+.icon-icon-:before { content: "\e60c"; }
+
+.icon-dian:before { content: "\ec1e"; }
+
+.icon-jiantou_xiangyouliangci_o:before { content: "\eb91"; }
+
+/*鍙充晶body*/
+.layui-body{overflow:hidden; border-top:5px solid #1AA094;border-left:2px solid #1AA094;}
+.layui-tab-content{ height:100%; padding:0; }
+.layui-tab-item{ position: absolute; top: 0px; bottom:0; left: 0; right: 0; padding: 0; margin: 0; -webkit-overflow-scrolling:touch; overflow:auto;}
+.layui-tab-title .layui-this{ background-color:#1AA094; color:#fff; }
+.layui-tab-title .layui-this:after{ border:none; }
+.layui-tab-title li cite{ font-style: normal; padding-left:5px; }
+.clildFrame.layui-tab-content{ padding-right: 0; }
+.clildFrame.layui-tab-content iframe{ width: 100%; height:100%; border:none; min-width: 320px; position:absolute; }
+
+/* iframe页面的小头部样式 */
+.manage-header{
+	height:40px;
+	line-height:40px;
+	background-color: #F2F2F2;
+	padding:0px 10px;
+}
+.manage-header>span{
+	font-size:14px;	
+}
+.manage-header .span-one{
+	color:#aaa;
+}
+/*左边导航*/
+.layui-nav-tree .layui-nav-item .layui-nav-child a{
+	padding-left: 30px;
+}
+
+
+/*视频上传按钮样式*/
+.btn{
+        color: #fff;
+	    background-color: #337ab7;
+	    border-color: #2e6da4; 
+	    display: inline-block;
+	    padding: 6px 12px;
+	    margin-bottom: 0;
+	    font-size: 14px;
+	    font-weight: 400;
+	    line-height: 1.42857143;
+	    text-align: center;
+	    white-space: nowrap;
+	    text-decoration: none;
+	    vertical-align: middle;
+	    -ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	    cursor: pointer;
+	    -webkit-user-select: none;
+	    -moz-user-select: none;
+	    -ms-user-select: none;
+	    user-select: none;
+	    background-image: none;
+	    border: 1px solid transparent;
+	    border-radius: 4px;
+	}
+	a.btn:hover{
+      background-color: #3366b7;
+	}
+	.progress{
+		margin-top:2px;
+	    width: 200px;
+	    height: 14px;
+	    margin-bottom: 10px;
+	    overflow: hidden;
+	    background-color: #f5f5f5;
+	    border-radius: 4px;
+	    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+	    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+	}
+	.progress-bar{ 
+		background-color: rgb(92, 184, 92);
+		background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.14902) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.14902) 50%, rgba(255, 255, 255, 0.14902) 75%, transparent 75%, transparent);
+		background-size: 40px 40px;
+		box-shadow: rgba(0, 0, 0, 0.14902) 0px -1px 0px 0px inset;
+		box-sizing: border-box;
+		color: rgb(255, 255, 255);
+		display: block;
+		float: left; 
+		font-size: 12px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		transition-delay: 0s;
+		transition-duration: 0.6s;
+		transition-property: width;
+		transition-timing-function: ease;
+		width: 266.188px;
+	}

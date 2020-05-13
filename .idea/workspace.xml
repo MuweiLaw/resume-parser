@@ -2,54 +2,778 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bae4c7f4-2911-4dd6-b3c5-e17c7909b353" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/annotation/ConstantsMeta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/annotation/DomainMeta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/annotation/ParamMeta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/base/BaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/BusinessConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/CacheConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/CompanyConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/ExecutorServiceIdConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/JobQueryField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/JobStatusConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/LoginTypeConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/MarriageStatusConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/PersonConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/PoliticalStatusConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/PositionStatusConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/ResultCodeConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/ResultConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/ResumePrivacyStatusConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/ResumeQueryField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/StatusConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/SystemConfigConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/UserInfoExpireTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/UserOperationConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/constants/UserRoleConstants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/BootDataDictionary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/BootDataDictionaryCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/CompanyInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/CompanyInfoCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserCertificates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserEducationExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserEducationExperienceCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserEducationExperienceKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserIndustry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserIntention.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserIntentionCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserJob.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserLocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserMajor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserProjectExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserProjectExperienceCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserProjectExperienceWithBLOBs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserResume.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserResumeCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserResumeDetail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserResumeDetailCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserResumeDetailKey.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserSkills.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserTrainingExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserWorkExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserWorkExperienceCriteria.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/domain/UserWorkExperienceWithBLOBs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/BootDataDictionaryIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/CompanyInfoIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/IMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/UserEducationExperienceIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/UserIntentionIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/UserProjectExperienceIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/UserResumeDetailIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/UserResumeIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/UserWorkExperienceIMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/BootDataDictionaryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/CompanyInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/UserEducationExperienceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/UserIntentionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/UserProjectExperienceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/UserResumeDetailMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/UserResumeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/generator/mapper/xml/UserWorkExperienceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/Base64Utils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/ChineseNumToArabicNumUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/EncodingDetectUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/ResumeParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/ResumeParseUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/StringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/Word2HtmlUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/BaseUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/BigdataCocurrentTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/DataUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/DateUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/DateUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/JsonUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/Keygenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/LayUi.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/NetworkUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/PageUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/RSAUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/RegexType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/ReturnResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/SpringUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/ValidatorUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/base/ZipUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/ResumeParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/annatations/Label.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/BasicInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/CareerObjective.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/Certificate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/Education.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/ProjectExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/Resume.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/ResumeParseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/SelfEvaluation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/Skills.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/TikaResumeModule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/TrainingExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/domain/WorkExperience.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/io/InputStreamCacher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/BaseParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/BasicInfoParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/CareerObjectiveParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/CertificateParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/EducationParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/Industry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/Location.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/ProjectExperienceParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/SelfEvaluationParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/SkillsParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/StringSplitParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/TrainingExperienceParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/parser/WorkExperienceParser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/poi/HTMLConverter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/poi/HTMLMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/AbstractConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/ConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/EmlConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/OfficeOpenXMLConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/PdfdomConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/StandardConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/common/util/resume/processor/TikaPdfConvertProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/configuration/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/configuration/WebMvcConfigurer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/dao/EntityDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/dao/IdEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/dao/LongIdEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/dao/MybatisDaoSupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/dao/StringIdEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/dao/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/exception/ApplicationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/exception/ErrorInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/exception/ExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/exception/Exceptions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/exception/exception-mapping.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/io/Disks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/io/Files.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/io/IO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/io/StringInputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/io/StringOutputStream.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/io/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/DB2Dialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/DerbyDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/Dialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/HSQLDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/MySQLDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/OracleDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/PostgreSQLDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/SQLServer2005Dialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/SQLServerDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/jdbc/dialect/SybaseDialect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Arrays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Assert.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/ClassFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/ClassScaner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Dates.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Lang.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Numbers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Objects.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/Strings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/VTypes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/collection/Collections.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/collection/Lister.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/collection/Lists.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/collection/MapAccessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/collection/Maps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/collection/PropertiesHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/reflect/Beans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/reflect/ClassWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/reflect/Converts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/reflect/Reflections.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/text/ComboMessageResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/text/MessageResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/text/SimpleMessageResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/text/SpringMessageResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/lang/text/Springs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/LogCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/LogInitialization.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/LogProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/LoggingProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/OperationLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/OperationSql.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/OperationStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/SpringLogInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/annotations/Logging.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/annotations/UnLogging.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/DefaultLogProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/DefaultOperationLog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/DefaultOperationSql.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/JdbcLoggingProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/LogHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/MybatisLoggingProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/defaults/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/log/sqlmonitor/MybatisSqlMonitorPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/id/AbstractUUIDGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/id/GenType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/id/ID.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/id/IdHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/id/IdentifierGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/id/UUIDHexGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/mybatis/MybatisDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/mybatis/SqlSessionCallback.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/mybatis/SqlSessionFactorySupport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/orm/mybatis/plugin/OffsetLimitInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/page/Page.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/page/PageContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/page/Paginations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/page/SortInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/service/EntityFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/service/EntityService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/service/EntityServiceBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/service/SimpleServiceBase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/service/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/spring/datasource/DataSourceHolder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/spring/datasource/DynamicSwitchDataSource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/spring/package.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/web/BaseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/web/FindController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/framework/web/ReturnResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/ResumeApplicationBootstrap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/controller/IndustryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/controller/JobController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/controller/LocationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/controller/MajorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/controller/ResumeParseController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserCertificatesDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserEducationExperienceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserIndustryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserIntentionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserJobDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserLocationDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserMajorDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserProjectExperienceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserResumeDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserResumeDetailDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserSkillsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/UserWorkExperienceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserCertificatesMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserEducationExperienceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserIndustryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserIntentionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserJobMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserLocationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserMajorMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserProjectExperienceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserResumeDetailMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserResumeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserSkillsMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/dao/xml/UserWorkExperienceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/Resource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/ResumeParseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserCertificatesService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserEducationExperienceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserIndustryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserIntentionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserJobService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserLocationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserMajorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserProjectExperienceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserResumeDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserResumeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserSkillsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/dc/resume/service/UserWorkExperienceService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/bootstrap.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/json/EDUCATION_LEVEL.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/json/English_level.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/IndustryDDL.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/Job_DDL.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/Location_DDL.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/Major_DDL.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/contrast.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/parseResume.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/resumeList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/js/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/css/sameStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/android-code.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/android.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/app-android.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/app-ios.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/app_demo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/banner-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/banner.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/care.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/css-one.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/css.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/css_sprites.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/dc-loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/desc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/edit2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/ercode.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/female.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/help.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/help_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/img-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/img-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/img-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/img-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/ios-code.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/iso.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/know-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/know-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/know-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/know-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/logo-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/main-bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/major.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/male.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/no-message.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/photo-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/public-code.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/sign_sprites.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/trust.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/img/weixin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/js/cropper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/js/jquery-cropper.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/common/js/sameJs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/JobResume.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/all.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/bootstrap-table.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/cityChannel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/common.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/plug.fullpage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/resumeEdit.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/swiper.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/1_close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/1_open.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/diy/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/line_conn.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/zTreeStandard.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/img/zTreeStandard.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/zTreeStyle/zTreeStyle.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/bgc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/bigClick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/delImg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/deleteDiv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/imgClick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/imgs.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/leftClick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/loginbgimg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/rightClick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/shangchuan.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/smallClick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/add.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/chanpin.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/fenlei.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/gb.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/guanli.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/s.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/tuichu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/u.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/women.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/tubiao/yihu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/img/xx.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/bootstrap-table-zh-CN.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/bootstrap-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/bootstrap-table.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/excel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/jquery-1.4.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/jquery-1.8.3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/jquery.ztree.all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/js.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/paginationSelf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/js/paper-table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/demo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/demo_fontclass.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/demo_symbol.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/demo_unicode.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/iconfont.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/iconfont.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/laydate/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/laydate/theme/default/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/laydate/theme/default/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/laydate/theme/default/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/laydate/theme/default/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/laydate/theme/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/mobile/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/mobile/need/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/theme/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/theme/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/theme/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/theme/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/theme/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layer/theme/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/layui.mobile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/code.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/laydate/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/layer/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/layer/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/layer/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/layer/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/layer/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/css/modules/layer/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/10.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/11.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/12.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/13.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/14.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/15.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/16.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/17.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/18.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/19.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/20.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/21.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/22.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/23.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/24.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/25.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/26.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/27.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/28.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/29.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/3.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/30.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/31.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/32.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/33.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/34.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/35.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/36.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/37.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/38.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/39.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/4.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/40.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/41.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/42.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/43.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/44.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/45.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/46.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/47.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/48.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/49.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/5.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/50.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/51.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/52.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/53.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/54.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/55.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/56.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/57.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/58.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/59.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/6.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/60.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/61.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/62.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/63.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/64.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/65.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/66.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/67.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/68.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/69.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/7.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/70.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/71.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/8.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/images/face/9.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/carousel.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/code.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/colorpicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/flow.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/layedit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/laypage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/laytpl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/mobile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/rate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/table.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/tree.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/lay/modules/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/layui.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/layui/layui.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/plugin/resumeEdit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/.jshintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/.travis.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/Gruntfile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/bower.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/build/build.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/build/build_standalone.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/img/glyphicons-halflings-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/img/glyphicons-halflings.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.az.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.bg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.bn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.cs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ee.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.el.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.he.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.hr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.hu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.hy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ja.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ka.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.lt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.lv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.nb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.no.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.pl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.pt-BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.pt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.rs-latin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.rs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.sw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.th.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.tr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.ua.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.uk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/less/datetimepicker.less" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/minify.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/bootstrap-datetimepicker-master/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/css/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/font/summernote.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/font/summernote.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/font/summernote.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ar-AR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-bg-BG.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ca-ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-cs-CZ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-da-DK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-de-DE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-el-GR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-es-ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-es-EU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-fa-IR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-fi-FI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-fr-FR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-gl-ES.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-he-IL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-hr-HR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-hu-HU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-id-ID.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-it-IT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ja-JP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ko-KR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-lt-LT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-lt-LV.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-mn-MN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-nb-NO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-nl-NL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-pl-PL.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-pt-BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-pt-PT.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ro-RO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ru-RU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-sk-SK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-sl-SI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-sr-RS-Latin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-sr-RS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-sv-SE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-ta-IN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-th-TH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-tr-TR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-uk-UA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-vi-VN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/lang/summernote-zh-TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/plugin/databasic/summernote-ext-databasic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/plugin/databasic/summernote-ext-databasic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/plugin/hello/summernote-ext-hello.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/plugin/specialchars/summernote-ext-specialchars.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/summernote.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/summernote.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/dist/summernote.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/html/app_regiseter_privacy.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/html/industry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/html/job.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/html/location.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/html/major.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/html/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/img/ICON.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/img/logo-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/img/logo-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/base64.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/jquery.form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/jquery.min.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/jquery1_10_2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/jquery3_2_1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/jsbn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/local.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/paginationSelf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/prng4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/rng.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/rsa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/verificationCode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/js/verificationCode2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/laydate/laydate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/laydate/theme/default/font/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/laydate/theme/default/font/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/laydate/theme/default/font/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/laydate/theme/default/font/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/laydate/theme/default/laydate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/mobile/layer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/mobile/need/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/theme/default/icon-ext.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/theme/default/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/theme/default/layer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/theme/default/loading-0.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/theme/default/loading-1.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/statics/layer/theme/default/loading-2.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/BaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/ResumeparseUtilsTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/BasicInfoParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/CareerObjectiveParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/EducationParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/ProjectExperienceParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/SelfEvaluationParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/SkillsParserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/parser/WorkExperienceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/processor/HtmlConverterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/service/BaseServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/common/resume/service/ResumeParseServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/resume/service/ServiceBaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/resume/service/UserResumeDetailServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/dc/resume/service/UserSkillsServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_全业萍(767697783).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_凌志伟(735658519).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_凌志伟(896269454).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_刘亚婕(425087044).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_刘顿(84436252).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_卢文鑫(84442220).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_卢春丽(897020390).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_卢舒南(746561421).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_吕路-2年软件测试(421502583).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_吕路-2年软件测试(783769191).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_宁娜(491628343).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_宁娜(763184821).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_宁娜(829418649).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_宋喜德(11196322).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_庞幸珍(763358430).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_李战坤(联通信号不好)(855295820).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/51job_雷雨(769346361).doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/boss张旭4年.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/boss直聘【web前端  深圳10-14K】何正宇 3年.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/boss邓炜钧4年.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/何正宇3年.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_侯钟民_美工_中文_20191221_1576918237510.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_刘延雄_测试工程师_中文_20191221_1576912122329.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_吉洪昌_Java开发工程师_中文_20191031_1572509772686.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_崔兰鑫_中级前端工程师_中文_20191221_1576891376960.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_张彦军_黑盒测试工程师_中文_20191221_1576891436677.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_景子霖_测试工程师_中文_20191221_1576893309397.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_殷崇贵_JAVA架构师_中文_20191221_1576892320569.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_王女士_美工_中文_20191221_1576896778456.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_蒋俊_web前端工程师_中文_20191031_1572509772602.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_蒋程_网页设计师_中文_20191031_1572509772676.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_蔡汉坤_Python_中文_20191031_1572509772669.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_谢杰_UI设计师-网页美工_中文_20191221_1576891027615.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_黄双勤_软件测试工程师_中文_20191031_1572509741588.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/智联招聘_黄翔_UI设计师_中文_20191031_1572509741677.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/resume/高级.NET工程师王洪亮(J2808381).doc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/ResumeParseException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/ResumeParseUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/annatations/Label.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/BasicInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/CareerObjective.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/Education.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/ProjectExperience.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/Resume.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/domain/WorkExperience.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/io/InputStreamCacher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/BaseParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/BasicInfoParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/CareerObjectiveParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/EducationParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Industry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Job.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Location.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/Major.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/ProjectExperienceParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/parser/WorkExperienceParser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/poi/HTMLConverter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/poi/HTMLMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/AbstractConvertProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/ConvertProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/EmlConvertProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/OfficeOpenXMLConvertProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/processor/StandardConvertProcessor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/Base64Utils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/EncodingDetectUtils$BytesEncodingDetect.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/EncodingDetectUtils$Encoding.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/EncodingDetectUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/StringUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/Word2HtmlUtils$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lds/common/resume/util/Word2HtmlUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/BaseTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/ResumeparseUtilsTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/BasicInfoParserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/EducationParserTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/parser/WorkExperienceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/lds/common/resume/processor/HtmlConverterTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/51job_凌梦之(23234904).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/51job_王维爱(492726471).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/boss直聘何正宇3年.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/人才热线高级.NET工程师王洪亮(J2808381).doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/前程简历模板.doc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/resume/智联卓聘_中文20191101.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +847,13 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575960664819" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="ignore_missing_gitignore" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -131,26 +861,26 @@
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\workspace\resume-parser\src\test" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.lds.common.resume.processor" />
       <recent name="com.lds.common.resume.parser" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Java\Project-Git\resume-parser\src\test\resources" />
+      <recent name="E:\Java\Project-Git\resume-parser\src\test\java" />
+      <recent name="E:\Java\Project-Git\resume-parser\src\main\java" />
+      <recent name="E:\Java\Project-Git\resume-parser\src\main" />
+      <recent name="E:\Java\Project-Git\resume-parser\src\main\java\com\lds\common\resume\parser" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.lds.common.resume.util" />
       <recent name="com.lds.common.resume" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Java\Project-Git\resume-parser\src\main\java\com\lds\common\resume\parser" />
-      <recent name="E:\Java\Project-Git\resume-parser\src\test\resources\resume" />
-      <recent name="D:\workspace\resume-parser\src\main\java\com\lds\common\resume\domain" />
-      <recent name="D:\workspace\resume-parser\src\main\java\com\lds\common\resume\parser" />
-      <recent name="D:\workspace\resume-parser\src\test\java\com\lds\common\resume\parser" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\resume-parser\src\test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CareerObjectiveParserTest">
+  <component name="RunManager" selected="JUnit.WorkExperienceTest.oneWorkExperienceOn51job">
     <configuration name="CareerObjectiveParserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="resume-parser" />
       <extension name="coverage">
@@ -197,22 +927,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SkillsParserTest.oneEducationParse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="resume-parser" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.lds.common.resume.parser.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.lds.common.resume.parser" />
-      <option name="MAIN_CLASS_NAME" value="com.lds.common.resume.parser.SkillsParserTest" />
-      <option name="METHOD_NAME" value="oneEducationParse" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SkillsParserTest.oneEducationParseZhiLian" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="resume-parser" />
       <extension name="coverage">
@@ -229,13 +943,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="WorkExperienceTest.oneWorkExperienceOn51job" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="resume-parser" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.dc.common.resume.parser.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.dc.common.resume.parser" />
+      <option name="MAIN_CLASS_NAME" value="com.dc.common.resume.parser.WorkExperienceTest" />
+      <option name="METHOD_NAME" value="oneWorkExperienceOn51job" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WorkExperienceTest.oneWorkExperienceOn51job" />
         <item itemvalue="JUnit.CareerObjectiveParserTest" />
         <item itemvalue="JUnit.CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" />
         <item itemvalue="JUnit.SkillsParserTest" />
         <item itemvalue="JUnit.SkillsParserTest.oneEducationParseZhiLian" />
-        <item itemvalue="JUnit.SkillsParserTest.oneEducationParse" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +984,7 @@
       <workItem from="1575854383147" duration="2292000" />
       <workItem from="1575887664905" duration="7511000" />
       <workItem from="1575940058405" duration="10696000" />
-      <workItem from="1589371688048" duration="246000" />
+      <workItem from="1589371688048" duration="1936000" />
     </task>
     <task id="LOCAL-00001" summary="新增了对智联招聘简历的技能特长解析功能">
       <created>1575892219026</created>
@@ -298,40 +1028,15 @@
       <option name="project" value="LOCAL" />
       <updated>1575958606611</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="删除">
+      <created>1589372091654</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589372091654</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
-  </component>
-  <component name="TestHistory">
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 41m 40s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 42m 56s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 49m 03s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 51m 47s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 20h 58m 13s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 21h 03m 12s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest_matchExpectingInsuatryBy51Job - 2019.12.09 at 21h 05m 30s.xml">
-      <configuration name="CareerObjectiveParserTest.matchExpectingInsuatryBy51Job" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest - 2019.12.09 at 21h 06m 46s.xml">
-      <configuration name="CareerObjectiveParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest - 2019.12.10 at 09h 11m 33s.xml">
-      <configuration name="CareerObjectiveParserTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CareerObjectiveParserTest - 2019.12.10 at 09h 22m 12s.xml">
-      <configuration name="CareerObjectiveParserTest" configurationId="JUnit" />
-    </history-entry>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -380,7 +1085,23 @@
     <MESSAGE value="新增了期望工作类型意向变量" />
     <MESSAGE value="新增对智联求职意向解析测试" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="删除" />
+    <MESSAGE value="完整提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="完整提交" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="27" key="#Project_Structure" timestamp="1589372438473">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="27" key="#Project_Structure/0.0.1366.738@0.0.1366.738" timestamp="1589372438473" />
+    <state x="219" y="0" key="CommitChangelistDialog2" timestamp="1589373952396">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="219" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589373952396" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1589372296835">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1589372296835" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

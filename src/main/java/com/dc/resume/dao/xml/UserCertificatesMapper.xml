@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserCertificates">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserCertificates">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="certificate_id" jdbcType="CHAR" property="certificateId"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="resume_id" jdbcType="CHAR" property="resumeId"/>
+        <result column="certificate" jdbcType="CHAR" property="certificate"/>
+        <result column="gain_date" jdbcType="DATE" property="gainDate"/>
+        <result column="level" jdbcType="CHAR" property="level"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserCertificates">
+        insert into lds_user_certificates (id_key, certificate_id, user_id,
+          resume_id, certificate, gain_date,
+          level, created_by, updated_by,
+          created_date, updated_date)
+        values (#{idKey,jdbcType=BIGINT}, #{certificateId,jdbcType=CHAR}, #{userId,jdbcType=CHAR},
+          #{resumeId,jdbcType=CHAR}, #{certificate,jdbcType=CHAR}, #{gainDate,jdbcType=DATE},
+          #{level,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+          #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP})
+    </insert>
+
+    <delete id="delete" parameterType="com.dc.common.domain.UserCertificates">
+        delete from lds_user_certificates
+        where resume_id = #{resumeId,jdbcType=CHAR}
+    </delete>
+
+    <update id="update" parameterType="com.dc.common.domain.UserCertificates">
+        update lds_user_certificates
+         set certificate=#{certificate,jdbcType=CHAR},
+           gain_date=#{gainDate,jdbcType=DATE},
+           level=#{level,jdbcType=CHAR},
+           updated_by=#{updatedBy,jdbcType=CHAR},
+          updated_date=#{updatedDate,jdbcType=TIMESTAMP}
+          where resume_id = #{resumeId,jdbcType=CHAR}
+    </update>
+</mapper>

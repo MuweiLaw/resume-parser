@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>批量上传简历文件</title>
+    <link rel="icon" sizes="any" mask="" href="https://img.icons8.com/color/2x/menu.png"/>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            background: #f2f4f5;
+            height: 100%;
+            font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        i {
+            font-style: normal;
+        }
+
+        .wrap {
+            padding: 30px 20px 0 20px;
+            margin: 0 auto;
+            min-height: 100%;
+            width: 1080px;
+            background: #fff;
+            box-shadow: 0 -2px 10px 0 #dcdcdc;
+        }
+
+        .wrap h1 {
+            margin-bottom: 30px;
+            line-height: 60px;
+            font-size: 22px;
+            color: #333;
+            text-align: center;
+        }
+
+        .wrap h4 {
+            line-height: 30px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .tab {
+            display: inline-block;
+            margin-right: 4px;
+            padding: 0 10px;
+            cursor: pointer;
+            color: #999;
+            background: #dcdcdc;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .tab.on {
+            background: #3C6EC8;
+            color: #fff;
+        }
+
+        .tab.fail {
+            display: none;
+        }
+
+        .tips {
+            display: none;
+            float: right;
+            width: 400px;
+            height: 30px;
+            line-height: 30px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .tips .success {
+            color: green;
+        }
+
+        .tips .fail {
+            color: red;
+        }
+
+        .select-count, .uploaded-count, .local-count {
+            font-style: normal;
+        }
+
+        .file-list {
+            padding: 14px;
+            height: 500px;
+            border: 1px solid #dcdcdc;
+            overflow: auto;
+            box-shadow: 0 2px 4px 0 #dcdcdc;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .file-list h3 {
+            line-height: 400px;
+            font-size: 14px;
+            color: #666;
+            text-align: center
+        }
+
+        .buttons {
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .file-btn {
+            display: inline-block;
+            margin-right: 4px;
+            padding: 0 10px;
+            line-height: 30px;
+            background: #3C6EC8;
+            color: #ffffff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .file-btn:hover {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .totals {
+            display: inline-block;
+            float: right;
+            cursor: pointer;
+        }
+
+        .item {
+            position: relative;
+            padding: 15px 5px;
+            font-size: 14px;
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        .item:hover {
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .item span {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .item .size {
+            float: right;
+        }
+
+        .item .props {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            width: 0;
+            background: #55BE8C;
+        }
+
+        .item .del, .item .fail {
+            float: right;
+            margin-left: 20px;
+            max-width: 200px;
+            heo: 54px;
+            verflow: hidden;
+            color: red;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .item .cost-time {
+            float: right;
+            margin-left: 20px;
+            color: green;
+        }
+
+        .item .time {
+            float: right;
+            margin-left: 20px;
+            color: red;
+        }
+
+        .item .msg {
+            display: block;
+            position: absolute;
+            bottom: 4px;
+            left: 5px;
+            color: red;
+            font-size: 12px;
+        }
+
+        .retry {
+            margin: 6px auto;
+            width: 128px;
+            line-height: 34px;
+            text-align: center;
+            background: #3C6EC8;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        #file {
+            opacity: 0;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+            background-color: #F5F5F5;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 2.5px rgba(0, 0, 0, 0.3);
+            box-shadow: inset 0 0 2.5px rgba(0, 0, 0, 0.3);
+            border-radius: 2.5px;
+            background-color: #F5F5F5;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 2.5px rgba(0, 0, 0, .3);
+            box-shadow: inset 0 0 2.5px rgba(0, 0, 0, .3);
+            border-radius: 2.5px;
+            background-color: #294E80;
+            opacity: .7;
+            transition: opacity ease-in-out 200ms;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            opacity: 1;
+        }
+
+        .total-board {
+            position: absolute;
+            right: -1000px;
+            bottom: 200px;
+            padding: 12px;
+            width: 240px;
+            height: 200px;
+            border-radius: 4px;
+            border: 1px solid #dcdcdc;
+            box-shadow: 0 0 2px #dcdcdc;
+            background: #fff;
+        }
+
+        .board-item {
+            line-height: 32px;
+            font-size: 14px;
+        }
+
+        .board-item i {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h1>批量上传简历文件</h1>
+    <h4>
+        <span class="tab on" data-type="1">已选择文件<i class="select-count">(0)</i></span>
+        <span class="tab" data-type="2">已上传文件<i class="uploaded-count">(0)</i></span>
+        <span class="tab" data-type="3">历史上传的文件<i class="local-count">(0)</i></span>
+        <span class="tab fail" data-type="4">上传失败的文件<i class="fail-count">(0)</i></span>
+        <span class="tips">文件上传完成!<i class="success">成功：0份</i> , <i class="fail">失败: 0份</i></span>
+    </h4>
+    <div class="file-list">
+        <h3>请选择上传的文件（.doc、.docx）等</h3>
+    </div>
+    <div class="buttons">
+        <span class="file-btn upload-btn">选择文件</span>
+        <span class="file-btn upload-btn-submit">上传文件</span>
+        <span class="file-btn upload-btn-del">清除本地历史数据</span>
+        <span class="totals">数据统计</span>
+        <input id="file" type="file" multiple="multiple"
+               accept=".rtf, .pdf, .doc, .docx, .html, .txt, .ppt, .pptx, .mht, .jpg"/>
+    </div>
+    <!-- 统计数据面板 -->
+    <div class="total-board">
+        <div class="board-item">成功解析数量: <i class="b-num">0</i></div>
+        <div class="board-item">成功上传到服务器数量: <i class="s-num">0</i></div>
+        <div class="board-item">总上传数量: <i class="t-num">0</i></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    var FileBatchUpload = {
+        //上传消费时间
+        uploadCostTimes: 0,
+        //上传错误编号
+        uploadErrorNum: 0,
+        //上传成功量
+        uploadSucNum: 0,
+        //上传失败量
+        uploadFailNum: 0,
+        //上传中
+        uploading: false,
+        //上传到服务器错误
+        upload2ServerErr: [],
+        //菜单类型
+        menuType: 1,
+        //选择文件
+        selectFiles: [],
+        //已经上传的文件
+        hasUploadFiles: [],
+        //本地上传文件索引
+        curUploadFileIndex: 0,
+        init: function () {
+            this.ctr();
+            this.initLocalData();
+        },
+        ctr: function () {
+            $('.upload-btn').on('click', function () {
+                if (FileBatchUpload.uploading) {
+                    return;
+                }
+                $('#file').click();
+            });
+            $('#file').on('change', this.selectFileChange);
+
+            $('.upload-btn-submit').on('click', function () {
+                $('.fail').hide();
+                FileBatchUpload.upload2ServerErr = [];
+                FileBatchUpload.upload();
+            });
+
+            $('.upload-btn-del').on('click', function () {
+                localStorage.removeItem('uploaded');
+                $('.local-count').html('(0)');
+                FileBatchUpload.renderLocalFiles();
+                setTimeout(function () {
+                    alert('本地数据清除成功！');
+                });
+            });
+
+            $('.tab').on('click', function () {
+                var $this = $(this);
+                var _type = $this.data('type');
+
+                if (FileBatchUpload.uploading) {
+                    return;
+                }
+
+                $this.siblings().removeClass('on');
+                $this.addClass('on');
+
+                FileBatchUpload.menuType = _type;
+
+                if (_type == 1) {
+                    FileBatchUpload.renderSelectFiles();
+                } else if (_type == 2) {
+                    FileBatchUpload.renderUploadedFiles();
+                } else if (_type == 3) {
+                    FileBatchUpload.renderLocalFiles();
+                } else if (_type == 4) {
+                    FileBatchUpload.renderFailFiles();
+                }
+
+            });
+
+            $('.file-list').on('click', '.del', function () {
+                var $this = $(this);
+                var _index = $this.data('index');
+
+                if (FileBatchUpload.uploading) {
+                    return;
+                }
+
+                $.each(FileBatchUpload.selectFiles, function (i, item) {
+                    if (_index == i) {
+                        FileBatchUpload.selectFiles.splice(i, 1);
+                        return false;
+                    }
+                });
+                $('.select-count').html('(' + FileBatchUpload.selectFiles.length + ')');
+                $this.parent().remove();
+            });
+
+            $('.file-list').on('click', '.retry', function () {
+
+                FileBatchUpload.selectFiles = [];
+
+                $.each(FileBatchUpload.upload2ServerErr, function (i, item) {
+                    FileBatchUpload.selectFiles.push(item.file);
+                });
+
+                $('.tab').removeClass('on').eq(0).addClass('on');
+
+                FileBatchUpload.curUploadFileIndex = 0;
+                FileBatchUpload.menuType = 1;
+                FileBatchUpload.renderSelectFiles();
+            });
+
+            $(window).on('offline', function () {
+                alert('网络已断开，请检查网络链接！');
+            });
+
+            $('.totals').on('click', function () {
+                var $this = $(this);
+                if ($this.prop('show')) {
+                    return;
+                }
+
+                $this.prop('show', true);
+
+                var bcount = localStorage.getItem('suc2bell') || 0;
+                var scount = localStorage.getItem('suc2server') || 0;
+
+                $('.b-num').html(bcount);
+                $('.s-num').html(scount);
+                $('.t-num').html(bcount);
+
+                $('.total-board').animate({'right': '12px'}, 1000)
+                    .delay(6000).animate({'right': '-1000px'}, 1000, function () {
+                    $this.prop('show', false);
+                });
+            });
+        },
+        initLocalData: function () {
+            var local = localStorage.getItem('uploaded');
+
+            if (local) {
+                local = JSON.parse(local);
+                $('.local-count').html('(' + local.length + ')');
+            }
+
+        },
+        selectFileChange: function (e) {
+            var hasUpload = false;
+
+            $.each($(e.target)[0].files, function (i, item) {
+                var canAdd = true;
+                $.each(FileBatchUpload.hasUploadFiles, function (j, file) {
+                    if (item.name == file.name) {
+                        hasUpload = true;
+                        canAdd = false;
+                        return false;
+                    }
+                });
+
+                if (canAdd && jQuery.inArray(item, FileBatchUpload.selectFiles) == -1) {
+                    FileBatchUpload.selectFiles.push(item);
+                }
+            });
+
+            $('.tab').removeClass('on').eq(0).addClass('on');
+            $('.fail').hide();
+            FileBatchUpload.menuType = 1;
+
+            if (hasUpload && (FileBatchUpload.selectFiles.length <= 0)) {
+                alert('选择的文件已上传过！');
+            } else {
+                FileBatchUpload.renderSelectFiles();
+            }
+
+        },
+        upload: function () {
+            var formData = new FormData();
+            var file;
+            var sTime = (new Date()).getTime();
+
+            if (FileBatchUpload.uploading) {
+                return;
+            }
+
+            if (!FileBatchUpload.selectFiles[FileBatchUpload.curUploadFileIndex]) {
+                setTimeout(function () {
+                    alert('未选择要上传的文件！');
+                });
+                return;
+            }
+
+            file = FileBatchUpload.selectFiles[FileBatchUpload.curUploadFileIndex];
+            formData.append('file', file);
+
+            $.ajax({
+                //url: 'http://192.168.1.43/desc_about/desc_about.php',
+                // url: 'https://jy.longdeshui.com.cn/desc_about.php',
+                // url:'http://192.168.1.127:9091/bello/test',
+                url: 'http://localhost:1100/parseResume',
+                type: 'POST',
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
+                xhr: function (e) {
+                    var xhr = new XMLHttpRequest();
+                    var $pop = $('#' + FileBatchUpload.curUploadFileIndex);
+                    var progressRate = 0;
+
+                    xhr.upload.addEventListener('progress', function (e) {
+                        progressRate = (e.loaded / e.total) * 100 + '%';
+                        $pop.css('width', progressRate);
+                    });
+                    return xhr;
+                },
+                beforeSend: function (xhr) {
+                    var percent = (FileBatchUpload.curUploadFileIndex / FileBatchUpload.selectFiles.length) * 100;
+                    $('.upload-btn-submit').html('正在上传(' + percent.toFixed(0) + '%)');
+                    FileBatchUpload.uploading = true;
+                },
+                success: function (resData) {
+                    FileBatchUpload.uploading = false;
+                    var file = FileBatchUpload.selectFiles[FileBatchUpload.curUploadFileIndex];
+                    var $pop = $('#' + FileBatchUpload.curUploadFileIndex);
+                    var eTime = (new Date()).getTime();
+
+                    FileBatchUpload.uploadCostTimes += eTime - sTime;
+
+                    if (resData.code == 'success') {
+                        if (jQuery.inArray(file, FileBatchUpload.hasUploadFiles) == -1) {
+                            file.time = FileBatchUpload.createTime();
+                            FileBatchUpload.hasUploadFiles.push(file);
+                            $('.uploaded-count').html('(' + FileBatchUpload.hasUploadFiles.length + ')');
+                            FileBatchUpload.storageRecord2Local({
+                                name: file.name,
+                                size: file.size
+                            });
+                        }
+                        FileBatchUpload.uploadSucNum++;
+                        $pop.parent().find('.del').replaceWith('<span class="cost-time">' + (eTime - sTime) / 1000 + 's</span>');
+                        FileBatchUpload.record2ServerCount();
+                    } else {
+                        FileBatchUpload.uploadFailNum++;
+                        FileBatchUpload.storageErrorMsg(resData.msg);
+                    }
+
+                    FileBatchUpload.uploadStatusChange();
+                },
+                error: function (error) {
+                    console.log(error)
+                    FileBatchUpload.uploadErrorRetry(function () {
+                        FileBatchUpload.upload();
+                    }, '简历入库网络错误');
+                }
+            });
+        },
+        uploadStatusChange: function () { // 文件上传状态修改
+            $('.file-list').scrollTop(FileBatchUpload.curUploadFileIndex * 54);
+            FileBatchUpload.curUploadFileIndex++;
+            FileBatchUpload.uploadErrorNum = 0;
+            FileBatchUpload.uploadComtinue();
+        },
+        uploadErrorRetry: function (callback, msg) { // 上传失败重连
+
+            FileBatchUpload.uploadErrorNum++;
+            if (FileBatchUpload.uploadErrorNum < 6) { // 上传出错重连次数
+                callback && callback();
+            } else {
+                FileBatchUpload.storageErrorMsg(msg);
+                setTimeout(function () {
+                    alert('文件上传出错!请刷新页面重试。');
+                });
+            }
+            FileBatchUpload.uploading = false;
+        },
+        uploadComtinue: function () {
+            if (FileBatchUpload.curUploadFileIndex < FileBatchUpload.selectFiles.length) {//如果下一个文件还小于总上传文件数,可继续上传
+                FileBatchUpload.upload();
+            } else {
+                $('.tips').html(FileBatchUpload.selectFiles.length + '份文件上传完成!&nbsp;&nbsp;<i class="success">成功：' + FileBatchUpload.uploadSucNum + '份</i> , <i class="fail">失败: ' + FileBatchUpload.uploadFailNum + '份</i>,耗时：' + FileBatchUpload.uploadCostTimes / 1000 + 's')
+                    .fadeIn()
+                    .delay(6000)
+                    .fadeOut(2000, function () {
+                        FileBatchUpload.uploadCostTimes = 0;
+                    });
+
+                if (FileBatchUpload.upload2ServerErr.length > 0) {
+                    $('.fail-count').html('(' + FileBatchUpload.upload2ServerErr.length + ')');
+                    $('.fail').css('display', 'inline-block');
+                } else {
+                    $('.fail').hide();
+                }
+
+                FileBatchUpload.resetUploadData();
+            }
+        },
+        resetUploadData: function () {
+            FileBatchUpload.curUploadFileIndex = 0;
+            FileBatchUpload.selectFiles = [];
+            FileBatchUpload.uploadFailNum = 0;
+            FileBatchUpload.uploadSucNum = 0;
+            $('.upload-btn-submit').html('上传文件');
+            $('#file').val('');
+        },
+        renderSelectFiles: function () {
+            FileBatchUpload.createFileItem(this.selectFiles, '请选择上传的文件（rtf, pdf, doc, docx, html, txt, ppt, pptx, mht, jpg, png）等');
+            $('.select-count').html('(' + FileBatchUpload.selectFiles.length + ')');
+        },
+        renderUploadedFiles: function () {
+            FileBatchUpload.createFileItem(this.hasUploadFiles, '还未有文件上传');
+            $('.uploaded-count').html('(' + FileBatchUpload.hasUploadFiles.length + ')');
+        },
+        renderLocalFiles: function () {
+
+            var localData = localStorage.getItem('uploaded');
+
+            if (localData) {
+                localData = JSON.parse(localData);
+                localData.sort(function (a, b) {
+                    return (new Date(b.time)).getTime() - (new Date(a.time)).getTime();
+                });
+                $('.local-count').html('(' + localData.length + ')');
+            }
+
+            FileBatchUpload.createFileItem(localData || [], '本地历史数据为空');
+        },
+        renderFailFiles: function () {
+            var data = [];
+
+            $.each(FileBatchUpload.upload2ServerErr, function (i, item) {
+                item.file.msg = item.msg;
+                data.push(item.file);
+            });
+
+            FileBatchUpload.createFileItem(data, '没有上传失败的简历文件');
+        },
+        createFileItem: function (data, msg) {
+            var html = '';
+            $.each(data, function (i, item) {
+                html += '<div class="item">';
+                html += '<span class="name">' + item.name + '</span>';
+                if (FileBatchUpload.menuType == 1) {
+                    html += '<span class="del" data-index="' + i + '">删除</span>';
+                    html += '<span class="props" id="' + i + '"></span>';
+                } else if (FileBatchUpload.menuType == 4) {
+                    html += '<span class="msg">' + item.msg + '</span>';
+                }
+
+                if (item.time) {
+                    html += '<span class="time">' + item.time + '</span>';
+                }
+                html += '<span class="size">大小:&nbsp;&nbsp;' + Math.ceil(item.size / 1024) + 'k</span>';
+                html += '<button type="button" onclick="open()">对比</button>';
+                html += '</div>';
+            });
+
+            if (html && FileBatchUpload.menuType == 4) {
+                html += '<div class="retry">重新上传</div>';
+            }
+
+            $('.file-list').html(html || '<h3>' + msg + '</h3>');
+        },
+        storageRecord2Local: function (data) {
+            var locData = localStorage.getItem('uploaded');
+
+            if (locData) {
+                locData = JSON.parse(locData);
+            } else {
+                locData = [];
+            }
+
+            locData.push({
+                name: data.name,
+                size: data.size,
+                time: FileBatchUpload.createTime()
+            });
+
+            $('.local-count').html('(' + locData.length + ')');
+            localStorage.setItem('uploaded', JSON.stringify(locData));
+        },
+        createTime: function () {
+            var date = new Date();
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            var h = date.getHours();
+            var m2 = date.getMinutes();
+            var s = date.getSeconds();
+
+            m = m < 10 ? '0' + m : m;
+            d = d < 10 ? '0' + d : d;
+            m2 = m2 < 10 ? '0' + m2 : m2;
+            s = s < 10 ? '0' + s : s;
+
+            return y + '-' + m + '-' + d + ' ' + h + ':' + m2 + ':' + s;
+        },
+
+        storageErrorMsg: function (msg) {
+            var file = FileBatchUpload.selectFiles[FileBatchUpload.curUploadFileIndex];
+            var $pop = $('#' + FileBatchUpload.curUploadFileIndex);
+
+            $pop.css('background', 'red');
+            $pop.parent().find('.del').replaceWith('<span class="fail" title="' + msg + '">' + msg + '</span>');
+
+            if (FileBatchUpload.upload2ServerErr.length <= 0) {
+                FileBatchUpload.upload2ServerErr.push({
+                    file: file,
+                    msg: msg
+                });
+            } else {
+                $.each(FileBatchUpload.upload2ServerErr, function (i, item) {
+                    if (file.name != item.file.name) {
+                        FileBatchUpload.upload2ServerErr.push({
+                            file: file,
+                            msg: msg
+                        });
+                        return false;
+                    }
+                });
+            }
+        },
+        record2ServerCount: function () { //记录总的入库简历
+            var num = localStorage.getItem('suc2server') || 0;
+            num++;
+            localStorage.setItem('suc2server', num);
+        },
+        record2BellCount: function () { // 记录成功解析的简历数量
+            var num = localStorage.getItem('suc2bell') || 0;
+            num++;
+            localStorage.setItem('suc2bell', num);
+        },
+        open: function () {
+            window.open("parseResume.html", "newwindow", "height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no"); //写成一行
+        }
+    };
+
+    $(function () {
+        FileBatchUpload.init();
+    });
+</script>
+</body>
+</html>

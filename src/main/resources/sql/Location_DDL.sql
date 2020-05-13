@@ -1,0 +1,14 @@
+CREATE TABLE `lds_user_location` (
+  `id_key` BIGINT(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `location_id` CHAR(50) NOT NULL COMMENT '地理位置Id',
+  `location` CHAR(50) NOT NULL COMMENT '地理位置名称',
+  `location_parentId` CHAR(50) DEFAULT NULL COMMENT '地理位置的父级ID',
+  `created_by` CHAR(10) DEFAULT NULL COMMENT '创建人',
+  `updated_by` CHAR(10) DEFAULT NULL COMMENT '更新人',
+  `created_date` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '创建时间',
+  `updated_date` TIMESTAMP(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) COMMENT '更新时间',
+  PRIMARY KEY (`id_key`),
+  UNIQUE KEY `UQINDX_LDS_USER_LOCATION_0` (`location_id`),
+  UNIQUE KEY `UQINDX_LDS_USER_LOCATION_1` (`location`),
+  KEY `FK_LDS_USER_LOCATION_0` (`location_parentId`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='地理位置表'

@@ -1,0 +1,1830 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.generator.mapper.CompanyInfoIMapper">
+  <resultMap id="BaseResultMap" type="com.dc.common.domain.CompanyInfo">
+    <id column="id_key" jdbcType="BIGINT" property="idKey" />
+    <result column="company_id" jdbcType="CHAR" property="companyId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="dist" jdbcType="VARCHAR" property="dist" />
+    <result column="addr_detail" jdbcType="VARCHAR" property="addrDetail" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="scale" jdbcType="VARCHAR" property="scale" />
+    <result column="company_type" jdbcType="VARCHAR" property="companyType" />
+    <result column="financing_stage" jdbcType="VARCHAR" property="financingStage" />
+    <result column="legal_person" jdbcType="VARCHAR" property="legalPerson" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="CHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="web_url" jdbcType="VARCHAR" property="webUrl" />
+    <result column="brief_info" jdbcType="VARCHAR" property="briefInfo" />
+    <result column="company_tags" jdbcType="VARCHAR" property="companyTags" />
+    <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+    <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+    <result column="registered_capital" jdbcType="INTEGER" property="registeredCapital" />
+    <result column="abbreviation" jdbcType="VARCHAR" property="abbreviation" />
+    <result column="business_info" jdbcType="VARCHAR" property="businessInfo" />
+    <result column="establish_date" jdbcType="TIMESTAMP" property="establishDate" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="isVIP" jdbcType="VARCHAR" property="isvip" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_key, company_id, user_name, company_name, phone, email, province, city, dist, 
+    addr_detail, industry, scale, company_type, financing_stage, legal_person, created_by, 
+    updated_by, created_date, updated_date, contacts, telephone, web_url, brief_info, 
+    company_tags, longitude, latitude, registered_capital, abbreviation, business_info, 
+    establish_date, logo, isVIP
+  </sql>
+  <select id="selectByExample" parameterType="com.dc.common.domain.CompanyInfoCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lds_company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lds_company_info
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lds_company_info
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dc.common.domain.CompanyInfo">
+    insert into lds_company_info (id_key, company_id, user_name, 
+      company_name, phone, email, 
+      province, city, dist, 
+      addr_detail, industry, scale, 
+      company_type, financing_stage, legal_person, 
+      created_by, updated_by, created_date, 
+      updated_date, contacts, telephone, 
+      web_url, brief_info, company_tags, 
+      longitude, latitude, registered_capital, 
+      abbreviation, business_info, establish_date, 
+      logo, isVIP)
+    values (#{idKey,jdbcType=BIGINT}, #{companyId,jdbcType=CHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{dist,jdbcType=VARCHAR}, 
+      #{addrDetail,jdbcType=VARCHAR}, #{industry,jdbcType=VARCHAR}, #{scale,jdbcType=VARCHAR}, 
+      #{companyType,jdbcType=VARCHAR}, #{financingStage,jdbcType=VARCHAR}, #{legalPerson,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, 
+      #{updatedDate,jdbcType=TIMESTAMP}, #{contacts,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{webUrl,jdbcType=VARCHAR}, #{briefInfo,jdbcType=VARCHAR}, #{companyTags,jdbcType=VARCHAR}, 
+      #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, #{registeredCapital,jdbcType=INTEGER}, 
+      #{abbreviation,jdbcType=VARCHAR}, #{businessInfo,jdbcType=VARCHAR}, #{establishDate,jdbcType=TIMESTAMP}, 
+      #{logo,jdbcType=VARCHAR}, #{isvip,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dc.common.domain.CompanyInfo">
+    insert into lds_company_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        id_key,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="dist != null">
+        dist,
+      </if>
+      <if test="addrDetail != null">
+        addr_detail,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="scale != null">
+        scale,
+      </if>
+      <if test="companyType != null">
+        company_type,
+      </if>
+      <if test="financingStage != null">
+        financing_stage,
+      </if>
+      <if test="legalPerson != null">
+        legal_person,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="contacts != null">
+        contacts,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="webUrl != null">
+        web_url,
+      </if>
+      <if test="briefInfo != null">
+        brief_info,
+      </if>
+      <if test="companyTags != null">
+        company_tags,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital,
+      </if>
+      <if test="abbreviation != null">
+        abbreviation,
+      </if>
+      <if test="businessInfo != null">
+        business_info,
+      </if>
+      <if test="establishDate != null">
+        establish_date,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="isvip != null">
+        isVIP,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        #{idKey,jdbcType=BIGINT},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="dist != null">
+        #{dist,jdbcType=VARCHAR},
+      </if>
+      <if test="addrDetail != null">
+        #{addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null">
+        #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="financingStage != null">
+        #{financingStage,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contacts != null">
+        #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="webUrl != null">
+        #{webUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="briefInfo != null">
+        #{briefInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTags != null">
+        #{companyTags,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        #{registeredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="abbreviation != null">
+        #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="businessInfo != null">
+        #{businessInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null">
+        #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="isvip != null">
+        #{isvip,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into lds_company_info (id_key, company_id, user_name, 
+      company_name, phone, email, 
+      province, city, dist, 
+      addr_detail, industry, scale, 
+      company_type, financing_stage, 
+      legal_person, created_by, updated_by, 
+      created_date, updated_date, 
+      contacts, telephone, web_url, 
+      brief_info, company_tags, longitude, 
+      latitude, registered_capital, 
+      abbreviation, business_info, establish_date, 
+      logo, isVIP)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idKey,jdbcType=BIGINT}, #{item.companyId,jdbcType=CHAR}, #{item.userName,jdbcType=VARCHAR}, 
+        #{item.companyName,jdbcType=VARCHAR}, #{item.phone,jdbcType=VARCHAR}, #{item.email,jdbcType=VARCHAR}, 
+        #{item.province,jdbcType=VARCHAR}, #{item.city,jdbcType=VARCHAR}, #{item.dist,jdbcType=VARCHAR}, 
+        #{item.addrDetail,jdbcType=VARCHAR}, #{item.industry,jdbcType=VARCHAR}, #{item.scale,jdbcType=VARCHAR}, 
+        #{item.companyType,jdbcType=VARCHAR}, #{item.financingStage,jdbcType=VARCHAR}, 
+        #{item.legalPerson,jdbcType=VARCHAR}, #{item.createdBy,jdbcType=CHAR}, #{item.updatedBy,jdbcType=CHAR}, 
+        #{item.createdDate,jdbcType=TIMESTAMP}, #{item.updatedDate,jdbcType=TIMESTAMP}, 
+        #{item.contacts,jdbcType=VARCHAR}, #{item.telephone,jdbcType=VARCHAR}, #{item.webUrl,jdbcType=VARCHAR}, 
+        #{item.briefInfo,jdbcType=VARCHAR}, #{item.companyTags,jdbcType=VARCHAR}, #{item.longitude,jdbcType=VARCHAR}, 
+        #{item.latitude,jdbcType=VARCHAR}, #{item.registeredCapital,jdbcType=INTEGER}, 
+        #{item.abbreviation,jdbcType=VARCHAR}, #{item.businessInfo,jdbcType=VARCHAR}, #{item.establishDate,jdbcType=TIMESTAMP}, 
+        #{item.logo,jdbcType=VARCHAR}, #{item.isvip,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    insert into lds_company_info
+    (id_key, company_id, user_name, company_name, phone, email, province, city, dist, 
+      addr_detail, industry, scale, company_type, financing_stage, legal_person, created_by, 
+      updated_by, created_date, updated_date, contacts, telephone, web_url, brief_info, 
+      company_tags, longitude, latitude, registered_capital, abbreviation, business_info, 
+      establish_date, logo, isVIP)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.idKey != null">
+          #{item.idKey,jdbcType=BIGINT},
+        </if>
+        <if test="item.idKey == null">
+          NULL,
+        </if>
+        <if test="item.companyId != null">
+          #{item.companyId,jdbcType=CHAR},
+        </if>
+        <if test="item.companyId == null">
+          NULL,
+        </if>
+        <if test="item.userName != null">
+          #{item.userName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.userName == null">
+          NULL,
+        </if>
+        <if test="item.companyName != null">
+          #{item.companyName,jdbcType=VARCHAR},
+        </if>
+        <if test="item.companyName == null">
+          NULL,
+        </if>
+        <if test="item.phone != null">
+          #{item.phone,jdbcType=VARCHAR},
+        </if>
+        <if test="item.phone == null">
+          NULL,
+        </if>
+        <if test="item.email != null">
+          #{item.email,jdbcType=VARCHAR},
+        </if>
+        <if test="item.email == null">
+          NULL,
+        </if>
+        <if test="item.province != null">
+          #{item.province,jdbcType=VARCHAR},
+        </if>
+        <if test="item.province == null">
+          NULL,
+        </if>
+        <if test="item.city != null">
+          #{item.city,jdbcType=VARCHAR},
+        </if>
+        <if test="item.city == null">
+          NULL,
+        </if>
+        <if test="item.dist != null">
+          #{item.dist,jdbcType=VARCHAR},
+        </if>
+        <if test="item.dist == null">
+          NULL,
+        </if>
+        <if test="item.addrDetail != null">
+          #{item.addrDetail,jdbcType=VARCHAR},
+        </if>
+        <if test="item.addrDetail == null">
+          NULL,
+        </if>
+        <if test="item.industry != null">
+          #{item.industry,jdbcType=VARCHAR},
+        </if>
+        <if test="item.industry == null">
+          NULL,
+        </if>
+        <if test="item.scale != null">
+          #{item.scale,jdbcType=VARCHAR},
+        </if>
+        <if test="item.scale == null">
+          NULL,
+        </if>
+        <if test="item.companyType != null">
+          #{item.companyType,jdbcType=VARCHAR},
+        </if>
+        <if test="item.companyType == null">
+          NULL,
+        </if>
+        <if test="item.financingStage != null">
+          #{item.financingStage,jdbcType=VARCHAR},
+        </if>
+        <if test="item.financingStage == null">
+          NULL,
+        </if>
+        <if test="item.legalPerson != null">
+          #{item.legalPerson,jdbcType=VARCHAR},
+        </if>
+        <if test="item.legalPerson == null">
+          NULL,
+        </if>
+        <if test="item.createdBy != null">
+          #{item.createdBy,jdbcType=CHAR},
+        </if>
+        <if test="item.createdBy == null">
+          NULL,
+        </if>
+        <if test="item.updatedBy != null">
+          #{item.updatedBy,jdbcType=CHAR},
+        </if>
+        <if test="item.updatedBy == null">
+          NULL,
+        </if>
+        <if test="item.createdDate != null">
+          #{item.createdDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.createdDate == null">
+          NULL,
+        </if>
+        <if test="item.updatedDate != null">
+          #{item.updatedDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updatedDate == null">
+          NULL,
+        </if>
+        <if test="item.contacts != null">
+          #{item.contacts,jdbcType=VARCHAR},
+        </if>
+        <if test="item.contacts == null">
+          NULL,
+        </if>
+        <if test="item.telephone != null">
+          #{item.telephone,jdbcType=VARCHAR},
+        </if>
+        <if test="item.telephone == null">
+          NULL,
+        </if>
+        <if test="item.webUrl != null">
+          #{item.webUrl,jdbcType=VARCHAR},
+        </if>
+        <if test="item.webUrl == null">
+          NULL,
+        </if>
+        <if test="item.briefInfo != null">
+          #{item.briefInfo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.briefInfo == null">
+          NULL,
+        </if>
+        <if test="item.companyTags != null">
+          #{item.companyTags,jdbcType=VARCHAR},
+        </if>
+        <if test="item.companyTags == null">
+          NULL,
+        </if>
+        <if test="item.longitude != null">
+          #{item.longitude,jdbcType=VARCHAR},
+        </if>
+        <if test="item.longitude == null">
+          NULL,
+        </if>
+        <if test="item.latitude != null">
+          #{item.latitude,jdbcType=VARCHAR},
+        </if>
+        <if test="item.latitude == null">
+          NULL,
+        </if>
+        <if test="item.registeredCapital != null">
+          #{item.registeredCapital,jdbcType=INTEGER},
+        </if>
+        <if test="item.registeredCapital == null">
+          NULL,
+        </if>
+        <if test="item.abbreviation != null">
+          #{item.abbreviation,jdbcType=VARCHAR},
+        </if>
+        <if test="item.abbreviation == null">
+          NULL,
+        </if>
+        <if test="item.businessInfo != null">
+          #{item.businessInfo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.businessInfo == null">
+          NULL,
+        </if>
+        <if test="item.establishDate != null">
+          #{item.establishDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.establishDate == null">
+          NULL,
+        </if>
+        <if test="item.logo != null">
+          #{item.logo,jdbcType=VARCHAR},
+        </if>
+        <if test="item.logo == null">
+          NULL,
+        </if>
+        <if test="item.isvip != null">
+          #{item.isvip,jdbcType=VARCHAR},
+        </if>
+        <if test="item.isvip == null">
+          NULL,
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <select id="countByExample" parameterType="com.dc.common.domain.CompanyInfoCriteria" resultType="java.lang.Long">
+    select count(*) from lds_company_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lds_company_info
+    <set>
+      <if test="record.idKey != null">
+        id_key = #{record.idKey,jdbcType=BIGINT},
+      </if>
+      <if test="record.companyId != null">
+        company_id = #{record.companyId,jdbcType=CHAR},
+      </if>
+      <if test="record.userName != null">
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyName != null">
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null">
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        city = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dist != null">
+        dist = #{record.dist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addrDetail != null">
+        addr_detail = #{record.addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.industry != null">
+        industry = #{record.industry,jdbcType=VARCHAR},
+      </if>
+      <if test="record.scale != null">
+        scale = #{record.scale,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyType != null">
+        company_type = #{record.companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.financingStage != null">
+        financing_stage = #{record.financingStage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.legalPerson != null">
+        legal_person = #{record.legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdDate != null">
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null">
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contacts != null">
+        contacts = #{record.contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null">
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.webUrl != null">
+        web_url = #{record.webUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.briefInfo != null">
+        brief_info = #{record.briefInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyTags != null">
+        company_tags = #{record.companyTags,jdbcType=VARCHAR},
+      </if>
+      <if test="record.longitude != null">
+        longitude = #{record.longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.latitude != null">
+        latitude = #{record.latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registeredCapital != null">
+        registered_capital = #{record.registeredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="record.abbreviation != null">
+        abbreviation = #{record.abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessInfo != null">
+        business_info = #{record.businessInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.establishDate != null">
+        establish_date = #{record.establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logo != null">
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isvip != null">
+        isVIP = #{record.isvip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lds_company_info
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      company_id = #{record.companyId,jdbcType=CHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=VARCHAR},
+      dist = #{record.dist,jdbcType=VARCHAR},
+      addr_detail = #{record.addrDetail,jdbcType=VARCHAR},
+      industry = #{record.industry,jdbcType=VARCHAR},
+      scale = #{record.scale,jdbcType=VARCHAR},
+      company_type = #{record.companyType,jdbcType=VARCHAR},
+      financing_stage = #{record.financingStage,jdbcType=VARCHAR},
+      legal_person = #{record.legalPerson,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      contacts = #{record.contacts,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      web_url = #{record.webUrl,jdbcType=VARCHAR},
+      brief_info = #{record.briefInfo,jdbcType=VARCHAR},
+      company_tags = #{record.companyTags,jdbcType=VARCHAR},
+      longitude = #{record.longitude,jdbcType=VARCHAR},
+      latitude = #{record.latitude,jdbcType=VARCHAR},
+      registered_capital = #{record.registeredCapital,jdbcType=INTEGER},
+      abbreviation = #{record.abbreviation,jdbcType=VARCHAR},
+      business_info = #{record.businessInfo,jdbcType=VARCHAR},
+      establish_date = #{record.establishDate,jdbcType=TIMESTAMP},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      isVIP = #{record.isvip,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dc.common.domain.CompanyInfo">
+    update lds_company_info
+    <set>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="dist != null">
+        dist = #{dist,jdbcType=VARCHAR},
+      </if>
+      <if test="addrDetail != null">
+        addr_detail = #{addrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="scale != null">
+        scale = #{scale,jdbcType=VARCHAR},
+      </if>
+      <if test="companyType != null">
+        company_type = #{companyType,jdbcType=VARCHAR},
+      </if>
+      <if test="financingStage != null">
+        financing_stage = #{financingStage,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPerson != null">
+        legal_person = #{legalPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contacts != null">
+        contacts = #{contacts,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="webUrl != null">
+        web_url = #{webUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="briefInfo != null">
+        brief_info = #{briefInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyTags != null">
+        company_tags = #{companyTags,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=VARCHAR},
+      </if>
+      <if test="registeredCapital != null">
+        registered_capital = #{registeredCapital,jdbcType=INTEGER},
+      </if>
+      <if test="abbreviation != null">
+        abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="businessInfo != null">
+        business_info = #{businessInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="establishDate != null">
+        establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="isvip != null">
+        isVIP = #{isvip,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dc.common.domain.CompanyInfo">
+    update lds_company_info
+    set company_id = #{companyId,jdbcType=CHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      dist = #{dist,jdbcType=VARCHAR},
+      addr_detail = #{addrDetail,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      scale = #{scale,jdbcType=VARCHAR},
+      company_type = #{companyType,jdbcType=VARCHAR},
+      financing_stage = #{financingStage,jdbcType=VARCHAR},
+      legal_person = #{legalPerson,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      contacts = #{contacts,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      web_url = #{webUrl,jdbcType=VARCHAR},
+      brief_info = #{briefInfo,jdbcType=VARCHAR},
+      company_tags = #{companyTags,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      registered_capital = #{registeredCapital,jdbcType=INTEGER},
+      abbreviation = #{abbreviation,jdbcType=VARCHAR},
+      business_info = #{businessInfo,jdbcType=VARCHAR},
+      establish_date = #{establishDate,jdbcType=TIMESTAMP},
+      logo = #{logo,jdbcType=VARCHAR},
+      isVIP = #{isvip,jdbcType=VARCHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+    update lds_company_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="company_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyId}
+        </foreach>
+      </trim>
+      <trim prefix="user_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userName}
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyName}
+        </foreach>
+      </trim>
+      <trim prefix="phone =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.phone}
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.email}
+        </foreach>
+      </trim>
+      <trim prefix="province =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.province}
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.city}
+        </foreach>
+      </trim>
+      <trim prefix="dist =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.dist}
+        </foreach>
+      </trim>
+      <trim prefix="addr_detail =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.addrDetail}
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.industry}
+        </foreach>
+      </trim>
+      <trim prefix="scale =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.scale}
+        </foreach>
+      </trim>
+      <trim prefix="company_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyType}
+        </foreach>
+      </trim>
+      <trim prefix="financing_stage =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.financingStage}
+        </foreach>
+      </trim>
+      <trim prefix="legal_person =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.legalPerson}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="contacts =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.contacts}
+        </foreach>
+      </trim>
+      <trim prefix="telephone =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.telephone}
+        </foreach>
+      </trim>
+      <trim prefix="web_url =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.webUrl}
+        </foreach>
+      </trim>
+      <trim prefix="brief_info =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.briefInfo}
+        </foreach>
+      </trim>
+      <trim prefix="company_tags =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyTags}
+        </foreach>
+      </trim>
+      <trim prefix="longitude =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.longitude}
+        </foreach>
+      </trim>
+      <trim prefix="latitude =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.latitude}
+        </foreach>
+      </trim>
+      <trim prefix="registered_capital =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.registeredCapital}
+        </foreach>
+      </trim>
+      <trim prefix="abbreviation =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.abbreviation}
+        </foreach>
+      </trim>
+      <trim prefix="business_info =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.businessInfo}
+        </foreach>
+      </trim>
+      <trim prefix="establish_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.establishDate}
+        </foreach>
+      </trim>
+      <trim prefix="logo =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.logo}
+        </foreach>
+      </trim>
+      <trim prefix="isVIP =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isvip}
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    update lds_company_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="company_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.companyId != null ">
+            when  #{item.idKey} then #{item.companyId}
+          </if>
+          <if test="item.companyId == null ">
+            when  #{item.idKey} then lds_company_info.company_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.userName != null ">
+            when  #{item.idKey} then #{item.userName}
+          </if>
+          <if test="item.userName == null ">
+            when  #{item.idKey} then lds_company_info.user_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.companyName != null ">
+            when  #{item.idKey} then #{item.companyName}
+          </if>
+          <if test="item.companyName == null ">
+            when  #{item.idKey} then lds_company_info.company_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="phone =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.phone != null ">
+            when  #{item.idKey} then #{item.phone}
+          </if>
+          <if test="item.phone == null ">
+            when  #{item.idKey} then lds_company_info.phone
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.email != null ">
+            when  #{item.idKey} then #{item.email}
+          </if>
+          <if test="item.email == null ">
+            when  #{item.idKey} then lds_company_info.email
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="province =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.province != null ">
+            when  #{item.idKey} then #{item.province}
+          </if>
+          <if test="item.province == null ">
+            when  #{item.idKey} then lds_company_info.province
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.city != null ">
+            when  #{item.idKey} then #{item.city}
+          </if>
+          <if test="item.city == null ">
+            when  #{item.idKey} then lds_company_info.city
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="dist =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.dist != null ">
+            when  #{item.idKey} then #{item.dist}
+          </if>
+          <if test="item.dist == null ">
+            when  #{item.idKey} then lds_company_info.dist
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="addr_detail =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.addrDetail != null ">
+            when  #{item.idKey} then #{item.addrDetail}
+          </if>
+          <if test="item.addrDetail == null ">
+            when  #{item.idKey} then lds_company_info.addr_detail
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.industry != null ">
+            when  #{item.idKey} then #{item.industry}
+          </if>
+          <if test="item.industry == null ">
+            when  #{item.idKey} then lds_company_info.industry
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="scale =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.scale != null ">
+            when  #{item.idKey} then #{item.scale}
+          </if>
+          <if test="item.scale == null ">
+            when  #{item.idKey} then lds_company_info.scale
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.companyType != null ">
+            when  #{item.idKey} then #{item.companyType}
+          </if>
+          <if test="item.companyType == null ">
+            when  #{item.idKey} then lds_company_info.company_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="financing_stage =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.financingStage != null ">
+            when  #{item.idKey} then #{item.financingStage}
+          </if>
+          <if test="item.financingStage == null ">
+            when  #{item.idKey} then lds_company_info.financing_stage
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="legal_person =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.legalPerson != null ">
+            when  #{item.idKey} then #{item.legalPerson}
+          </if>
+          <if test="item.legalPerson == null ">
+            when  #{item.idKey} then lds_company_info.legal_person
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_company_info.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_company_info.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_company_info.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_company_info.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="contacts =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.contacts != null ">
+            when  #{item.idKey} then #{item.contacts}
+          </if>
+          <if test="item.contacts == null ">
+            when  #{item.idKey} then lds_company_info.contacts
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="telephone =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.telephone != null ">
+            when  #{item.idKey} then #{item.telephone}
+          </if>
+          <if test="item.telephone == null ">
+            when  #{item.idKey} then lds_company_info.telephone
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="web_url =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.webUrl != null ">
+            when  #{item.idKey} then #{item.webUrl}
+          </if>
+          <if test="item.webUrl == null ">
+            when  #{item.idKey} then lds_company_info.web_url
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="brief_info =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.briefInfo != null ">
+            when  #{item.idKey} then #{item.briefInfo}
+          </if>
+          <if test="item.briefInfo == null ">
+            when  #{item.idKey} then lds_company_info.brief_info
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_tags =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.companyTags != null ">
+            when  #{item.idKey} then #{item.companyTags}
+          </if>
+          <if test="item.companyTags == null ">
+            when  #{item.idKey} then lds_company_info.company_tags
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="longitude =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.longitude != null ">
+            when  #{item.idKey} then #{item.longitude}
+          </if>
+          <if test="item.longitude == null ">
+            when  #{item.idKey} then lds_company_info.longitude
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="latitude =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.latitude != null ">
+            when  #{item.idKey} then #{item.latitude}
+          </if>
+          <if test="item.latitude == null ">
+            when  #{item.idKey} then lds_company_info.latitude
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="registered_capital =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.registeredCapital != null ">
+            when  #{item.idKey} then #{item.registeredCapital}
+          </if>
+          <if test="item.registeredCapital == null ">
+            when  #{item.idKey} then lds_company_info.registered_capital
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="abbreviation =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.abbreviation != null ">
+            when  #{item.idKey} then #{item.abbreviation}
+          </if>
+          <if test="item.abbreviation == null ">
+            when  #{item.idKey} then lds_company_info.abbreviation
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="business_info =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.businessInfo != null ">
+            when  #{item.idKey} then #{item.businessInfo}
+          </if>
+          <if test="item.businessInfo == null ">
+            when  #{item.idKey} then lds_company_info.business_info
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="establish_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.establishDate != null ">
+            when  #{item.idKey} then #{item.establishDate}
+          </if>
+          <if test="item.establishDate == null ">
+            when  #{item.idKey} then lds_company_info.establish_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="logo =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.logo != null ">
+            when  #{item.idKey} then #{item.logo}
+          </if>
+          <if test="item.logo == null ">
+            when  #{item.idKey} then lds_company_info.logo
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="isVIP =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.isvip != null ">
+            when  #{item.idKey} then #{item.isvip}
+          </if>
+          <if test="item.isvip == null ">
+            when  #{item.idKey} then lds_company_info.isVIP
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByExample" parameterType="map">
+    update lds_company_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="company_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyId}
+        </foreach>
+      </trim>
+      <trim prefix="user_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userName}
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyName}
+        </foreach>
+      </trim>
+      <trim prefix="phone =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.phone}
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.email}
+        </foreach>
+      </trim>
+      <trim prefix="province =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.province}
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.city}
+        </foreach>
+      </trim>
+      <trim prefix="dist =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.dist}
+        </foreach>
+      </trim>
+      <trim prefix="addr_detail =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.addrDetail}
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.industry}
+        </foreach>
+      </trim>
+      <trim prefix="scale =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.scale}
+        </foreach>
+      </trim>
+      <trim prefix="company_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyType}
+        </foreach>
+      </trim>
+      <trim prefix="financing_stage =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.financingStage}
+        </foreach>
+      </trim>
+      <trim prefix="legal_person =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.legalPerson}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="contacts =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.contacts}
+        </foreach>
+      </trim>
+      <trim prefix="telephone =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.telephone}
+        </foreach>
+      </trim>
+      <trim prefix="web_url =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.webUrl}
+        </foreach>
+      </trim>
+      <trim prefix="brief_info =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.briefInfo}
+        </foreach>
+      </trim>
+      <trim prefix="company_tags =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.companyTags}
+        </foreach>
+      </trim>
+      <trim prefix="longitude =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.longitude}
+        </foreach>
+      </trim>
+      <trim prefix="latitude =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.latitude}
+        </foreach>
+      </trim>
+      <trim prefix="registered_capital =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.registeredCapital}
+        </foreach>
+      </trim>
+      <trim prefix="abbreviation =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.abbreviation}
+        </foreach>
+      </trim>
+      <trim prefix="business_info =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.businessInfo}
+        </foreach>
+      </trim>
+      <trim prefix="establish_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.establishDate}
+        </foreach>
+      </trim>
+      <trim prefix="logo =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.logo}
+        </foreach>
+      </trim>
+      <trim prefix="isVIP =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isvip}
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateBatchByExampleSelective" parameterType="map">
+    update lds_company_info
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="company_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.companyId != null ">
+            when  #{item.idKey} then #{item.companyId}
+          </if>
+          <if test="item.companyId == null ">
+            when  #{item.idKey} then lds_company_info.company_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="user_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.userName != null ">
+            when  #{item.idKey} then #{item.userName}
+          </if>
+          <if test="item.userName == null ">
+            when  #{item.idKey} then lds_company_info.user_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.companyName != null ">
+            when  #{item.idKey} then #{item.companyName}
+          </if>
+          <if test="item.companyName == null ">
+            when  #{item.idKey} then lds_company_info.company_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="phone =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.phone != null ">
+            when  #{item.idKey} then #{item.phone}
+          </if>
+          <if test="item.phone == null ">
+            when  #{item.idKey} then lds_company_info.phone
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="email =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.email != null ">
+            when  #{item.idKey} then #{item.email}
+          </if>
+          <if test="item.email == null ">
+            when  #{item.idKey} then lds_company_info.email
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="province =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.province != null ">
+            when  #{item.idKey} then #{item.province}
+          </if>
+          <if test="item.province == null ">
+            when  #{item.idKey} then lds_company_info.province
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="city =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.city != null ">
+            when  #{item.idKey} then #{item.city}
+          </if>
+          <if test="item.city == null ">
+            when  #{item.idKey} then lds_company_info.city
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="dist =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.dist != null ">
+            when  #{item.idKey} then #{item.dist}
+          </if>
+          <if test="item.dist == null ">
+            when  #{item.idKey} then lds_company_info.dist
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="addr_detail =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.addrDetail != null ">
+            when  #{item.idKey} then #{item.addrDetail}
+          </if>
+          <if test="item.addrDetail == null ">
+            when  #{item.idKey} then lds_company_info.addr_detail
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.industry != null ">
+            when  #{item.idKey} then #{item.industry}
+          </if>
+          <if test="item.industry == null ">
+            when  #{item.idKey} then lds_company_info.industry
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="scale =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.scale != null ">
+            when  #{item.idKey} then #{item.scale}
+          </if>
+          <if test="item.scale == null ">
+            when  #{item.idKey} then lds_company_info.scale
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.companyType != null ">
+            when  #{item.idKey} then #{item.companyType}
+          </if>
+          <if test="item.companyType == null ">
+            when  #{item.idKey} then lds_company_info.company_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="financing_stage =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.financingStage != null ">
+            when  #{item.idKey} then #{item.financingStage}
+          </if>
+          <if test="item.financingStage == null ">
+            when  #{item.idKey} then lds_company_info.financing_stage
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="legal_person =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.legalPerson != null ">
+            when  #{item.idKey} then #{item.legalPerson}
+          </if>
+          <if test="item.legalPerson == null ">
+            when  #{item.idKey} then lds_company_info.legal_person
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_company_info.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_company_info.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_company_info.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_company_info.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="contacts =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.contacts != null ">
+            when  #{item.idKey} then #{item.contacts}
+          </if>
+          <if test="item.contacts == null ">
+            when  #{item.idKey} then lds_company_info.contacts
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="telephone =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.telephone != null ">
+            when  #{item.idKey} then #{item.telephone}
+          </if>
+          <if test="item.telephone == null ">
+            when  #{item.idKey} then lds_company_info.telephone
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="web_url =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.webUrl != null ">
+            when  #{item.idKey} then #{item.webUrl}
+          </if>
+          <if test="item.webUrl == null ">
+            when  #{item.idKey} then lds_company_info.web_url
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="brief_info =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.briefInfo != null ">
+            when  #{item.idKey} then #{item.briefInfo}
+          </if>
+          <if test="item.briefInfo == null ">
+            when  #{item.idKey} then lds_company_info.brief_info
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="company_tags =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.companyTags != null ">
+            when  #{item.idKey} then #{item.companyTags}
+          </if>
+          <if test="item.companyTags == null ">
+            when  #{item.idKey} then lds_company_info.company_tags
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="longitude =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.longitude != null ">
+            when  #{item.idKey} then #{item.longitude}
+          </if>
+          <if test="item.longitude == null ">
+            when  #{item.idKey} then lds_company_info.longitude
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="latitude =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.latitude != null ">
+            when  #{item.idKey} then #{item.latitude}
+          </if>
+          <if test="item.latitude == null ">
+            when  #{item.idKey} then lds_company_info.latitude
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="registered_capital =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.registeredCapital != null ">
+            when  #{item.idKey} then #{item.registeredCapital}
+          </if>
+          <if test="item.registeredCapital == null ">
+            when  #{item.idKey} then lds_company_info.registered_capital
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="abbreviation =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.abbreviation != null ">
+            when  #{item.idKey} then #{item.abbreviation}
+          </if>
+          <if test="item.abbreviation == null ">
+            when  #{item.idKey} then lds_company_info.abbreviation
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="business_info =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.businessInfo != null ">
+            when  #{item.idKey} then #{item.businessInfo}
+          </if>
+          <if test="item.businessInfo == null ">
+            when  #{item.idKey} then lds_company_info.business_info
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="establish_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.establishDate != null ">
+            when  #{item.idKey} then #{item.establishDate}
+          </if>
+          <if test="item.establishDate == null ">
+            when  #{item.idKey} then lds_company_info.establish_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="logo =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.logo != null ">
+            when  #{item.idKey} then #{item.logo}
+          </if>
+          <if test="item.logo == null ">
+            when  #{item.idKey} then lds_company_info.logo
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="isVIP =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.isvip != null ">
+            when  #{item.idKey} then #{item.isvip}
+          </if>
+          <if test="item.isvip == null ">
+            when  #{item.idKey} then lds_company_info.isVIP
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

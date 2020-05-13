@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserWorkExperience">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserWorkExperience">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <result column="work_exp_id" jdbcType="CHAR" property="workExpId"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="resume_id" jdbcType="CHAR" property="resumeId"/>
+        <result column="begin_date" jdbcType="DATE" property="beginDate"/>
+        <result column="end_date" jdbcType="DATE" property="endDate"/>
+        <result column="company_name" jdbcType="CHAR" property="companyName"/>
+        <result column="company_size" jdbcType="CHAR" property="companySize"/>
+        <result column="company_nature" jdbcType="CHAR" property="companyNature"/>
+        <result column="department" jdbcType="CHAR" property="department"/>
+        <result column="function" jdbcType="CHAR" property="function"/>
+        <result column="position" jdbcType="CHAR" property="position"/>
+        <result column="monthly_salary" jdbcType="CHAR" property="monthlySalary"/>
+        <result column="industry" jdbcType="CHAR" property="industry"/>
+        <result column="job_type" jdbcType="CHAR" property="jobType"/>
+        <result column="subordinates" jdbcType="INTEGER" property="subordinates"/>
+        <result column="reporting_object" jdbcType="CHAR" property="reportingObject"/>
+        <result column="leaving_reasons" jdbcType="CHAR" property="leavingReasons"/>
+        <result column="has_overseas" jdbcType="CHAR" property="hasOverseas"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dc.common.domain.UserWorkExperience">
+        <result column="job_description" jdbcType="LONGVARCHAR" property="jobDescription"/>
+        <result column="main_achievement" jdbcType="LONGVARCHAR" property="mainAchievement"/>
+    </resultMap>
+
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserWorkExperience">
+        insert into lds_user_work_experience (id_key, work_exp_id, user_id,
+          resume_id, begin_date, end_date,
+          company_name, company_size, company_nature,
+          department, function, position,
+          monthly_salary, industry, job_type,
+          subordinates, reporting_object, leaving_reasons,
+          has_overseas, created_by, updated_by,
+          created_date, updated_date, job_description,
+          main_achievement)
+        values (#{idKey,jdbcType=BIGINT}, #{workExpId,jdbcType=CHAR}, #{userId,jdbcType=CHAR},
+          #{resumeId,jdbcType=CHAR}, #{beginDate,jdbcType=DATE}, #{endDate,jdbcType=DATE},
+          #{companyName,jdbcType=CHAR}, #{companySize,jdbcType=CHAR}, #{companyNature,jdbcType=CHAR},
+          #{department,jdbcType=CHAR}, #{function,jdbcType=CHAR}, #{position,jdbcType=CHAR},
+          #{monthlySalary,jdbcType=CHAR}, #{industry,jdbcType=CHAR}, #{jobType,jdbcType=CHAR},
+          #{subordinates,jdbcType=INTEGER}, #{reportingObject,jdbcType=CHAR}, #{leavingReasons,jdbcType=CHAR},
+          #{hasOverseas,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+          #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, #{jobDescription,jdbcType=LONGVARCHAR},
+          #{mainAchievement,jdbcType=LONGVARCHAR})
+  </insert>
+
+
+  <delete id="delete" parameterType="com.dc.common.domain.UserWorkExperience">
+    delete from lds_user_work_experience
+    where resume_id = #{resumeId,jdbcType=CHAR}
+  </delete>
+</mapper>

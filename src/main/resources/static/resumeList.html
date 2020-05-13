@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>企业管理--企业用户管理</title>
+</head>
+
+<link rel="stylesheet" href="../../webapp/WEB-INF/bootstrap-3.3.7-dist/css/bootstrap.min.css" >
+<link rel="stylesheet" href="../../webapp/WEB-INF/plugin/layui/css/layui.css">
+<link rel="stylesheet" type="text/css" href="../../webapp/WEB-INF/plugin/font/iconfont.css">
+<link rel="stylesheet" href="../../webapp/WEB-INF/css/all.css">
+
+
+
+<body>
+<div class="resume">
+    <div class="search-condition clearfix ">
+        <%--简历ID--%>
+        <div class="fl condition-one">
+            <div class="clearfix">
+                <label>简历ID</label>
+                <input class="input-one" type="text" name="resumeId" id="resumeId">
+            </div>
+        </div>
+        <%--用户名--%>
+        <div class="fl condition-one">
+            <div class="clearfix">
+                <label>姓名</label>
+                <input class="input-one" type="text" name="realName" id="realName">
+            </div>
+        </div>
+        <%--联系电话
+        <div class="fl condition-one">
+            <div class="clearfix">
+                <label>联系方式</label>
+                <input class="input-one" type="text" name="phone" id="phone">
+            </div>
+        </div>--%>
+        <%--求职职位--%>
+        <div class="fl condition-one">
+            <div class="clearfix">
+                <label>求职职位</label>
+                <input class="input-one" type="text" name="workPosition" id="workPosition">
+            </div>
+        </div>
+        <%--工作年限--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">工作年限</label>
+                <div class="fl select-click select-one">
+                    <div class="select-val" id="workYears" data-val="">请选择</div>
+                    <div class="all-select select-list workYears">
+                        <div class="select-one-val" data-val="0-0">无工作经验</div>
+                        <div class="select-one-val" data-val="1-1">1年</div>
+                        <div class="select-one-val" data-val="2-2">2年</div>
+                        <div class="select-one-val" data-val="3-4">3-4年</div>
+                        <div class="select-one-val" data-val="5-7">5-7年</div>
+                        <div class="select-one-val" data-val="8-9">8-9年</div>
+                        <div class="select-one-val" data-val="10-">10年以上</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--期望薪资--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">期望薪资</label>
+                <div class="fl select-click select-one">
+                    <div class="select-val" id="salary" data-val="">请选择</div>
+                    <div class="all-select select-list salaryLevel">
+                        <%--加载数据--%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--行业--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">行业</label>
+                <div class="fl select-click select-two">
+                    <div class="select-val" id="industry" data-val="">请选择</div>
+                    <div class="all-select select-list industries clearfix">
+                        <div class="fl select-left industries-left">
+                            <%--加载数据--%>
+                        </div>
+                        <div class="fl select-right industries-right">
+                            <%--加载数据--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--学历--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">学历</label>
+                <div class="fl select-one select-click">
+                    <div class="select-val" id="educationLevel" data-val="">请选择</div>
+                    <div class="all-select select-list educationLevel">
+                        <%--加载数据--%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--城市--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">城市</label>
+                <div class="fl select-two select-click">
+                    <div class="select-val" id="workAddress" data-val="">请选择</div>
+                    <div class="all-select select-list allCity clearfix">
+                        <div class="fl select-left allCity-left">
+                            <%--加载数据--%>
+                        </div>
+                        <div class="fl select-right allCity-right">
+                            <%--加载数据--%>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--当前状态--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">当前状态</label>
+                <div class="fl select-one select-click">
+                    <div class="select-val" id="jobStatus" data-val="">请选择</div>
+                    <div class="all-select select-list jobStatus">
+                        <%--加载数据--%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%--简历状态--%>
+        <div class="fl  condition-one condition-one-parent">
+            <div class="clearfix">
+                <label class="fl">简历状态</label>
+                <div class="fl select-click select-one">
+                    <div class="select-val" id="resumeStatus" data-val="">公开</div>
+                    <div class="all-select select-list workYears">
+                        <div class="select-one-val" data-val="" selected="">公开</div>
+                        <div class="select-one-val" data-val="CHOOSEN">隐藏</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <%--更新时间--%>
+        <div class="fl condition-two">
+            <div class="clearfix">
+                <label>更新时间</label>
+                <input class="input-one" type="text" name="startUpdatedDate" id="startUpdatedDate">
+                <span>至</span>
+                <input class="input-one" type="text" name="endUpdatedDate" id="endUpdatedDate">
+            </div>
+        </div>
+
+        <div class="fl condition-one">
+            <div class="clearfix">
+                <label>联系人</label> <input class="input-one" type="text"
+                                          name="linkman" id="linkman">
+            </div>
+        </div>
+        <div class="fl condition-two">
+            <div class="clearfix">
+                <label>联系时间</label> <input class="input-one" type="text"
+                                           name="startContactDate" id="startContactDate"> <span>至</span>
+                <input class="input-one" type="text" name="endContactDate"
+                       id="endContactDate">
+            </div>
+        </div>
+
+    </div>
+    <div class="about-btn">
+        <button class="layui-btn layui-btn-sm" id="search-btn">查询</button>
+        <button class="layui-btn layui-btn-sm" id="reset-btn">重置</button>
+        <button class="layui-btn layui-btn-sm" id="export">导出</button>
+    </div>
+</div>
+
+
+<table class="layui-table" id="companyListTable" lay-filter="companyListTableDemo" lay-data="{id: 'idTest'}"></table>
+<script type="text/javascript" src="../../webapp/WEB-INF/js/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="../../webapp/WEB-INF/plugin/layui/layui.all.js"></script>
+<script type="text/javascript" src="../../webapp/WEB-INF/js/js.js"></script>
+<script src="../../webapp/WEB-INF/js/paginationSelf.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    layui.use(['form','element','layer','jquery','table','laydate'], function(){
+        var form = layui.form,
+            layer = parent.layer === undefined ? layui.layer : parent.layer,
+            element = layui.element,
+            $ = layui.jquery;
+        var table = layui.table;
+        laydate = layui.laydate;
+        form.render();
+        //日期
+        laydate.render({
+            elem: '#startUpdatedDate'
+        });
+        laydate.render({
+            elem: '#endUpdatedDate'
+        });
+        laydate.render({
+            elem: '#startContactDate'
+        });
+        laydate.render({
+            elem: '#endContactDate'
+        });
+
+        var permission;
+
+        //获取查询的数据
+        function getWhereData(){
+            var data = {
+                "resumeId" : $("input[name='resumeId']").val(),/* 简历ID */
+                "realName" : $("input[name='realName']").val(),/* 姓名 */
+                "phone" : $("input[name='phone']").val(),//联系方式
+                "workPosition" : $("input[name='workPosition']").val(),//求职职位
+                "workYears" : $("#workYears").attr('data-val'),//工作年限
+                "salary" : $("#salary").attr('data-val'),//期望薪资
+                "industry" : $("#industry").attr('data-val'),//行业
+                "educationLevel" : $("#educationLevel").attr('data-val'),//学历
+                "workAddress" : $("#workAddress").attr('data-val'),//城市
+                "jobStatus" : $("#jobStatus").attr('data-val'),//当前状态
+                "startUpdatedDate" : $("input[name='startUpdatedDate']").val(),/* 注册时间-开始 */
+                "endUpdatedDate" : $("input[name='endUpdatedDate']").val(),/* 注册时间-结束 */
+                "startContactDate" : $("input[name='startContactDate']").val(),/* 联系时间-开始 */
+                "endContactDate" : $("input[name='endContactDate']").val(),/* 联系时间-结束 */
+                "linkman" : $("input[name='linkman']").val(),//联系方式
+                "resumeStatus":$("#resumeStatus").attr('data-val')
+            };
+            return data;
+        }
+        // 导出excel表点击事件
+        $("#export").click(function(){
+            var options=getWhereData()
+            options.page=$('.layui-laypage-skip .layui-input').val()
+            options.limit=$('.layui-laypage-limits>select').val()
+            var url='${base}/es/export?';
+            url=url+ excelUrl(options);
+            window.open(url);
+        })
+        //参数问题
+        function excelUrl(options){
+            var str = 'page='+options.page+'&limit='+options.limit;
+            if(options.resumeId!=null){
+                str=str+'&resumeId='+options.resumeId;
+            }
+            if(options.realName!=null){
+                str=str+'&realName='+options.realName;
+            }
+            if(options.workPosition!=null){
+                str=str+'&workPosition='+options.workPosition;
+            }
+            if(options.workYears!=null){
+                str=str+'&workYears='+options.workYears;
+            }
+            if(options.salary!=null){
+                str=str+'&salary='+options.salary;
+            };
+            if(options.industry!=null){
+                str=str+'&industry='+options.industry;
+            };
+            if(options.educationLevel!=null){
+                str=str+'&educationLevel='+options.educationLevel;
+            };
+            if(options.workAddress!=null){
+                str=str+'&workAddress='+options.workAddress;
+            };
+            if(options.jobStatus!=null){
+                str=str+'&jobStatus='+options.jobStatus;
+            };
+            if(options.startUpdatedDate!=null){
+                str=str+'&startUpdatedDate='+options.startUpdatedDate;
+            };
+            if(options.endUpdatedDate!=null){
+                str=str+'&endUpdatedDate='+options.endUpdatedDate;
+            };
+            if(options.linkman!=null){
+                str=str+'&linkman='+options.linkman;
+            };
+            if(options.startContactDate!=null){
+                str=str+'&startContactDate='+options.startContactDate;
+            };
+            if(options.endUpdatedDate!=null){
+                str=str+'&endContactDate='+options.endContactDate;
+            };
+            if(options.resumeStatus!=null){
+                str=str+'&resumeStatus='+options.resumeStatus;
+            };
+            return str;
+        }
+        //初始化表格
+        function getTableList(){
+            layui.table.render({
+                elem : '#companyListTable',
+                id : 'idTest',
+                url : '/list',
+                toolbar: '#toolbarDemo',
+                cols: [[
+                    /* {checkbox: true, fixed: true}, */
+                    {field:'resumeId', title: '简历ID', fixed: 'left',width:150},
+                    {field:'realName', title: '姓名', fixed: 'left',width:80},
+                    {field:'sexName', title: '姓别',fixed: 'left', width:60},
+                    {field:'age', title: '年龄',fixed: 'left', width:60},
+                    {field:'phone', title: '电话',fixed: 'left', width:125},
+                    {field:'email', title: '邮箱', width:180},
+                    {field:'schoolName', title: '学校', width:160},
+                    {field:'specialtyName', title: '专业', width:180},
+                    {field:'workingYears', title: '工作年限', width:90},
+                    {field:'educationName', title: '学历', width:60},
+                    {field:'latestWorkCompany', title: '现在（前）单位', width:240},
+                    {field:'recentPosition', title: '现在（前）职位',  width:160},
+                    {field:'expectedWorkPositionName', title: '期望职位', width:90},
+                    {field:'expectedSalaryName', title: '期望薪资', width:100},
+                    {field:'exceptedWorkAddressName', title: '期望工作城市', width:130},
+                    {field:'jobStatusName', title: '当前状态', width:150},
+                    {field:'updatedDate', title: '简历更新时间', width:200},
+                    {field:'presentPayroll', title: '目前薪资',edit: 'text',width:140},
+                    {field:'advicePayroll', title: '建议薪资',edit: 'text',width:140},
+                    {field:'peakEducation', title: '最高学历',edit: 'text',width:140},
+                    {field:'learningFormat', title: '学习形式',edit: 'text',width:140},
+                    {field:'isEpiboly', title: '是否接受外包',edit: 'text',width:140},
+                    {field:'qqVx', title: '微信/qq号',edit: 'text',width:140},
+                    {field:'isCommunication', title: '已加沟通软件',edit: 'text',width:140},
+                    {field:'phoneStatus', title: '号码状态',edit: 'text',width:140},
+                    {field:'linkman', title: '联系人',edit: 'text',width:140},
+                    {field:'contactDate', title: '联系日期',width:200},
+                    {fixed: 'right', title:'操作', title: '操作',width:295,
+                        templet: function(d){
+                            if(permission.indexOf('edit_resume') != -1){
+                                return '<a class="layui-btn layui-btn-xs " lay-event="detail">查看</a>'+
+                                    '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="save">保存</a>'+
+                                    '<a class="layui-btn layui-btn-xs layui-btn-xs" lay-event="edit">编辑</a>'+
+                                    '<a class="layui-btn layui-btn-xs" lay-event="download">下载</a>'+
+                                    '<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>'+
+                                    '<a class="layui-btn layui-btn-xs" lay-event="refresh">刷新</a>'
+                            }else{
+                                return '<a class="layui-btn layui-btn-xs layui-btn-xs" lay-event="detail">查看</a>'
+                            }
+                        }
+                    }
+                ]],
+                limits: [10,50,100,200,300,500],
+                limit: 10,
+                page : true,
+                where : getWhereData(),
+                method : 'post',
+                done : function(res, curr, count){
+                }
+
+            });
+        }
+    });
+
+    //  监听行工具事件
+    layui.table.on('tool(companyListTableDemo)', function(obj){ //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
+        var data = obj.data, //获得当前行数据
+            layEvent = obj.event; //获得 lay-event 对应的值
+        switch (layEvent) {
+            case 'detail':
+                var url;
+                if(getEnviroment()=='test'||getEnviroment()=='dev'){
+                    url = 'http://enterprisetest.decheng1024.com/forwardResume/forwardResume.html?resumeId='+data.resumeId+'&userName=13690000000';
+                }else{
+                    url = 'https://enterprise.decheng1024.com/forwardResume/forwardResume.html?resumeId='+data.resumeId+'&userName=13798591639';
+                }
+                window.open(url);
+                break;
+            case 'save':
+                if(data.linkman==null || data.linkman==''){
+                    return layer.alert('联系人不能为空', {icon : 5});
+                }
+                if(data.presentPayroll.length>20){
+                    return layer.alert('目前薪资长度不能大于20字符', {icon : 5});
+                }
+                if(data.advicePayroll.length>20){
+                    return layer.alert('建议薪资长度不能大于20字符', {icon : 5});
+                }
+                if(data.peakEducation.length>20){
+                    return layer.alert('最高学历长度不能大于20字符', {icon : 5});
+                }
+                if(data.learningFormat.length>20){
+                    return layer.alert('学习形式长度不能大于20字符', {icon : 5});
+                }
+                if(data.isEpiboly.length>10){
+                    return layer.alert('是否接受外包长度不能大于10字符', {icon : 5});
+                }
+                if(data.qqVx.length>20){
+                    return layer.alert('微信/qq号长度不能大于20字符', {icon : 5});
+                }
+                if(data.isCommunication.length>10){
+                    return layer.alert('已加沟通软件长度不能大于10字符', {icon : 5});
+                }
+                if(data.phoneStatus.length>10){
+                    return layer.alert('号码状态长度不能大于10字符', {icon : 5});
+                }
+                if(data.linkman.length>20){
+                    return layer.alert('联系人长度不能大于20字符', {icon : 5});
+                }
+                saveResumeUpadte(data);
+                getTableList();
+                break;
+            case 'edit':
+                editResume(data.resumeId);
+                //	$('.iframe', parent.document).attr('src','/page/resumeEdit?resumeId='+data.resumeId);
+                break;
+            case 'download':
+                var url;
+                if(getEnviroment()=='test'||getEnviroment()=='dev'){
+                    url='http://apitest.longdeshui.com.cn/bello/downloadResume?resumeId=';
+                }else{
+                    url='http://api.longdeshui.com.cn/bello/downloadResume?resumeId=';
+                }
+                window.open(url + data.resumeId);
+                break;
+            case 'del':
+                layer.confirm('确定将该简历从搜索引擎中删除?', {icon: 3, title:'温馨提示'}, function(index){
+                    layer.close(index);
+                    deleteResume(data);
+                    obj.del();
+                });
+                break;
+            case 'refresh':
+                updateResume(data);
+                break;
+        };
+    });
+
+
+</script>
+</body>
+<script type="text/html" id="barDemo1">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="download">下载</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="refresh">刷新</a>
+</script>
+
+</html>

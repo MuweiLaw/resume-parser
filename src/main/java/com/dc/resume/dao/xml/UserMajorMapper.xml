@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserMajor">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserMajor">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="major_id" jdbcType="CHAR" property="majorId"/>
+        <result column="major" jdbcType="CHAR" property="major"/>
+        <result column="major_contain" jdbcType="CHAR" property="majorContain"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserMajor">
+        insert ignore into lds_user_major
+        (id_key, major_id, major,
+          major_contain, created_by,updated_by,
+          created_date, updated_date)
+        values (#{idKey,jdbcType=BIGINT}, #{majorId,jdbcType=CHAR},#{major,jdbcType=CHAR},
+         #{majorContain,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+         #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP})
+    </insert>
+    <delete id="delete" parameterType="com.dc.common.domain.UserMajor">
+        delete from lds_user_major where major_id = #{majorId,jdbcType=CHAR}
+    </delete>
+    <select id="findAll" resultMap="BaseResultMap" resultType="com.dc.common.domain.UserMajor">
+        select major_id,major,major_contain from lds_user_major
+    </select>
+    <select id="findPage" resultMap="BaseResultMap" resultType="com.dc.framework.page.PageContext">
+        select major_id,major,major_contain,updated_date from lds_user_major
+    </select>
+    <select id="findByEntity" parameterType="com.dc.common.domain.UserMajor" resultMap="BaseResultMap"
+            resultType="com.dc.common.domain.UserMajor">
+        select major_id,major,major_contain from lds_user_major
+        <where>
+            <if test="majorId != '' ">
+                and major_id like '%${majorId}%'
+            </if>
+            <if test="major != ''">
+                and major like '%${major}%'
+            </if>
+            <if test="majorContain != ''">
+                and major_contain like '%${majorContain}%'
+            </if>
+        </where>
+    </select>
+    <update id="update" parameterType="com.dc.common.domain.UserMajor">
+        update lds_user_major
+        set major = #{major,jdbcType=VARCHAR},
+          major_contain = #{majorContain,jdbcType=VARCHAR},
+          updated_by = #{updatedBy,jdbcType=CHAR},
+          updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+          where major_id = #{majorId,jdbcType=CHAR}
+    </update>
+</mapper>

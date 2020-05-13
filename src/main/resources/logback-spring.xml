@@ -1,0 +1,118 @@
+<configuration scan="true" scanPeriod="10 seconds">
+	<springProperty scope="context" name="applicationName" source="spring.application.name" defaultValue="localhost.log"/>
+	<include resource="org/springframework/boot/logging/logback/base.xml" />
+	<property name="LOG_PATH" value="/logs"></property>
+	
+    <appender name="DEBUG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <File>${LOG_PATH}/${applicationName}/java-log/debug.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${applicationName}/java-log/debug-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[${applicationName}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+            </Pattern>
+        </layout>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		    <layout class="ch.qos.logback.classic.PatternLayout">
+		        <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{10} [%file:%line]-%msg%n</pattern>
+		    </layout>
+		    <charset>UTF-8</charset>
+		</encoder>
+    </appender>
+	
+	<appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <File>${LOG_PATH}/${applicationName}/java-log/info.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${applicationName}/java-log/info-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[${applicationName}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+            </Pattern>
+        </layout>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		    <layout class="ch.qos.logback.classic.PatternLayout">
+		        <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{10} [%file:%line]-%msg%n</pattern>
+		    </layout>
+		    <charset>UTF-8</charset>
+		</encoder>
+    </appender>
+    
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <File>${LOG_PATH}/${applicationName}/java-log/error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${applicationName}/java-log/error-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[${applicationName}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+            </Pattern>
+        </layout>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		    <layout class="ch.qos.logback.classic.PatternLayout">
+		        <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{10} [%file:%line]-%msg%n</pattern>
+		    </layout>
+		    <charset>UTF-8</charset>
+		</encoder>
+    </appender>
+    
+    <appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    	<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <File>${LOG_PATH}/${applicationName}/java-log/warn.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${applicationName}/java-log/warn-%d{yyyyMMdd}.log.%i</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[${applicationName}] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%msg%n
+            </Pattern>
+        </layout>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		    <layout class="ch.qos.logback.classic.PatternLayout">
+		        <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{10} [%file:%line]-%msg%n</pattern>
+		    </layout>
+		    <charset>UTF-8</charset>
+		</encoder>
+    </appender>
+    
+    <root level="INFO">
+    	<springProfile name="dev">
+			<appender-ref ref="DEBUG_FILE" />
+		</springProfile>
+        <appender-ref ref="INFO_FILE" />
+        <appender-ref ref="ERROR_FILE" />
+        <appender-ref ref="WARN_FILE" />
+    </root>
+
+    <logger name="org.springframework.boot" level="DEBUG"/>
+    <logger name="com.hx.bmf" level="DEBUG"/>
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="com.alibaba" level="INFO"/>
+    <logger name="org.apache" level="INFO"/>
+    <logger name="org.apache.ibatis" level="INFO"/>
+    <logger name="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" level="WARN"/>
+</configuration>

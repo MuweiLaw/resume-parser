@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserSkills">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserSkills">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="skill_id" jdbcType="CHAR" property="skillId"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="resume_id" jdbcType="CHAR" property="resumeId"/>
+        <result column="skill" jdbcType="CHAR" property="skill"/>
+        <result column="skill_level" jdbcType="CHAR" property="skillLevel"/>
+        <result column="certificate" jdbcType="CHAR" property="certificate"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserSkills">
+        insert ignore into lds_user_skills (id_key, skill_id, user_id,
+          resume_id, skill, skill_level,
+          certificate, created_by, updated_by,
+          created_date, updated_date)
+        values (#{idKey,jdbcType=BIGINT}, #{skillId,jdbcType=CHAR}, #{userId,jdbcType=CHAR},
+          #{resumeId,jdbcType=CHAR}, #{skill,jdbcType=CHAR}, #{skillLevel,jdbcType=CHAR},
+          #{certificate,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+          #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP})
+   </insert>
+
+   <delete id="delete" parameterType="com.dc.common.domain.UserSkills">
+        delete from lds_user_skills
+        where resume_id = #{resumeId,jdbcType=CHAR}
+   </delete>
+
+    <select id="findPage" resultMap="BaseResultMap" parameterType="com.dc.framework.page.PageContext">
+        select id_key, skill_id, user_id, resume_id, skill, skill_level from lds_user_skills
+    </select>
+
+</mapper>

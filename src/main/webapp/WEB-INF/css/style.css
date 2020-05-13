@@ -1,0 +1,270 @@
+/* index妞ょ敻娼伴惃鍕壉瀵拷 */
+.side-navs i{
+	display:inline-block;
+	padding-right:10px;
+}
+.footer{
+	text-align:center;
+}
+
+/* 1銆佸瓙璐︽埛绠＄悊  */
+.subAccount{
+	padding:10px 10px 0px 10px;
+}
+.query-form>div{
+	line-height:28px;
+}
+.query-form>div .query-one{
+	margin-bottom:10px;
+}
+.query-form span{
+	display:inline-block;
+	font-size:14px;
+	text-align:right;
+	letter-spacing: 2px;
+}
+.query-form input{
+	width:180px;
+	margin-right:10px;
+}
+.edit-btn{
+	padding-left:30px;
+}
+.edit-btn .btn-one{
+	display:inline-block;
+	width:80px;
+	text-align:center;
+	background:#169BD5;
+	color:#fff;
+	border-radius:3px;
+	font-szie:14px;
+	margin:10px 10px;
+	cursor: pointer;
+}
+.layer_notice{
+	display:none;
+}
+.layer_notice>div{
+	padding:10px;
+}
+.layer_notice .input-style{
+	height:30px;
+	line-height:30px;
+	margin-bottom:25px;
+}
+.layer_notice .input-style span{
+	display:inline-block;
+	width:110px;
+	text-align:right;
+	font-size:15px;
+}
+.layer_notice .input-style span i{
+	display:inline-block;
+	color:red;
+	height:30px;
+	line-height:30px;
+	padding:0px 10px;
+}
+.layer_notice .input-style input{
+	width:250px;
+	padding-left:10px;
+}
+.layer_notice .input-style input.cancel-border{
+	border:none;
+}
+.layer_notice .layer-allBtn{
+	padding-left:180px;
+}
+.layer_notice .layer-allBtn span{
+	display:inline-block;
+	width:80px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	background:#169BD5;
+	color:#fff;
+	font-size:15px;
+	border-radius:3px;
+	margin-right:20px;
+}
+/* 表格按钮 */
+.btnTable{
+	margin-top:10px;
+}
+.date-input>input{
+	display:inline-block;
+	width:160px;
+}
+
+.layui-form .layui-form-item{
+	margin-bottom:0px;
+}
+
+
+
+/*资质认证*/
+.businessQRC{
+	padding:10px 0px
+}
+.layui-form-item .form-name{
+	width: 110px;
+}
+#layui-form .first-input{
+	width:260px;
+}
+#layui-form .first-input input{
+    background: #f9f9f9;
+    border: none;
+}
+#layui-form .second-input{
+	width:360px;
+}
+#layui-form .secondBlcok{
+    display: block;
+}
+.second-input{
+    display: none;
+}
+.attachmentList{
+    width: 830px;
+}
+.attachmentList>img{
+	height: 100px;
+	width: 90px;
+	margin-right: 10px;
+}
+#layui-form .remark-textarea{
+    width: 500px;
+}
+#layui-form  .imgBackResone{
+    width: 600px;
+}
+
+.status-content{
+    color: green;
+    font-weight: bolder;
+}
+.allBtn{
+    text-align: center;
+}
+.allBtn>span{
+    display: inline-block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background: #007aff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.positionBrighten{
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+}
+#line-input .layui-input-inline input{
+    background: #f7f6f6;
+    border: none;
+}
+
+.layui-nav-item a{
+	cursor: pointer;
+}
+
+
+/* 招聘者管理---start */
+
+.businessQRLayerOne .person-head,
+.businessQRLayerOne .company-logo{
+	height: 100px;
+	width: 100px;
+	margin-right: 10px;
+}
+.businessQRLayerOne .person-head>img{
+	width: 80px;
+	height: 80px;
+	margin: 10px auto;
+	border-radius: 50%;
+}
+.businessQRLayerOne .company-logo>img{
+	width: 80px;
+	height: 80px;
+	margin: 10px auto;
+}
+
+
+.businessQRLayerOne .person-info,
+.businessQRLayerOne .company-info{
+	width: 620px;
+	/*height: 100px;*/
+}
+.businessQRLayerOne .person-info-one,
+.businessQRLayerOne .company-info-one{
+	width: 300px;
+	height: 50px;
+	line-height:50px;
+	text-align: left;
+	margin-right: 10px;
+}
+.businessQRLayerOne .person-info-one.person-info-one-other{
+	width: 600px;
+}
+
+.businessQRLayerOne .person-info-one label,
+.businessQRLayerOne .company-info-one label{
+	position: relative;
+	top: -20px;
+	width: 80px;
+	font-size: 14px;
+	text-align: right;
+	padding-right: 15px;
+}
+.businessQRLayerOne .person-info-one span,
+.businessQRLayerOne .company-info-one span{
+	display: inline-block;
+	width: 218px;
+	font-size: 16px;
+}
+.businessQRLayerOne .person-info-one.person-info-one-other span{
+	width: 400px;
+}
+.businessQRLayerOne .div-two{
+	margin:25px 0px;
+}
+.businessQRLayerOne .company-info-one a.review{
+	display: inline-block;
+	width: 120px;
+	height: 30px;
+	line-height:30px;
+	text-align: center;
+	background:#aaa;
+	color: #fff;
+	font-size: 14px;
+	border-radius: 4px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.businessQRLayerOne .company-info-one a.review:hover{
+	text-decoration: none;
+}
+.businessQRLayerOne .audit-exception-title{
+	height: 100px;
+	width: 100px;
+	margin-right: 10px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 14px;
+}
+.businessQRLayerOne .audit-exception-info{
+	width: 620px;
+}
+.businessQRLayerOne .audit-exception-info p{
+	text-align: left;
+	font-size: 13px;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+}
+.businessQRLayerOne .audit-exception-info p input{
+	margin-right: 5px;
+}

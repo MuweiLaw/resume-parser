@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserEducationExperience">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserEducationExperience">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="education_exp_id" jdbcType="CHAR" property="educationExpId"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="resume_id" jdbcType="CHAR" property="resumeId"/>
+        <result column="begin_date" jdbcType="DATE" property="beginDate"/>
+        <result column="end_date" jdbcType="DATE" property="endDate"/>
+        <result column="school_name" jdbcType="CHAR" property="schoolName"/>
+        <result column="education_level" jdbcType="CHAR" property="educationLevel"/>
+        <result column="full_time" jdbcType="CHAR" property="fullTime"/>
+        <result column="graduation_cert_no" jdbcType="CHAR" property="graduationCertNo"/>
+        <result column="specialty" jdbcType="CHAR" property="specialty"/>
+        <result column="specialty_description" jdbcType="LONGVARCHAR" property="specialtyDescription"/>
+        <result column="has_overseas" jdbcType="CHAR" property="hasOverseas"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserEducationExperience">
+    insert into lds_user_education_experience (id_key, education_exp_id, user_id,
+      resume_id, begin_date, end_date,
+      school_name, education_level, full_time,
+      graduation_cert_no, specialty, specialty_description,
+      has_overseas, created_by, updated_by,
+      created_date, updated_date)
+    values (#{idKey,jdbcType=BIGINT}, #{educationExpId,jdbcType=CHAR}, #{userId,jdbcType=CHAR},
+      #{resumeId,jdbcType=CHAR}, #{beginDate,jdbcType=DATE}, #{endDate,jdbcType=DATE},
+      #{schoolName,jdbcType=CHAR}, #{educationLevel,jdbcType=CHAR}, #{fullTime,jdbcType=CHAR},
+      #{graduationCertNo,jdbcType=CHAR}, #{specialty,jdbcType=CHAR}, #{specialtyDescription,jdbcType=LONGVARCHAR},
+      #{hasOverseas,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP})
+  </insert>
+
+  <delete id="delete" parameterType="com.dc.common.domain.UserEducationExperience">
+    delete from lds_user_education_experience
+    where resume_id = #{resumeId,jdbcType=CHAR}
+  </delete>
+
+    <update id="update" parameterType="com.dc.common.domain.UserEducationExperience">
+    update lds_user_education_experience set
+      begin_date=#{beginDate,jdbcType=DATE},
+      end_date=#{endDate,jdbcType=DATE},
+      school_name=#{schoolName,jdbcType=CHAR},
+      education_level=#{educationLevel,jdbcType=CHAR},
+      full_time= #{fullTime,jdbcType=CHAR},
+      graduation_cert_no=#{graduationCertNo,jdbcType=CHAR},
+      specialty=#{specialty,jdbcType=CHAR},
+      specialty_description=#{specialtyDescription,jdbcType=LONGVARCHAR},
+      has_overseas= #{hasOverseas,jdbcType=CHAR},
+      updated_by=#{updatedBy,jdbcType=CHAR},
+      updated_date= #{updatedDate,jdbcType=TIMESTAMP}
+      where resume_id = #{resumeId,jdbcType=CHAR}
+</update>
+</mapper>

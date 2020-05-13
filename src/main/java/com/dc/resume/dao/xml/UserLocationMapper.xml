@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserLocation">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserLocation">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="location_id" jdbcType="CHAR" property="locationId"/>
+        <result column="location" jdbcType="CHAR" property="location"/>
+        <result column="location_parentId" jdbcType="CHAR" property="locationParentId"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserLocation">
+        insert ignore into lds_user_location
+        (location_id, location,
+          location_parentId, created_by,updated_by,
+          created_date, updated_date)
+        values (#{locationId,jdbcType=CHAR},#{location,jdbcType=CHAR},
+         #{locationParentId,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+         #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP})
+    </insert>
+    <delete id="delete" parameterType="com.dc.common.domain.UserLocation">
+        delete from lds_user_location where location_id = #{locationId,jdbcType=CHAR}
+    </delete>
+    <select id="findByEntity" parameterType="com.dc.common.domain.UserLocation" resultMap="BaseResultMap">
+        select location_id,location,location_parentId from lds_user_location
+        <where>
+            <if test="locationId != '' ">
+                and location_id like '%${locationId}%'
+            </if>
+            <if test="location != ''">
+                and location like '%${location}%'
+            </if>
+            <if test="locationParentId != ''">
+                and location_parentId like '%${locationParentId}%'
+            </if>
+        </where>
+
+    </select>
+    <select id="findAll" resultMap="BaseResultMap" resultType="com.dc.common.domain.UserLocation">
+        select location_id,location,location_parentId from lds_user_location
+    </select>
+    <select id="findPage" resultMap="BaseResultMap" resultType="com.dc.framework.page.PageContext">
+        select location_id,location,location_parentId,updated_date from lds_user_location
+    </select>
+    <update id="update" parameterType="com.dc.common.domain.UserLocation">
+        update lds_user_location
+        set location = #{location,jdbcType=VARCHAR},
+          location_parentId = #{locationParentId,jdbcType=VARCHAR},
+          updated_by = #{updatedBy,jdbcType=CHAR},
+          updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+          where location_id = #{locationId,jdbcType=CHAR}
+    </update>
+
+</mapper>

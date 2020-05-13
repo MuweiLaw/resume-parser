@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserJob">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserJob">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="job_id" jdbcType="CHAR" property="jobId"/>
+        <result column="job" jdbcType="CHAR" property="job"/>
+        <result column="job_contain" jdbcType="CHAR" property="jobContain"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserJob">
+        insert ignore into lds_user_job
+        (id_key,job_id,job,job_contain,created_by,updated_by,created_date,updated_date)
+        values(#{idKey,jdbcType=BIGINT},#{jobId,jdbcType=CHAR},#{job,jdbcType=CHAR},#{jobContain,jdbcType=CHAR},#{createdBy,jdbcType=CHAR},#{updatedBy,jdbcType=CHAR},#{createdDate,jdbcType=TIMESTAMP},#{updatedDate,jdbcType=TIMESTAMP})
+    </insert>
+    <delete id="delete" parameterType="com.dc.common.domain.UserJob">
+        delete from lds_user_job
+        where job_id = #{jobId,jdbcType=CHAR}
+    </delete>
+    <select id="findByEntity" parameterType="com.dc.common.domain.UserJob" resultMap="BaseResultMap">
+        select job_id,job,job_contain from lds_user_job
+        <where>
+            <if test="jobId != '' ">
+                and job_id like '%${jobId}%'
+            </if>
+            <if test="job != ''">
+                and job like '%${job}%'
+            </if>
+            <if test="jobContain != ''">
+                and job_contain like '%${jobContain}%'
+            </if>
+        </where>
+    </select>
+    <select id="findAll" resultMap="BaseResultMap" resultType="com.dc.common.domain.UserJob">
+        select job_id,job,job_contain from lds_user_job
+    </select>
+    <select id="findPage" resultMap="BaseResultMap" resultType="com.dc.framework.page.PageContext">
+        select job_id,job,job_contain,updated_date from lds_user_job
+    </select>
+    <update id="update" parameterType="com.dc.common.domain.UserJob">
+        update lds_user_job
+        set job = #{job,jdbcType=VARCHAR},
+          job_contain = #{jobContain,jdbcType=VARCHAR},
+          updated_by = #{updatedBy,jdbcType=CHAR},
+          updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+          where job_id = #{jobId,jdbcType=CHAR}
+    </update>
+</mapper>

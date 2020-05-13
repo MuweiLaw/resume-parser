@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserResumeDetail">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserResumeDetail">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="annual_income" jdbcType="DOUBLE" property="annualIncome"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="real_name" jdbcType="CHAR" property="realName"/>
+        <result column="birthday" jdbcType="DATE" property="birthday"/>
+        <result column="phone_no" jdbcType="VARCHAR" property="phoneNo"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="sex" jdbcType="CHAR" property="sex"/>
+        <result column="begin_work_date" jdbcType="DATE" property="beginWorkDate"/>
+        <result column="current_position" jdbcType="CHAR" property="currentPosition"/>
+        <result column="working_years" jdbcType="TINYINT" property="workingYears"/>
+        <result column="current_company" jdbcType="CHAR" property="currentCompany"/>
+        <result column="job_status" jdbcType="CHAR" property="jobStatus"/>
+        <result column="home_address" jdbcType="CHAR" property="homeAddress"/>
+        <result column="residential_address" jdbcType="CHAR" property="residentialAddress"/>
+        <result column="registered" jdbcType="CHAR" property="registered"/>
+        <result column="zipcode" jdbcType="CHAR" property="zipcode"/>
+        <result column="marital_status" jdbcType="CHAR" property="maritalStatus"/>
+        <result column="id_type" jdbcType="CHAR" property="idType"/>
+        <result column="id_number" jdbcType="CHAR" property="idNumber"/>
+        <result column="political_status" jdbcType="CHAR" property="politicalStatus"/>
+        <result column="other_contact_type" jdbcType="CHAR" property="otherContactType"/>
+        <result column="other_number" jdbcType="CHAR" property="otherNumber"/>
+        <result column="height" jdbcType="INTEGER" property="height"/>
+        <result column="personal_homepage" jdbcType="VARCHAR" property="personalHomepage"/>
+        <result column="head_portrait_url" jdbcType="CHAR" property="headPortraitUrl"/>
+        <result column="base_pay" jdbcType="DOUBLE" property="basePay"/>
+        <result column="allowance" jdbcType="DOUBLE" property="allowance"/>
+        <result column="commission" jdbcType="DOUBLE" property="commission"/>
+        <result column="equity_income" jdbcType="DOUBLE" property="equityIncome"/>
+        <result column="resume_id" jdbcType="VARCHAR" property="resumeId"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+        <result column="weight" jdbcType="INTEGER" property="weight"/>
+        <result column="city" jdbcType="CHAR" property="city"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dc.common.domain.UserResumeDetail">
+        <result column="self_description" jdbcType="LONGVARCHAR" property="selfDescription"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.dc.common.domain.UserResumeDetail">
+    insert into lds_user_resume_detail (id_key, annual_income, user_id,
+      real_name, birthday, phone_no,
+      email, sex, begin_work_date,
+      current_position, working_years, current_company,
+      job_status, home_address, residential_address,
+      registered, zipcode, marital_status,
+      id_type, id_number, political_status,
+      other_contact_type, other_number, height,
+      personal_homepage, head_portrait_url, base_pay,
+      allowance, commission, equity_income,
+      resume_id, created_by, updated_by,
+      created_date, updated_date, weight,
+      city, self_description)
+    values (#{idKey,jdbcType=BIGINT}, #{annualIncome,jdbcType=DOUBLE}, #{userId,jdbcType=CHAR},
+      #{realName,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, #{phoneNo,jdbcType=VARCHAR},
+      #{email,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{beginWorkDate,jdbcType=DATE},
+      #{currentPosition,jdbcType=CHAR}, #{workingYears,jdbcType=TINYINT}, #{currentCompany,jdbcType=CHAR},
+      #{jobStatus,jdbcType=CHAR}, #{homeAddress,jdbcType=CHAR}, #{residentialAddress,jdbcType=CHAR},
+      #{registered,jdbcType=CHAR}, #{zipcode,jdbcType=CHAR}, #{maritalStatus,jdbcType=CHAR},
+      #{idType,jdbcType=CHAR}, #{idNumber,jdbcType=CHAR}, #{politicalStatus,jdbcType=CHAR},
+      #{otherContactType,jdbcType=CHAR}, #{otherNumber,jdbcType=CHAR}, #{height,jdbcType=INTEGER},
+      #{personalHomepage,jdbcType=VARCHAR}, #{headPortraitUrl,jdbcType=CHAR}, #{basePay,jdbcType=DOUBLE},
+      #{allowance,jdbcType=DOUBLE}, #{commission,jdbcType=DOUBLE}, #{equityIncome,jdbcType=DOUBLE},
+      #{resumeId,jdbcType=VARCHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, #{weight,jdbcType=INTEGER},
+      #{city,jdbcType=CHAR}, #{selfDescription,jdbcType=LONGVARCHAR})
+  </insert>
+
+    <update id="update" parameterType="com.dc.common.domain.UserResumeDetail">
+        update lds_user_resume_detail
+        set birthday = #{birthday,jdbcType=DATE},
+          email = #{email,jdbcType=VARCHAR},
+          sex = #{sex,jdbcType=CHAR},
+          begin_work_date = #{beginWorkDate,jdbcType=DATE},
+          current_position = #{currentPosition,jdbcType=CHAR},
+          working_years = #{workingYears,jdbcType=TINYINT},
+          current_company = #{currentCompany,jdbcType=CHAR},
+          job_status = #{jobStatus,jdbcType=CHAR},
+          home_address = #{homeAddress,jdbcType=CHAR},
+          residential_address = #{residentialAddress,jdbcType=CHAR},
+          registered = #{registered,jdbcType=CHAR},
+          zipcode = #{zipcode,jdbcType=CHAR},
+          marital_status = #{maritalStatus,jdbcType=CHAR},
+          id_type = #{idType,jdbcType=CHAR},
+          id_number = #{idNumber,jdbcType=CHAR},
+          political_status = #{politicalStatus,jdbcType=CHAR},
+          other_contact_type = #{otherContactType,jdbcType=CHAR},
+          other_number = #{otherNumber,jdbcType=CHAR},
+          height = #{height,jdbcType=INTEGER},
+          personal_homepage = #{personalHomepage,jdbcType=VARCHAR},
+          head_portrait_url = #{headPortraitUrl,jdbcType=CHAR},
+          base_pay = #{basePay,jdbcType=DOUBLE},
+          allowance = #{allowance,jdbcType=DOUBLE},
+          commission = #{commission,jdbcType=DOUBLE},
+          equity_income = #{equityIncome,jdbcType=DOUBLE},
+          resume_id = #{resumeId,jdbcType=VARCHAR},
+          updated_by = #{updatedBy,jdbcType=CHAR},
+          updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+          weight = #{weight,jdbcType=INTEGER},
+          city = #{city,jdbcType=CHAR}
+          where resume_id = #{resumeId,jdbcType=CHAR}
+          And annual_income = #{annualIncome,jdbcType=DOUBLE}
+  </update>
+
+    <delete id="delete" parameterType="com.dc.common.domain.UserResumeDetail">
+        delete from lds_user_resume_detail where resume_id = #{resumeId,jdbcType=CHAR}
+    </delete>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserIntention">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserIntention">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="resume_id" jdbcType="CHAR" property="resumeId"/>
+        <result column="salary_type" jdbcType="CHAR" property="salaryType"/>
+        <result column="expect_salary" jdbcType="CHAR" property="expectSalary"/>
+        <result column="work_address" jdbcType="CHAR" property="workAddress"/>
+        <result column="work_position" jdbcType="CHAR" property="workPosition"/>
+        <result column="work_function" jdbcType="CHAR" property="workFunction"/>
+        <result column="industry" jdbcType="CHAR" property="industry"/>
+        <result column="come_time" jdbcType="CHAR" property="comeTime"/>
+        <result column="work_type" jdbcType="CHAR" property="workType"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+    <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dc.common.domain.UserIntention">
+        <result column="self_evaluation" jdbcType="LONGVARCHAR" property="selfEvaluation"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.dc.common.domain.UserIntention">
+        insert into lds_user_intention (id_key, user_id, resume_id,
+          salary_type, expect_salary, work_address,
+          work_position, work_function, industry,
+          come_time, work_type, created_by,
+          updated_by, created_date, updated_date,
+          self_evaluation)
+        values (#{idKey,jdbcType=BIGINT}, #{userId,jdbcType=CHAR}, #{resumeId,jdbcType=CHAR},
+          #{salaryType,jdbcType=CHAR}, #{expectSalary,jdbcType=CHAR}, #{workAddress,jdbcType=CHAR},
+          #{workPosition,jdbcType=CHAR}, #{workFunction,jdbcType=CHAR}, #{industry,jdbcType=CHAR},
+          #{comeTime,jdbcType=CHAR}, #{workType,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR},
+          #{updatedBy,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP},
+          #{selfEvaluation,jdbcType=LONGVARCHAR})
+    </insert>
+
+    <update id="update" parameterType="com.dc.common.domain.UserIntention">
+        update lds_user_intention set
+          salary_type=#{salaryType,jdbcType=CHAR},
+          expect_salary=#{expectSalary,jdbcType=CHAR},
+          work_address=#{workAddress,jdbcType=CHAR},
+          work_position=#{workPosition,jdbcType=CHAR},
+          work_function=#{workFunction,jdbcType=CHAR},
+          industry=#{industry,jdbcType=CHAR},
+          come_time=#{comeTime,jdbcType=CHAR},
+          work_type=#{workType,jdbcType=CHAR},
+          updated_by=#{updatedBy,jdbcType=CHAR},
+          updated_date=#{updatedDate,jdbcType=TIMESTAMP},
+          self_evaluation=#{selfEvaluation,jdbcType=LONGVARCHAR}
+          where resume_id = #{resumeId,jdbcType=CHAR}
+    </update>
+
+    <delete id="delete" parameterType="com.dc.common.domain.UserIntention">
+        delete from lds_user_intention  where resume_id = #{resumeId,jdbcType=CHAR}
+    </delete>
+
+</mapper>

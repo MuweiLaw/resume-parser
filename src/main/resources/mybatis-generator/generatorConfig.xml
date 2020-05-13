@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+
+<generatorConfiguration>
+    <properties resource="generatorConfig.properties" />
+    <classPathEntry
+            location="E:\Java\Apache\maven-repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar"/>
+    <context id="my" targetRuntime="MyBatis3">
+
+        <!--插件 ：用来为生成的Java模型类添加序列化接口-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!--插件 ：生成的Java模型创建一个toString方法-->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+
+        <!-- 统一Mapper 接口 -->
+        <plugin type="org.mybatis.generator.plugins.MapperPlugin">
+            <property name="interfaceName" value="IMapper"/>
+            <!-- 是否删除Mapper类里的方法，默认删除-->
+            <property name="deleteMethod" value="true"/>
+        </plugin>
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- 是否给实体类生成的备注的注释 true：是 ： 默认为false:否 -->
+            <property name="addRemarkComments" value="true"/>
+            <!-- 是否去掉注释代时间戳 true：是 ： false:否,默认yyyy-MM-dd HH:mm:ss（1.3.5-chinese-annotation修改版）-->
+            <property name="suppressDate" value="false"/>
+            <property name="dateFormat" value="yyyy/MM/dd HH:mm"/>
+            <property name="author" value="mybatis-generator" />
+            <!-- 是否在get、set方法里添加final关键字 -->
+            <property name="addMethodFinal" value="false"/>
+        </commentGenerator>
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="${jdbc.dataSource.driverClassName}"
+                        connectionURL="${jdbc.dataSource.url}"
+                        userId="${jdbc.dataSource.username}"
+                        password="${jdbc.dataSource.password}">
+        </jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+                NUMERIC 类型解析为java.math.BigDecimal -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类的位置 -->
+        <javaModelGenerator targetPackage="${model.package}"
+                            targetProject="${model.path}">
+            <!--  for MyBatis3/MyBatis3Simple
+                自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter；
+            -->
+            <property name="constructorBased" value="false"/>
+
+            <property name="enableSubPackages" value="true"/>
+            <!-- 是否针对string类型的字段在set/get的时候进行trim调用:清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+
+        </javaModelGenerator>
+
+        <!-- 生成mapper xml文件 -->
+        <sqlMapGenerator targetPackage="${mapper.xml.package}"
+                         targetProject="${mapper.xml.path}">
+            <!-- 解释同上:生成实体类的位置 -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+
+        <!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
+           targetPackage/targetProject:同javaModelGenerator
+           type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
+               1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+               2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+               3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+           注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
+       -->
+        <!-- 生成mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="${mapper.package}"
+                             targetProject="${mapper.path}">
+
+            <!-- 解释同上:生成实体类的位置 -->
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--<table tableName="T_FEE_AGTBILL" domainObjectName="FeeAgentBill"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>-->
+
+        <!--schema:即为数据库名
+            tableName:为对应的数据库表
+            domainObjectName:要生成的实体类
+             -->
+        <table schema="general" tableName="lds_company_info" domainObjectName="CompanyInfo" enableDeleteByExample="false">
+            <!-- 忽略列，不生成bean字段 -->
+            <!--<ignoreColumn column="FRED" />-->
+            <!-- 指定列的java数据类型 -->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" />-->
+        </table>
+
+        <table schema="general" tableName="lds_user_intention" domainObjectName="UserIntention" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_resume" domainObjectName="UserResume" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="boot_data_dictionary" domainObjectName="BootDataDictionary" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_project_experience" domainObjectName="UserProjectExperience" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_resume" domainObjectName="UserResume" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_resume_detail" domainObjectName="UserResumeDetail" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_intention" domainObjectName="UserIntention" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_work_experience" domainObjectName="UserWorkExperience" enableDeleteByExample="false">
+        </table>
+
+        <table schema="general" tableName="lds_user_education_experience" domainObjectName="UserEducationExperience" enableDeleteByExample="false">
+        </table>
+        <!--用户简历详细信息表-->
+        <table schema="general" tableName="lds_user_resume_detail" domainObjectName="UserEducationExperience" enableDeleteByExample="false">
+        </table>
+
+    </context>
+</generatorConfiguration>

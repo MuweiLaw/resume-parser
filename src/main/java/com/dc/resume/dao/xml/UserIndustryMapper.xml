@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserIndustry">
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserIndustry">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <id column="industry_id" jdbcType="CHAR" property="industryId"/>
+        <result column="industry" jdbcType="CHAR" property="industry"/>
+        <result column="industry_parentId" jdbcType="CHAR" property="industryParentId"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserIndustry">
+        insert ignore into lds_user_industry
+        (id_key, industry_id, industry,
+          industry_parentId, created_by,updated_by,
+          created_date, updated_date)
+        values (#{idKey,jdbcType=BIGINT}, #{industryId,jdbcType=CHAR},#{industry,jdbcType=CHAR},
+         #{industryParentId,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, #{updatedBy,jdbcType=CHAR},
+         #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP})
+    </insert>
+    <delete id="delete" parameterType="com.dc.common.domain.UserIndustry">
+        delete from lds_user_industry
+        where industry_id = #{industryId,jdbcType=CHAR}
+    </delete>
+    <select id="findAll" resultMap="BaseResultMap" resultType="com.dc.common.domain.UserIndustry">
+        select industry_id,industry,industry_parentId from lds_user_industry
+    </select>
+    <select id="findPage" resultMap="BaseResultMap" resultType="com.dc.framework.page.PageContext">
+        select industry_id,industry,industry_parentId,updated_date from lds_user_industry
+    </select>
+    <select id="findPageIndustry" resultMap="BaseResultMap" parameterType="map">
+        select industry_id,industry,industry_parentId,updated_date from lds_user_industry
+        <where>
+            industry_id like '%${page.industryId}%'
+            <if test="page.industry != null">
+                and industry like '%${page.industry}%'
+            </if>
+            <if test="page.industryParentId != null">
+                and industry_parentId like '%${page.industryParentId}%'
+            </if>
+        </where>
+        limit ${page.limit} OFFSET ${page.offset}
+    </select>
+    <select id="countByFindPage" resultType="java.lang.Long" parameterType="map">
+        select industry_id,industry,industry_parentId,updated_date from lds_user_industry
+        <where>
+            industry_id like '%${page.industryId}%'
+            <if test="page.industry != null">
+                and industry like '%${page.industry}%'
+            </if>
+            <if test="page.industryParentId != null">
+                and industry_parentId like '%${page.industryParentId}%'
+            </if>
+        </where>
+    </select>
+    <select id="findByEntity" parameterType="com.dc.common.domain.UserIndustry" resultMap="BaseResultMap">
+        select industry_id,industry,industry_parentId from lds_user_industry
+        <where>
+            <if test="industryId != '' ">
+                and industry_id like '%${industryId}%'
+            </if>
+            <if test="industry != ''">
+                and industry like '%${industry}%'
+            </if>
+            <if test="industryParentId != ''">
+                and industry_parentId like '%${industryParentId}%'
+            </if>
+        </where>
+    </select>
+    <update id="update" parameterType="com.dc.common.domain.UserIndustry">
+        update lds_user_industry
+        set industry = #{industry,jdbcType=VARCHAR},
+          industry_parentId = #{industryParentId,jdbcType=VARCHAR},
+          updated_by = #{updatedBy,jdbcType=CHAR},
+          updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+          where industry_id = #{industryId,jdbcType=CHAR}
+    </update>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.domain.UserResume">
+
+    <!--
+    =================================================================================
+    公用定义区域
+    =================================================================================
+    -->
+    <resultMap id="BaseResultMap" type="com.dc.common.domain.UserResume">
+        <id column="id_key" jdbcType="BIGINT" property="idKey"/>
+        <result column="user_id" jdbcType="CHAR" property="userId"/>
+        <result column="snapshot_id" jdbcType="CHAR" property="snapshotId"/>
+        <result column="resume_id" jdbcType="CHAR" property="resumeId"/>
+        <result column="resume_name" jdbcType="CHAR" property="resumeName"/>
+        <result column="resume_status" jdbcType="CHAR" property="resumeStatus"/>
+        <result column="resume_update_time" jdbcType="TIMESTAMP" property="resumeUpdateTime"/>
+        <result column="privacy_policy" jdbcType="CHAR" property="privacyPolicy"/>
+        <result column="delete" jdbcType="CHAR" property="delete"/>
+        <result column="is_published" jdbcType="CHAR" property="isPublished"/>
+        <result column="is_default" jdbcType="CHAR" property="isDefault"/>
+        <result column="created_by" jdbcType="CHAR" property="createdBy"/>
+        <result column="updated_by" jdbcType="CHAR" property="updatedBy"/>
+        <result column="created_date" jdbcType="TIMESTAMP" property="createdDate"/>
+        <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate"/>
+    </resultMap>
+
+    <sql id="commonSQL">
+         id_key, user_id, snapshot_id, resume_id, resume_name, resume_status, resume_update_time,
+         privacy_policy, `delete`, is_published, is_default, created_by, updated_by, created_date,
+         updated_date
+	</sql>
+
+    <insert id="insert" parameterType="com.dc.common.domain.UserResume">
+        insert into lds_user_resume (user_id, snapshot_id,
+          resume_id, resume_name, resume_status,
+          resume_update_time, privacy_policy, `delete`,
+          is_published, is_default, created_by,
+          updated_by
+          )
+        values (#{userId,jdbcType=CHAR}, #{snapshotId,jdbcType=CHAR},
+          #{resumeId,jdbcType=CHAR}, #{resumeName,jdbcType=CHAR}, #{resumeStatus,jdbcType=CHAR},
+          #{resumeUpdateTime,jdbcType=TIMESTAMP}, #{privacyPolicy,jdbcType=CHAR}, #{delete,jdbcType=CHAR},
+          #{isPublished,jdbcType=CHAR}, #{isDefault,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR},
+          #{updatedBy,jdbcType=CHAR}
+          )
+    </insert>
+
+    <update id="update" parameterType="com.dc.common.domain.UserResume">
+        update lds_user_resume set
+          resume_update_time=#{resumeUpdateTime,jdbcType=TIMESTAMP},
+          updated_by=#{updatedBy,jdbcType=CHAR}
+          where resume_id = #{resumeId,jdbcType=CHAR}
+    </update>
+</mapper>

@@ -1,0 +1,1050 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.generator.mapper.UserIntentionIMapper">
+  <resultMap id="BaseResultMap" type="com.dc.common.domain.UserIntention">
+    <id column="id_key" jdbcType="BIGINT" property="idKey" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="resume_id" jdbcType="CHAR" property="resumeId" />
+    <result column="salary_type" jdbcType="CHAR" property="salaryType" />
+    <result column="expect_salary" jdbcType="CHAR" property="expectSalary" />
+    <result column="work_address" jdbcType="CHAR" property="workAddress" />
+    <result column="work_position" jdbcType="CHAR" property="workPosition" />
+    <result column="work_function" jdbcType="CHAR" property="workFunction" />
+    <result column="industry" jdbcType="CHAR" property="industry" />
+    <result column="come_time" jdbcType="CHAR" property="comeTime" />
+    <result column="work_type" jdbcType="CHAR" property="workType" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="CHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.dc.common.domain.UserIntention">
+    <result column="self_evaluation" jdbcType="LONGVARCHAR" property="selfEvaluation" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_key, user_id, resume_id, salary_type, expect_salary, work_address, work_position, 
+    work_function, industry, come_time, work_type, created_by, updated_by, created_date, 
+    updated_date
+  </sql>
+  <sql id="Blob_Column_List">
+    self_evaluation
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.dc.common.domain.UserIntentionCriteria" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lds_user_intention
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.dc.common.domain.UserIntentionCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lds_user_intention
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from lds_user_intention
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lds_user_intention
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dc.common.domain.UserIntention">
+    insert into lds_user_intention (id_key, user_id, resume_id, 
+      salary_type, expect_salary, work_address, 
+      work_position, work_function, industry, 
+      come_time, work_type, created_by, 
+      updated_by, created_date, updated_date, 
+      self_evaluation)
+    values (#{idKey,jdbcType=BIGINT}, #{userId,jdbcType=CHAR}, #{resumeId,jdbcType=CHAR}, 
+      #{salaryType,jdbcType=CHAR}, #{expectSalary,jdbcType=CHAR}, #{workAddress,jdbcType=CHAR}, 
+      #{workPosition,jdbcType=CHAR}, #{workFunction,jdbcType=CHAR}, #{industry,jdbcType=CHAR}, 
+      #{comeTime,jdbcType=CHAR}, #{workType,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, 
+      #{updatedBy,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, 
+      #{selfEvaluation,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dc.common.domain.UserIntention">
+    insert into lds_user_intention
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        id_key,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="salaryType != null">
+        salary_type,
+      </if>
+      <if test="expectSalary != null">
+        expect_salary,
+      </if>
+      <if test="workAddress != null">
+        work_address,
+      </if>
+      <if test="workPosition != null">
+        work_position,
+      </if>
+      <if test="workFunction != null">
+        work_function,
+      </if>
+      <if test="industry != null">
+        industry,
+      </if>
+      <if test="comeTime != null">
+        come_time,
+      </if>
+      <if test="workType != null">
+        work_type,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="selfEvaluation != null">
+        self_evaluation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        #{idKey,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=CHAR},
+      </if>
+      <if test="salaryType != null">
+        #{salaryType,jdbcType=CHAR},
+      </if>
+      <if test="expectSalary != null">
+        #{expectSalary,jdbcType=CHAR},
+      </if>
+      <if test="workAddress != null">
+        #{workAddress,jdbcType=CHAR},
+      </if>
+      <if test="workPosition != null">
+        #{workPosition,jdbcType=CHAR},
+      </if>
+      <if test="workFunction != null">
+        #{workFunction,jdbcType=CHAR},
+      </if>
+      <if test="industry != null">
+        #{industry,jdbcType=CHAR},
+      </if>
+      <if test="comeTime != null">
+        #{comeTime,jdbcType=CHAR},
+      </if>
+      <if test="workType != null">
+        #{workType,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="selfEvaluation != null">
+        #{selfEvaluation,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into lds_user_intention (id_key, user_id, resume_id, 
+      salary_type, expect_salary, work_address, 
+      work_position, work_function, industry, 
+      come_time, work_type, created_by, 
+      updated_by, created_date, updated_date, 
+      self_evaluation)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idKey,jdbcType=BIGINT}, #{item.userId,jdbcType=CHAR}, #{item.resumeId,jdbcType=CHAR}, 
+        #{item.salaryType,jdbcType=CHAR}, #{item.expectSalary,jdbcType=CHAR}, #{item.workAddress,jdbcType=CHAR}, 
+        #{item.workPosition,jdbcType=CHAR}, #{item.workFunction,jdbcType=CHAR}, #{item.industry,jdbcType=CHAR}, 
+        #{item.comeTime,jdbcType=CHAR}, #{item.workType,jdbcType=CHAR}, #{item.createdBy,jdbcType=CHAR}, 
+        #{item.updatedBy,jdbcType=CHAR}, #{item.createdDate,jdbcType=TIMESTAMP}, #{item.updatedDate,jdbcType=TIMESTAMP}, 
+        #{item.selfEvaluation,jdbcType=LONGVARCHAR})
+    </foreach>
+  </insert>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    insert into lds_user_intention
+    (id_key, user_id, resume_id, salary_type, expect_salary, work_address, work_position, 
+      work_function, industry, come_time, work_type, created_by, updated_by, created_date, 
+      updated_date, self_evaluation)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.idKey != null">
+          #{item.idKey,jdbcType=BIGINT},
+        </if>
+        <if test="item.idKey == null">
+          NULL,
+        </if>
+        <if test="item.userId != null">
+          #{item.userId,jdbcType=CHAR},
+        </if>
+        <if test="item.userId == null">
+          NULL,
+        </if>
+        <if test="item.resumeId != null">
+          #{item.resumeId,jdbcType=CHAR},
+        </if>
+        <if test="item.resumeId == null">
+          NULL,
+        </if>
+        <if test="item.salaryType != null">
+          #{item.salaryType,jdbcType=CHAR},
+        </if>
+        <if test="item.salaryType == null">
+          NULL,
+        </if>
+        <if test="item.expectSalary != null">
+          #{item.expectSalary,jdbcType=CHAR},
+        </if>
+        <if test="item.expectSalary == null">
+          NULL,
+        </if>
+        <if test="item.workAddress != null">
+          #{item.workAddress,jdbcType=CHAR},
+        </if>
+        <if test="item.workAddress == null">
+          NULL,
+        </if>
+        <if test="item.workPosition != null">
+          #{item.workPosition,jdbcType=CHAR},
+        </if>
+        <if test="item.workPosition == null">
+          NULL,
+        </if>
+        <if test="item.workFunction != null">
+          #{item.workFunction,jdbcType=CHAR},
+        </if>
+        <if test="item.workFunction == null">
+          NULL,
+        </if>
+        <if test="item.industry != null">
+          #{item.industry,jdbcType=CHAR},
+        </if>
+        <if test="item.industry == null">
+          NULL,
+        </if>
+        <if test="item.comeTime != null">
+          #{item.comeTime,jdbcType=CHAR},
+        </if>
+        <if test="item.comeTime == null">
+          NULL,
+        </if>
+        <if test="item.workType != null">
+          #{item.workType,jdbcType=CHAR},
+        </if>
+        <if test="item.workType == null">
+          NULL,
+        </if>
+        <if test="item.createdBy != null">
+          #{item.createdBy,jdbcType=CHAR},
+        </if>
+        <if test="item.createdBy == null">
+          NULL,
+        </if>
+        <if test="item.updatedBy != null">
+          #{item.updatedBy,jdbcType=CHAR},
+        </if>
+        <if test="item.updatedBy == null">
+          NULL,
+        </if>
+        <if test="item.createdDate != null">
+          #{item.createdDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.createdDate == null">
+          NULL,
+        </if>
+        <if test="item.updatedDate != null">
+          #{item.updatedDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updatedDate == null">
+          NULL,
+        </if>
+        <if test="item.selfEvaluation != null">
+          #{item.selfEvaluation,jdbcType=LONGVARCHAR},
+        </if>
+        <if test="item.selfEvaluation == null">
+          NULL,
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <select id="countByExample" parameterType="com.dc.common.domain.UserIntentionCriteria" resultType="java.lang.Long">
+    select count(*) from lds_user_intention
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lds_user_intention
+    <set>
+      <if test="record.idKey != null">
+        id_key = #{record.idKey,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeId != null">
+        resume_id = #{record.resumeId,jdbcType=CHAR},
+      </if>
+      <if test="record.salaryType != null">
+        salary_type = #{record.salaryType,jdbcType=CHAR},
+      </if>
+      <if test="record.expectSalary != null">
+        expect_salary = #{record.expectSalary,jdbcType=CHAR},
+      </if>
+      <if test="record.workAddress != null">
+        work_address = #{record.workAddress,jdbcType=CHAR},
+      </if>
+      <if test="record.workPosition != null">
+        work_position = #{record.workPosition,jdbcType=CHAR},
+      </if>
+      <if test="record.workFunction != null">
+        work_function = #{record.workFunction,jdbcType=CHAR},
+      </if>
+      <if test="record.industry != null">
+        industry = #{record.industry,jdbcType=CHAR},
+      </if>
+      <if test="record.comeTime != null">
+        come_time = #{record.comeTime,jdbcType=CHAR},
+      </if>
+      <if test="record.workType != null">
+        work_type = #{record.workType,jdbcType=CHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdDate != null">
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null">
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.selfEvaluation != null">
+        self_evaluation = #{record.selfEvaluation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update lds_user_intention
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=CHAR},
+      resume_id = #{record.resumeId,jdbcType=CHAR},
+      salary_type = #{record.salaryType,jdbcType=CHAR},
+      expect_salary = #{record.expectSalary,jdbcType=CHAR},
+      work_address = #{record.workAddress,jdbcType=CHAR},
+      work_position = #{record.workPosition,jdbcType=CHAR},
+      work_function = #{record.workFunction,jdbcType=CHAR},
+      industry = #{record.industry,jdbcType=CHAR},
+      come_time = #{record.comeTime,jdbcType=CHAR},
+      work_type = #{record.workType,jdbcType=CHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      self_evaluation = #{record.selfEvaluation,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lds_user_intention
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=CHAR},
+      resume_id = #{record.resumeId,jdbcType=CHAR},
+      salary_type = #{record.salaryType,jdbcType=CHAR},
+      expect_salary = #{record.expectSalary,jdbcType=CHAR},
+      work_address = #{record.workAddress,jdbcType=CHAR},
+      work_position = #{record.workPosition,jdbcType=CHAR},
+      work_function = #{record.workFunction,jdbcType=CHAR},
+      industry = #{record.industry,jdbcType=CHAR},
+      come_time = #{record.comeTime,jdbcType=CHAR},
+      work_type = #{record.workType,jdbcType=CHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dc.common.domain.UserIntention">
+    update lds_user_intention
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=CHAR},
+      </if>
+      <if test="salaryType != null">
+        salary_type = #{salaryType,jdbcType=CHAR},
+      </if>
+      <if test="expectSalary != null">
+        expect_salary = #{expectSalary,jdbcType=CHAR},
+      </if>
+      <if test="workAddress != null">
+        work_address = #{workAddress,jdbcType=CHAR},
+      </if>
+      <if test="workPosition != null">
+        work_position = #{workPosition,jdbcType=CHAR},
+      </if>
+      <if test="workFunction != null">
+        work_function = #{workFunction,jdbcType=CHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=CHAR},
+      </if>
+      <if test="comeTime != null">
+        come_time = #{comeTime,jdbcType=CHAR},
+      </if>
+      <if test="workType != null">
+        work_type = #{workType,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="selfEvaluation != null">
+        self_evaluation = #{selfEvaluation,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.dc.common.domain.UserIntention">
+    update lds_user_intention
+    set user_id = #{userId,jdbcType=CHAR},
+      resume_id = #{resumeId,jdbcType=CHAR},
+      salary_type = #{salaryType,jdbcType=CHAR},
+      expect_salary = #{expectSalary,jdbcType=CHAR},
+      work_address = #{workAddress,jdbcType=CHAR},
+      work_position = #{workPosition,jdbcType=CHAR},
+      work_function = #{workFunction,jdbcType=CHAR},
+      industry = #{industry,jdbcType=CHAR},
+      come_time = #{comeTime,jdbcType=CHAR},
+      work_type = #{workType,jdbcType=CHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      self_evaluation = #{selfEvaluation,jdbcType=LONGVARCHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dc.common.domain.UserIntention">
+    update lds_user_intention
+    set user_id = #{userId,jdbcType=CHAR},
+      resume_id = #{resumeId,jdbcType=CHAR},
+      salary_type = #{salaryType,jdbcType=CHAR},
+      expect_salary = #{expectSalary,jdbcType=CHAR},
+      work_address = #{workAddress,jdbcType=CHAR},
+      work_position = #{workPosition,jdbcType=CHAR},
+      work_function = #{workFunction,jdbcType=CHAR},
+      industry = #{industry,jdbcType=CHAR},
+      come_time = #{comeTime,jdbcType=CHAR},
+      work_type = #{workType,jdbcType=CHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+    update lds_user_intention
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="salary_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.salaryType}
+        </foreach>
+      </trim>
+      <trim prefix="expect_salary =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.expectSalary}
+        </foreach>
+      </trim>
+      <trim prefix="work_address =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workAddress}
+        </foreach>
+      </trim>
+      <trim prefix="work_position =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workPosition}
+        </foreach>
+      </trim>
+      <trim prefix="work_function =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workFunction}
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.industry}
+        </foreach>
+      </trim>
+      <trim prefix="come_time =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.comeTime}
+        </foreach>
+      </trim>
+      <trim prefix="work_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workType}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="self_evaluation =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.selfEvaluation}
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    update lds_user_intention
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_intention.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_intention.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="salary_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.salaryType != null ">
+            when  #{item.idKey} then #{item.salaryType}
+          </if>
+          <if test="item.salaryType == null ">
+            when  #{item.idKey} then lds_user_intention.salary_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="expect_salary =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.expectSalary != null ">
+            when  #{item.idKey} then #{item.expectSalary}
+          </if>
+          <if test="item.expectSalary == null ">
+            when  #{item.idKey} then lds_user_intention.expect_salary
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_address =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.workAddress != null ">
+            when  #{item.idKey} then #{item.workAddress}
+          </if>
+          <if test="item.workAddress == null ">
+            when  #{item.idKey} then lds_user_intention.work_address
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_position =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.workPosition != null ">
+            when  #{item.idKey} then #{item.workPosition}
+          </if>
+          <if test="item.workPosition == null ">
+            when  #{item.idKey} then lds_user_intention.work_position
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_function =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.workFunction != null ">
+            when  #{item.idKey} then #{item.workFunction}
+          </if>
+          <if test="item.workFunction == null ">
+            when  #{item.idKey} then lds_user_intention.work_function
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.industry != null ">
+            when  #{item.idKey} then #{item.industry}
+          </if>
+          <if test="item.industry == null ">
+            when  #{item.idKey} then lds_user_intention.industry
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="come_time =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.comeTime != null ">
+            when  #{item.idKey} then #{item.comeTime}
+          </if>
+          <if test="item.comeTime == null ">
+            when  #{item.idKey} then lds_user_intention.come_time
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_type =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.workType != null ">
+            when  #{item.idKey} then #{item.workType}
+          </if>
+          <if test="item.workType == null ">
+            when  #{item.idKey} then lds_user_intention.work_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_intention.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_intention.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_intention.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_intention.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="self_evaluation =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.selfEvaluation != null ">
+            when  #{item.idKey} then #{item.selfEvaluation}
+          </if>
+          <if test="item.selfEvaluation == null ">
+            when  #{item.idKey} then lds_user_intention.self_evaluation
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByExample" parameterType="map">
+    update lds_user_intention
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="salary_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.salaryType}
+        </foreach>
+      </trim>
+      <trim prefix="expect_salary =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.expectSalary}
+        </foreach>
+      </trim>
+      <trim prefix="work_address =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workAddress}
+        </foreach>
+      </trim>
+      <trim prefix="work_position =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workPosition}
+        </foreach>
+      </trim>
+      <trim prefix="work_function =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workFunction}
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.industry}
+        </foreach>
+      </trim>
+      <trim prefix="come_time =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.comeTime}
+        </foreach>
+      </trim>
+      <trim prefix="work_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.workType}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="self_evaluation =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.selfEvaluation}
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateBatchByExampleSelective" parameterType="map">
+    update lds_user_intention
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_intention.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_intention.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="salary_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.salaryType != null ">
+            when  #{item.idKey} then #{item.salaryType}
+          </if>
+          <if test="item.salaryType == null ">
+            when  #{item.idKey} then lds_user_intention.salary_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="expect_salary =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.expectSalary != null ">
+            when  #{item.idKey} then #{item.expectSalary}
+          </if>
+          <if test="item.expectSalary == null ">
+            when  #{item.idKey} then lds_user_intention.expect_salary
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_address =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.workAddress != null ">
+            when  #{item.idKey} then #{item.workAddress}
+          </if>
+          <if test="item.workAddress == null ">
+            when  #{item.idKey} then lds_user_intention.work_address
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_position =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.workPosition != null ">
+            when  #{item.idKey} then #{item.workPosition}
+          </if>
+          <if test="item.workPosition == null ">
+            when  #{item.idKey} then lds_user_intention.work_position
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_function =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.workFunction != null ">
+            when  #{item.idKey} then #{item.workFunction}
+          </if>
+          <if test="item.workFunction == null ">
+            when  #{item.idKey} then lds_user_intention.work_function
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="industry =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.industry != null ">
+            when  #{item.idKey} then #{item.industry}
+          </if>
+          <if test="item.industry == null ">
+            when  #{item.idKey} then lds_user_intention.industry
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="come_time =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.comeTime != null ">
+            when  #{item.idKey} then #{item.comeTime}
+          </if>
+          <if test="item.comeTime == null ">
+            when  #{item.idKey} then lds_user_intention.come_time
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="work_type =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.workType != null ">
+            when  #{item.idKey} then #{item.workType}
+          </if>
+          <if test="item.workType == null ">
+            when  #{item.idKey} then lds_user_intention.work_type
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_intention.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_intention.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_intention.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_intention.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="self_evaluation =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.selfEvaluation != null ">
+            when  #{item.idKey} then #{item.selfEvaluation}
+          </if>
+          <if test="item.selfEvaluation == null ">
+            when  #{item.idKey} then lds_user_intention.self_evaluation
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

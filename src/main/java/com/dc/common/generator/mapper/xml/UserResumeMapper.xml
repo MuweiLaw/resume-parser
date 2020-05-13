@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.generator.mapper.UserResumeIMapper">
+  <resultMap id="BaseResultMap" type="com.dc.common.domain.UserResume">
+    <id column="id_key" jdbcType="BIGINT" property="idKey" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="snapshot_id" jdbcType="CHAR" property="snapshotId" />
+    <result column="resume_id" jdbcType="CHAR" property="resumeId" />
+    <result column="resume_name" jdbcType="CHAR" property="resumeName" />
+    <result column="resume_status" jdbcType="CHAR" property="resumeStatus" />
+    <result column="resume_update_time" jdbcType="TIMESTAMP" property="resumeUpdateTime" />
+    <result column="privacy_policy" jdbcType="CHAR" property="privacyPolicy" />
+    <result column="delete" jdbcType="CHAR" property="delete" />
+    <result column="is_published" jdbcType="CHAR" property="isPublished" />
+    <result column="is_default" jdbcType="CHAR" property="isDefault" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="CHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_key, user_id, snapshot_id, resume_id, resume_name, resume_status, resume_update_time, 
+    privacy_policy, delete, is_published, is_default, created_by, updated_by, created_date, 
+    updated_date
+  </sql>
+  <select id="selectByExample" parameterType="com.dc.common.domain.UserResumeCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from lds_user_resume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lds_user_resume
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lds_user_resume
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dc.common.domain.UserResume">
+    insert into lds_user_resume (id_key, user_id, snapshot_id, 
+      resume_id, resume_name, resume_status, 
+      resume_update_time, privacy_policy, delete, 
+      is_published, is_default, created_by, 
+      updated_by, created_date, updated_date
+      )
+    values (#{idKey,jdbcType=BIGINT}, #{userId,jdbcType=CHAR}, #{snapshotId,jdbcType=CHAR}, 
+      #{resumeId,jdbcType=CHAR}, #{resumeName,jdbcType=CHAR}, #{resumeStatus,jdbcType=CHAR}, 
+      #{resumeUpdateTime,jdbcType=TIMESTAMP}, #{privacyPolicy,jdbcType=CHAR}, #{delete,jdbcType=CHAR}, 
+      #{isPublished,jdbcType=CHAR}, #{isDefault,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, 
+      #{updatedBy,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.dc.common.domain.UserResume">
+    insert into lds_user_resume
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        id_key,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="snapshotId != null">
+        snapshot_id,
+      </if>
+      <if test="resumeId != null">
+        resume_id,
+      </if>
+      <if test="resumeName != null">
+        resume_name,
+      </if>
+      <if test="resumeStatus != null">
+        resume_status,
+      </if>
+      <if test="resumeUpdateTime != null">
+        resume_update_time,
+      </if>
+      <if test="privacyPolicy != null">
+        privacy_policy,
+      </if>
+      <if test="delete != null">
+        delete,
+      </if>
+      <if test="isPublished != null">
+        is_published,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        #{idKey,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="snapshotId != null">
+        #{snapshotId,jdbcType=CHAR},
+      </if>
+      <if test="resumeId != null">
+        #{resumeId,jdbcType=CHAR},
+      </if>
+      <if test="resumeName != null">
+        #{resumeName,jdbcType=CHAR},
+      </if>
+      <if test="resumeStatus != null">
+        #{resumeStatus,jdbcType=CHAR},
+      </if>
+      <if test="resumeUpdateTime != null">
+        #{resumeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="privacyPolicy != null">
+        #{privacyPolicy,jdbcType=CHAR},
+      </if>
+      <if test="delete != null">
+        #{delete,jdbcType=CHAR},
+      </if>
+      <if test="isPublished != null">
+        #{isPublished,jdbcType=CHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into lds_user_resume (id_key, user_id, snapshot_id, 
+      resume_id, resume_name, resume_status, 
+      resume_update_time, privacy_policy, 
+      delete, is_published, is_default, 
+      created_by, updated_by, created_date, 
+      updated_date)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idKey,jdbcType=BIGINT}, #{item.userId,jdbcType=CHAR}, #{item.snapshotId,jdbcType=CHAR}, 
+        #{item.resumeId,jdbcType=CHAR}, #{item.resumeName,jdbcType=CHAR}, #{item.resumeStatus,jdbcType=CHAR}, 
+        #{item.resumeUpdateTime,jdbcType=TIMESTAMP}, #{item.privacyPolicy,jdbcType=CHAR}, 
+        #{item.delete,jdbcType=CHAR}, #{item.isPublished,jdbcType=CHAR}, #{item.isDefault,jdbcType=CHAR}, 
+        #{item.createdBy,jdbcType=CHAR}, #{item.updatedBy,jdbcType=CHAR}, #{item.createdDate,jdbcType=TIMESTAMP}, 
+        #{item.updatedDate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    insert into lds_user_resume
+    (id_key, user_id, snapshot_id, resume_id, resume_name, resume_status, resume_update_time, 
+      privacy_policy, delete, is_published, is_default, created_by, updated_by, created_date, 
+      updated_date)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.idKey != null">
+          #{item.idKey,jdbcType=BIGINT},
+        </if>
+        <if test="item.idKey == null">
+          NULL,
+        </if>
+        <if test="item.userId != null">
+          #{item.userId,jdbcType=CHAR},
+        </if>
+        <if test="item.userId == null">
+          NULL,
+        </if>
+        <if test="item.snapshotId != null">
+          #{item.snapshotId,jdbcType=CHAR},
+        </if>
+        <if test="item.snapshotId == null">
+          NULL,
+        </if>
+        <if test="item.resumeId != null">
+          #{item.resumeId,jdbcType=CHAR},
+        </if>
+        <if test="item.resumeId == null">
+          NULL,
+        </if>
+        <if test="item.resumeName != null">
+          #{item.resumeName,jdbcType=CHAR},
+        </if>
+        <if test="item.resumeName == null">
+          NULL,
+        </if>
+        <if test="item.resumeStatus != null">
+          #{item.resumeStatus,jdbcType=CHAR},
+        </if>
+        <if test="item.resumeStatus == null">
+          NULL,
+        </if>
+        <if test="item.resumeUpdateTime != null">
+          #{item.resumeUpdateTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.resumeUpdateTime == null">
+          NULL,
+        </if>
+        <if test="item.privacyPolicy != null">
+          #{item.privacyPolicy,jdbcType=CHAR},
+        </if>
+        <if test="item.privacyPolicy == null">
+          NULL,
+        </if>
+        <if test="item.delete != null">
+          #{item.delete,jdbcType=CHAR},
+        </if>
+        <if test="item.delete == null">
+          NULL,
+        </if>
+        <if test="item.isPublished != null">
+          #{item.isPublished,jdbcType=CHAR},
+        </if>
+        <if test="item.isPublished == null">
+          NULL,
+        </if>
+        <if test="item.isDefault != null">
+          #{item.isDefault,jdbcType=CHAR},
+        </if>
+        <if test="item.isDefault == null">
+          NULL,
+        </if>
+        <if test="item.createdBy != null">
+          #{item.createdBy,jdbcType=CHAR},
+        </if>
+        <if test="item.createdBy == null">
+          NULL,
+        </if>
+        <if test="item.updatedBy != null">
+          #{item.updatedBy,jdbcType=CHAR},
+        </if>
+        <if test="item.updatedBy == null">
+          NULL,
+        </if>
+        <if test="item.createdDate != null">
+          #{item.createdDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.createdDate == null">
+          NULL,
+        </if>
+        <if test="item.updatedDate != null">
+          #{item.updatedDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updatedDate == null">
+          NULL,
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <select id="countByExample" parameterType="com.dc.common.domain.UserResumeCriteria" resultType="java.lang.Long">
+    select count(*) from lds_user_resume
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update lds_user_resume
+    <set>
+      <if test="record.idKey != null">
+        id_key = #{record.idKey,jdbcType=BIGINT},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=CHAR},
+      </if>
+      <if test="record.snapshotId != null">
+        snapshot_id = #{record.snapshotId,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeId != null">
+        resume_id = #{record.resumeId,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeName != null">
+        resume_name = #{record.resumeName,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeStatus != null">
+        resume_status = #{record.resumeStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeUpdateTime != null">
+        resume_update_time = #{record.resumeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.privacyPolicy != null">
+        privacy_policy = #{record.privacyPolicy,jdbcType=CHAR},
+      </if>
+      <if test="record.delete != null">
+        delete = #{record.delete,jdbcType=CHAR},
+      </if>
+      <if test="record.isPublished != null">
+        is_published = #{record.isPublished,jdbcType=CHAR},
+      </if>
+      <if test="record.isDefault != null">
+        is_default = #{record.isDefault,jdbcType=CHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdDate != null">
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null">
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update lds_user_resume
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      user_id = #{record.userId,jdbcType=CHAR},
+      snapshot_id = #{record.snapshotId,jdbcType=CHAR},
+      resume_id = #{record.resumeId,jdbcType=CHAR},
+      resume_name = #{record.resumeName,jdbcType=CHAR},
+      resume_status = #{record.resumeStatus,jdbcType=CHAR},
+      resume_update_time = #{record.resumeUpdateTime,jdbcType=TIMESTAMP},
+      privacy_policy = #{record.privacyPolicy,jdbcType=CHAR},
+      delete = #{record.delete,jdbcType=CHAR},
+      is_published = #{record.isPublished,jdbcType=CHAR},
+      is_default = #{record.isDefault,jdbcType=CHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dc.common.domain.UserResume">
+    update lds_user_resume
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="snapshotId != null">
+        snapshot_id = #{snapshotId,jdbcType=CHAR},
+      </if>
+      <if test="resumeId != null">
+        resume_id = #{resumeId,jdbcType=CHAR},
+      </if>
+      <if test="resumeName != null">
+        resume_name = #{resumeName,jdbcType=CHAR},
+      </if>
+      <if test="resumeStatus != null">
+        resume_status = #{resumeStatus,jdbcType=CHAR},
+      </if>
+      <if test="resumeUpdateTime != null">
+        resume_update_time = #{resumeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="privacyPolicy != null">
+        privacy_policy = #{privacyPolicy,jdbcType=CHAR},
+      </if>
+      <if test="delete != null">
+        delete = #{delete,jdbcType=CHAR},
+      </if>
+      <if test="isPublished != null">
+        is_published = #{isPublished,jdbcType=CHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dc.common.domain.UserResume">
+    update lds_user_resume
+    set user_id = #{userId,jdbcType=CHAR},
+      snapshot_id = #{snapshotId,jdbcType=CHAR},
+      resume_id = #{resumeId,jdbcType=CHAR},
+      resume_name = #{resumeName,jdbcType=CHAR},
+      resume_status = #{resumeStatus,jdbcType=CHAR},
+      resume_update_time = #{resumeUpdateTime,jdbcType=TIMESTAMP},
+      privacy_policy = #{privacyPolicy,jdbcType=CHAR},
+      delete = #{delete,jdbcType=CHAR},
+      is_published = #{isPublished,jdbcType=CHAR},
+      is_default = #{isDefault,jdbcType=CHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+    update lds_user_resume
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="snapshot_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.snapshotId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeName}
+        </foreach>
+      </trim>
+      <trim prefix="resume_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeStatus}
+        </foreach>
+      </trim>
+      <trim prefix="resume_update_time =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeUpdateTime}
+        </foreach>
+      </trim>
+      <trim prefix="privacy_policy =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.privacyPolicy}
+        </foreach>
+      </trim>
+      <trim prefix="delete =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.delete}
+        </foreach>
+      </trim>
+      <trim prefix="is_published =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isPublished}
+        </foreach>
+      </trim>
+      <trim prefix="is_default =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isDefault}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    update lds_user_resume
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_resume.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="snapshot_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.snapshotId != null ">
+            when  #{item.idKey} then #{item.snapshotId}
+          </if>
+          <if test="item.snapshotId == null ">
+            when  #{item.idKey} then lds_user_resume.snapshot_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_resume.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeName != null ">
+            when  #{item.idKey} then #{item.resumeName}
+          </if>
+          <if test="item.resumeName == null ">
+            when  #{item.idKey} then lds_user_resume.resume_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_status =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeStatus != null ">
+            when  #{item.idKey} then #{item.resumeStatus}
+          </if>
+          <if test="item.resumeStatus == null ">
+            when  #{item.idKey} then lds_user_resume.resume_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_update_time =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.resumeUpdateTime != null ">
+            when  #{item.idKey} then #{item.resumeUpdateTime}
+          </if>
+          <if test="item.resumeUpdateTime == null ">
+            when  #{item.idKey} then lds_user_resume.resume_update_time
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="privacy_policy =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.privacyPolicy != null ">
+            when  #{item.idKey} then #{item.privacyPolicy}
+          </if>
+          <if test="item.privacyPolicy == null ">
+            when  #{item.idKey} then lds_user_resume.privacy_policy
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="delete =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.delete != null ">
+            when  #{item.idKey} then #{item.delete}
+          </if>
+          <if test="item.delete == null ">
+            when  #{item.idKey} then lds_user_resume.delete
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_published =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.isPublished != null ">
+            when  #{item.idKey} then #{item.isPublished}
+          </if>
+          <if test="item.isPublished == null ">
+            when  #{item.idKey} then lds_user_resume.is_published
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_default =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.isDefault != null ">
+            when  #{item.idKey} then #{item.isDefault}
+          </if>
+          <if test="item.isDefault == null ">
+            when  #{item.idKey} then lds_user_resume.is_default
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_resume.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_resume.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_resume.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_resume.updated_date
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByExample" parameterType="map">
+    update lds_user_resume
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.userId}
+        </foreach>
+      </trim>
+      <trim prefix="snapshot_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.snapshotId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeId}
+        </foreach>
+      </trim>
+      <trim prefix="resume_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeName}
+        </foreach>
+      </trim>
+      <trim prefix="resume_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeStatus}
+        </foreach>
+      </trim>
+      <trim prefix="resume_update_time =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.resumeUpdateTime}
+        </foreach>
+      </trim>
+      <trim prefix="privacy_policy =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.privacyPolicy}
+        </foreach>
+      </trim>
+      <trim prefix="delete =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.delete}
+        </foreach>
+      </trim>
+      <trim prefix="is_published =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isPublished}
+        </foreach>
+      </trim>
+      <trim prefix="is_default =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isDefault}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateBatchByExampleSelective" parameterType="map">
+    update lds_user_resume
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.userId != null ">
+            when  #{item.idKey} then #{item.userId}
+          </if>
+          <if test="item.userId == null ">
+            when  #{item.idKey} then lds_user_resume.user_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="snapshot_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.snapshotId != null ">
+            when  #{item.idKey} then #{item.snapshotId}
+          </if>
+          <if test="item.snapshotId == null ">
+            when  #{item.idKey} then lds_user_resume.snapshot_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeId != null ">
+            when  #{item.idKey} then #{item.resumeId}
+          </if>
+          <if test="item.resumeId == null ">
+            when  #{item.idKey} then lds_user_resume.resume_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeName != null ">
+            when  #{item.idKey} then #{item.resumeName}
+          </if>
+          <if test="item.resumeName == null ">
+            when  #{item.idKey} then lds_user_resume.resume_name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_status =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeStatus != null ">
+            when  #{item.idKey} then #{item.resumeStatus}
+          </if>
+          <if test="item.resumeStatus == null ">
+            when  #{item.idKey} then lds_user_resume.resume_status
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="resume_update_time =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.resumeUpdateTime != null ">
+            when  #{item.idKey} then #{item.resumeUpdateTime}
+          </if>
+          <if test="item.resumeUpdateTime == null ">
+            when  #{item.idKey} then lds_user_resume.resume_update_time
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="privacy_policy =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.privacyPolicy != null ">
+            when  #{item.idKey} then #{item.privacyPolicy}
+          </if>
+          <if test="item.privacyPolicy == null ">
+            when  #{item.idKey} then lds_user_resume.privacy_policy
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="delete =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.delete != null ">
+            when  #{item.idKey} then #{item.delete}
+          </if>
+          <if test="item.delete == null ">
+            when  #{item.idKey} then lds_user_resume.delete
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_published =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.isPublished != null ">
+            when  #{item.idKey} then #{item.isPublished}
+          </if>
+          <if test="item.isPublished == null ">
+            when  #{item.idKey} then lds_user_resume.is_published
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_default =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.isDefault != null ">
+            when  #{item.idKey} then #{item.isDefault}
+          </if>
+          <if test="item.isDefault == null ">
+            when  #{item.idKey} then lds_user_resume.is_default
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then lds_user_resume.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then lds_user_resume.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then lds_user_resume.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then lds_user_resume.updated_date
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

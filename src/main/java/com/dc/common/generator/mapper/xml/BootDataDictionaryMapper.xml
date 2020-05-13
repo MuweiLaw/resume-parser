@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dc.common.generator.mapper.BootDataDictionaryIMapper">
+  <resultMap id="BaseResultMap" type="com.dc.common.domain.BootDataDictionary">
+    <id column="id_key" jdbcType="BIGINT" property="idKey" />
+    <result column="tree_id" jdbcType="CHAR" property="treeId" />
+    <result column="parent_id" jdbcType="CHAR" property="parentId" />
+    <result column="group" jdbcType="CHAR" property="group" />
+    <result column="value" jdbcType="CHAR" property="value" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="comment" jdbcType="CHAR" property="comment" />
+    <result column="order_no" jdbcType="INTEGER" property="orderNo" />
+    <result column="is_used" jdbcType="CHAR" property="isUsed" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="updated_by" jdbcType="CHAR" property="updatedBy" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="is_highlight" jdbcType="CHAR" property="isHighlight" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id_key, tree_id, parent_id, group, value, name, comment, order_no, is_used, created_by, 
+    updated_by, created_date, updated_date, is_highlight
+  </sql>
+  <select id="selectByExample" parameterType="com.dc.common.domain.BootDataDictionaryCriteria" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from boot_data_dictionary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from boot_data_dictionary
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from boot_data_dictionary
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.dc.common.domain.BootDataDictionary">
+    insert into boot_data_dictionary (id_key, tree_id, parent_id, 
+      group, value, name, comment, 
+      order_no, is_used, created_by, 
+      updated_by, created_date, updated_date, 
+      is_highlight)
+    values (#{idKey,jdbcType=BIGINT}, #{treeId,jdbcType=CHAR}, #{parentId,jdbcType=CHAR}, 
+      #{group,jdbcType=CHAR}, #{value,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{comment,jdbcType=CHAR}, 
+      #{orderNo,jdbcType=INTEGER}, #{isUsed,jdbcType=CHAR}, #{createdBy,jdbcType=CHAR}, 
+      #{updatedBy,jdbcType=CHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, 
+      #{isHighlight,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.dc.common.domain.BootDataDictionary">
+    insert into boot_data_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        id_key,
+      </if>
+      <if test="treeId != null">
+        tree_id,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="group != null">
+        group,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="comment != null">
+        comment,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="isUsed != null">
+        is_used,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="updatedBy != null">
+        updated_by,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="isHighlight != null">
+        is_highlight,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="idKey != null">
+        #{idKey,jdbcType=BIGINT},
+      </if>
+      <if test="treeId != null">
+        #{treeId,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="group != null">
+        #{group,jdbcType=CHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=CHAR},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="isUsed != null">
+        #{isUsed,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isHighlight != null">
+        #{isHighlight,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into boot_data_dictionary (id_key, tree_id, parent_id, 
+      group, value, name, 
+      comment, order_no, is_used, 
+      created_by, updated_by, created_date, 
+      updated_date, is_highlight)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idKey,jdbcType=BIGINT}, #{item.treeId,jdbcType=CHAR}, #{item.parentId,jdbcType=CHAR}, 
+        #{item.group,jdbcType=CHAR}, #{item.value,jdbcType=CHAR}, #{item.name,jdbcType=CHAR}, 
+        #{item.comment,jdbcType=CHAR}, #{item.orderNo,jdbcType=INTEGER}, #{item.isUsed,jdbcType=CHAR}, 
+        #{item.createdBy,jdbcType=CHAR}, #{item.updatedBy,jdbcType=CHAR}, #{item.createdDate,jdbcType=TIMESTAMP}, 
+        #{item.updatedDate,jdbcType=TIMESTAMP}, #{item.isHighlight,jdbcType=CHAR})
+    </foreach>
+  </insert>
+  <insert id="insertBatchSelective" parameterType="java.util.List">
+    insert into boot_data_dictionary
+    (id_key, tree_id, parent_id, group, value, name, comment, order_no, is_used, created_by, 
+      updated_by, created_date, updated_date, is_highlight)
+    values 
+    <foreach collection="list" index="index" item="item" separator=",">
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="item.idKey != null">
+          #{item.idKey,jdbcType=BIGINT},
+        </if>
+        <if test="item.idKey == null">
+          NULL,
+        </if>
+        <if test="item.treeId != null">
+          #{item.treeId,jdbcType=CHAR},
+        </if>
+        <if test="item.treeId == null">
+          NULL,
+        </if>
+        <if test="item.parentId != null">
+          #{item.parentId,jdbcType=CHAR},
+        </if>
+        <if test="item.parentId == null">
+          NULL,
+        </if>
+        <if test="item.group != null">
+          #{item.group,jdbcType=CHAR},
+        </if>
+        <if test="item.group == null">
+          NULL,
+        </if>
+        <if test="item.value != null">
+          #{item.value,jdbcType=CHAR},
+        </if>
+        <if test="item.value == null">
+          NULL,
+        </if>
+        <if test="item.name != null">
+          #{item.name,jdbcType=CHAR},
+        </if>
+        <if test="item.name == null">
+          NULL,
+        </if>
+        <if test="item.comment != null">
+          #{item.comment,jdbcType=CHAR},
+        </if>
+        <if test="item.comment == null">
+          NULL,
+        </if>
+        <if test="item.orderNo != null">
+          #{item.orderNo,jdbcType=INTEGER},
+        </if>
+        <if test="item.orderNo == null">
+          NULL,
+        </if>
+        <if test="item.isUsed != null">
+          #{item.isUsed,jdbcType=CHAR},
+        </if>
+        <if test="item.isUsed == null">
+          NULL,
+        </if>
+        <if test="item.createdBy != null">
+          #{item.createdBy,jdbcType=CHAR},
+        </if>
+        <if test="item.createdBy == null">
+          NULL,
+        </if>
+        <if test="item.updatedBy != null">
+          #{item.updatedBy,jdbcType=CHAR},
+        </if>
+        <if test="item.updatedBy == null">
+          NULL,
+        </if>
+        <if test="item.createdDate != null">
+          #{item.createdDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.createdDate == null">
+          NULL,
+        </if>
+        <if test="item.updatedDate != null">
+          #{item.updatedDate,jdbcType=TIMESTAMP},
+        </if>
+        <if test="item.updatedDate == null">
+          NULL,
+        </if>
+        <if test="item.isHighlight != null">
+          #{item.isHighlight,jdbcType=CHAR},
+        </if>
+        <if test="item.isHighlight == null">
+          NULL,
+        </if>
+      </trim>
+    </foreach>
+  </insert>
+  <select id="countByExample" parameterType="com.dc.common.domain.BootDataDictionaryCriteria" resultType="java.lang.Long">
+    select count(*) from boot_data_dictionary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update boot_data_dictionary
+    <set>
+      <if test="record.idKey != null">
+        id_key = #{record.idKey,jdbcType=BIGINT},
+      </if>
+      <if test="record.treeId != null">
+        tree_id = #{record.treeId,jdbcType=CHAR},
+      </if>
+      <if test="record.parentId != null">
+        parent_id = #{record.parentId,jdbcType=CHAR},
+      </if>
+      <if test="record.group != null">
+        group = #{record.group,jdbcType=CHAR},
+      </if>
+      <if test="record.value != null">
+        value = #{record.value,jdbcType=CHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=CHAR},
+      </if>
+      <if test="record.comment != null">
+        comment = #{record.comment,jdbcType=CHAR},
+      </if>
+      <if test="record.orderNo != null">
+        order_no = #{record.orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="record.isUsed != null">
+        is_used = #{record.isUsed,jdbcType=CHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=CHAR},
+      </if>
+      <if test="record.updatedBy != null">
+        updated_by = #{record.updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="record.createdDate != null">
+        created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedDate != null">
+        updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isHighlight != null">
+        is_highlight = #{record.isHighlight,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update boot_data_dictionary
+    set id_key = #{record.idKey,jdbcType=BIGINT},
+      tree_id = #{record.treeId,jdbcType=CHAR},
+      parent_id = #{record.parentId,jdbcType=CHAR},
+      group = #{record.group,jdbcType=CHAR},
+      value = #{record.value,jdbcType=CHAR},
+      name = #{record.name,jdbcType=CHAR},
+      comment = #{record.comment,jdbcType=CHAR},
+      order_no = #{record.orderNo,jdbcType=INTEGER},
+      is_used = #{record.isUsed,jdbcType=CHAR},
+      created_by = #{record.createdBy,jdbcType=CHAR},
+      updated_by = #{record.updatedBy,jdbcType=CHAR},
+      created_date = #{record.createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{record.updatedDate,jdbcType=TIMESTAMP},
+      is_highlight = #{record.isHighlight,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.dc.common.domain.BootDataDictionary">
+    update boot_data_dictionary
+    <set>
+      <if test="treeId != null">
+        tree_id = #{treeId,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="group != null">
+        group = #{group,jdbcType=CHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=CHAR},
+      </if>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="isUsed != null">
+        is_used = #{isUsed,jdbcType=CHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="updatedBy != null">
+        updated_by = #{updatedBy,jdbcType=CHAR},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isHighlight != null">
+        is_highlight = #{isHighlight,jdbcType=CHAR},
+      </if>
+    </set>
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.dc.common.domain.BootDataDictionary">
+    update boot_data_dictionary
+    set tree_id = #{treeId,jdbcType=CHAR},
+      parent_id = #{parentId,jdbcType=CHAR},
+      group = #{group,jdbcType=CHAR},
+      value = #{value,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      comment = #{comment,jdbcType=CHAR},
+      order_no = #{orderNo,jdbcType=INTEGER},
+      is_used = #{isUsed,jdbcType=CHAR},
+      created_by = #{createdBy,jdbcType=CHAR},
+      updated_by = #{updatedBy,jdbcType=CHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      is_highlight = #{isHighlight,jdbcType=CHAR}
+    where id_key = #{idKey,jdbcType=BIGINT}
+  </update>
+  <update id="updateBatchByPrimaryKey" parameterType="java.util.List">
+    update boot_data_dictionary
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tree_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.treeId}
+        </foreach>
+      </trim>
+      <trim prefix="parent_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.parentId}
+        </foreach>
+      </trim>
+      <trim prefix="group =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.group}
+        </foreach>
+      </trim>
+      <trim prefix="value =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.value}
+        </foreach>
+      </trim>
+      <trim prefix="name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.name}
+        </foreach>
+      </trim>
+      <trim prefix="comment =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.comment}
+        </foreach>
+      </trim>
+      <trim prefix="order_no =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.orderNo}
+        </foreach>
+      </trim>
+      <trim prefix="is_used =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isUsed}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="is_highlight =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isHighlight}
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+    update boot_data_dictionary
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tree_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.treeId != null ">
+            when  #{item.idKey} then #{item.treeId}
+          </if>
+          <if test="item.treeId == null ">
+            when  #{item.idKey} then boot_data_dictionary.tree_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="parent_id =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.parentId != null ">
+            when  #{item.idKey} then #{item.parentId}
+          </if>
+          <if test="item.parentId == null ">
+            when  #{item.idKey} then boot_data_dictionary.parent_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="group =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.group != null ">
+            when  #{item.idKey} then #{item.group}
+          </if>
+          <if test="item.group == null ">
+            when  #{item.idKey} then boot_data_dictionary.group
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="value =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.value != null ">
+            when  #{item.idKey} then #{item.value}
+          </if>
+          <if test="item.value == null ">
+            when  #{item.idKey} then boot_data_dictionary.value
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="name =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.name != null ">
+            when  #{item.idKey} then #{item.name}
+          </if>
+          <if test="item.name == null ">
+            when  #{item.idKey} then boot_data_dictionary.name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="comment =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.comment != null ">
+            when  #{item.idKey} then #{item.comment}
+          </if>
+          <if test="item.comment == null ">
+            when  #{item.idKey} then boot_data_dictionary.comment
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="order_no =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.orderNo != null ">
+            when  #{item.idKey} then #{item.orderNo}
+          </if>
+          <if test="item.orderNo == null ">
+            when  #{item.idKey} then boot_data_dictionary.order_no
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_used =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.isUsed != null ">
+            when  #{item.idKey} then #{item.isUsed}
+          </if>
+          <if test="item.isUsed == null ">
+            when  #{item.idKey} then boot_data_dictionary.is_used
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then boot_data_dictionary.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then boot_data_dictionary.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then boot_data_dictionary.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then boot_data_dictionary.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_highlight =case id_key" suffix="end,">
+        <foreach collection="list" index="index" item="item" separator=" ">
+          <if test="item.isHighlight != null ">
+            when  #{item.idKey} then #{item.isHighlight}
+          </if>
+          <if test="item.isHighlight == null ">
+            when  #{item.idKey} then boot_data_dictionary.is_highlight
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id_key in 
+    <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">
+       #{item.idKey} 
+    </foreach>
+  </update>
+  <update id="updateBatchByExample" parameterType="map">
+    update boot_data_dictionary
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tree_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.treeId}
+        </foreach>
+      </trim>
+      <trim prefix="parent_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.parentId}
+        </foreach>
+      </trim>
+      <trim prefix="group =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.group}
+        </foreach>
+      </trim>
+      <trim prefix="value =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.value}
+        </foreach>
+      </trim>
+      <trim prefix="name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.name}
+        </foreach>
+      </trim>
+      <trim prefix="comment =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.comment}
+        </foreach>
+      </trim>
+      <trim prefix="order_no =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.orderNo}
+        </foreach>
+      </trim>
+      <trim prefix="is_used =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isUsed}
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdBy}
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedBy}
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.createdDate}
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.updatedDate}
+        </foreach>
+      </trim>
+      <trim prefix="is_highlight =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          when  #{item.idKey} then #{item.isHighlight}
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateBatchByExampleSelective" parameterType="map">
+    update boot_data_dictionary
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="tree_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.treeId != null ">
+            when  #{item.idKey} then #{item.treeId}
+          </if>
+          <if test="item.treeId == null ">
+            when  #{item.idKey} then boot_data_dictionary.tree_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="parent_id =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.parentId != null ">
+            when  #{item.idKey} then #{item.parentId}
+          </if>
+          <if test="item.parentId == null ">
+            when  #{item.idKey} then boot_data_dictionary.parent_id
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="group =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.group != null ">
+            when  #{item.idKey} then #{item.group}
+          </if>
+          <if test="item.group == null ">
+            when  #{item.idKey} then boot_data_dictionary.group
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="value =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.value != null ">
+            when  #{item.idKey} then #{item.value}
+          </if>
+          <if test="item.value == null ">
+            when  #{item.idKey} then boot_data_dictionary.value
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="name =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.name != null ">
+            when  #{item.idKey} then #{item.name}
+          </if>
+          <if test="item.name == null ">
+            when  #{item.idKey} then boot_data_dictionary.name
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="comment =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.comment != null ">
+            when  #{item.idKey} then #{item.comment}
+          </if>
+          <if test="item.comment == null ">
+            when  #{item.idKey} then boot_data_dictionary.comment
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="order_no =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.orderNo != null ">
+            when  #{item.idKey} then #{item.orderNo}
+          </if>
+          <if test="item.orderNo == null ">
+            when  #{item.idKey} then boot_data_dictionary.order_no
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_used =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.isUsed != null ">
+            when  #{item.idKey} then #{item.isUsed}
+          </if>
+          <if test="item.isUsed == null ">
+            when  #{item.idKey} then boot_data_dictionary.is_used
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdBy != null ">
+            when  #{item.idKey} then #{item.createdBy}
+          </if>
+          <if test="item.createdBy == null ">
+            when  #{item.idKey} then boot_data_dictionary.created_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_by =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedBy != null ">
+            when  #{item.idKey} then #{item.updatedBy}
+          </if>
+          <if test="item.updatedBy == null ">
+            when  #{item.idKey} then boot_data_dictionary.updated_by
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="created_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.createdDate != null ">
+            when  #{item.idKey} then #{item.createdDate}
+          </if>
+          <if test="item.createdDate == null ">
+            when  #{item.idKey} then boot_data_dictionary.created_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="updated_date =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.updatedDate != null ">
+            when  #{item.idKey} then #{item.updatedDate}
+          </if>
+          <if test="item.updatedDate == null ">
+            when  #{item.idKey} then boot_data_dictionary.updated_date
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="is_highlight =case id_key" suffix="end,">
+        <foreach collection="recordList" index="index" item="item" separator=" ">
+          <if test="item.isHighlight != null ">
+            when  #{item.idKey} then #{item.isHighlight}
+          </if>
+          <if test="item.isHighlight == null ">
+            when  #{item.idKey} then boot_data_dictionary.is_highlight
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
